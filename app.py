@@ -17,6 +17,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
+import os
 from datetime import datetime
 from functools import wraps
 
@@ -26,11 +27,20 @@ from functools import wraps
 app = Flask(__name__)
 # 🔒 Admin secret key — only YOU should know this!
 # Change this to whatever secret phrase you want.
-ADMIN_SECRET_KEY = 'Harshitha_is_the_admin_9900'
-app.config['SECRET_KEY'] = 'placement_predictor_secret_2024'
-app.config['SQLALCHEMY_DATABASE_URI'] = (
-    'mysql+pymysql://root:HaRsH*2005*@localhost/placement_predictor'
-)
+ADMIN_SECRET_KEY =   os.environ.get('ADMIN_SECRET_KEY','Harshitha_is_the_admin_9900')
+app.config['SECRET_KEY'] = os.environ.get('FLASK_SECRET', 'placement_predictor_secret_2024')
+# Use DATABASE_URL from environment (Render/cloud).
+# If not set, fall back to local MySQL.
+db_url = os.environ.get('DATABASE_URL', '').strip()
+if db_url:
+    # Render gives postgres:// but SQLAlchemy needs postgresql://
+    if db_url.startswith('postgres://'):
+        db_url = db_url.replace('postgres://', 'postgresql://', 1)
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_url
+else:
+    app.config['SQLALCHEMY_DATABASE_URI'] = (
+        'mysql+pymysql://root:HaRsH*2005*@localhost/placement_predictor'
+    )
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db            = SQLAlchemy(app)
@@ -40,7 +50,7 @@ login_manager.login_view = 'login'
 # ============================================================
 #  GEMINI AI
 # ============================================================
-GEMINI_API_KEY = 'AIzaSyAChHaBeCKYH0C8btcWoXCNmxZ8lElgq4s'
+GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY', 'AIzaSyAChHaBeCKYH0C8btcWoXCNmxZ8lElgq4s')
 GEMINI_MODEL_NAME = 'gemini-flash-latest'   # free, fast, current
 try:
     gemini_client = new_genai.Client(api_key=GEMINI_API_KEY)
