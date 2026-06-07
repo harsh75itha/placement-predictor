@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>My Shortlist — Placement Predictor</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  :root{
+    --bg:#f5f7fb; --card:#ffffff; --text:#1f2937; --soft:#6b7280;
+    --border:#e5e7eb; --input:#ffffff; --hover:#f9fafb;
+    --primary:#764ba2; --primary-dark:#a855f7;
+    --success:#10b981; --warning:#f59e0b; --danger:#ef4444;
+    --shadow:0 4px 6px rgba(0,0,0,0.05);
+    --shadow-lg:0 12px 30px rgba(0,0,0,0.08);
+  }
+  [data-theme="dark"],html[data-theme="dark"]{
+    --bg:#0f1020; --card:#1e1e30; --text:#e8e8f0; --soft:#9090a8;
+    --border:#3a3a50; --input:#2a2a40; --hover:#2a2a40;
+    --primary:#c084fc;
+    --shadow:0 4px 6px rgba(0,0,0,0.3);
+    --shadow-lg:0 12px 30px rgba(0,0,0,0.4);
+  }
+  @media (prefers-color-scheme:dark){
+    html:not([data-theme]){
+      --bg:#0f1020; --card:#1e1e30; --text:#e8e8f0; --soft:#9090a8;
+      --border:#3a3a50; --input:#2a2a40; --hover:#2a2a40;
+      --primary:#c084fc;
+    }
+  }
+
+  body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:background 0.3s,color 0.3s;}
+
+  .navbar{background:linear-gradient(135deg,#764ba2,#a855f7);color:#fff;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;box-shadow:var(--shadow);}
+  .logo{font-size:1.2rem;font-weight:700;}
+  .nav-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .theme-btn{background:rgba(255,255,255,0.2);border:none;border-radius:8px;padding:6px 11px;font-size:1rem;cursor:pointer;color:#fff;}
+  .theme-btn:hover{background:rgba(255,255,255,0.35);}
+  .btn{padding:8px 16px;border-radius:8px;border:none;cursor:pointer;font-size:0.85rem;font-weight:600;text-decoration:none;display:inline-block;transition:all 0.2s;}
+  .btn-light{background:rgba(255,255,255,0.2);color:#fff;}
+  .btn-light:hover{background:rgba(255,255,255,0.3);}
+  .btn-danger{background:#ef4444;color:#fff;}
+  .btn-primary{background:linear-gradient(135deg,#764ba2,#a855f7);color:#fff;}
+  .btn-outline{background:transparent;color:var(--text);border:1px solid var(--border);}
+  .btn-outline:hover{background:var(--hover);}
+  .btn-sm{padding:6px 11px;font-size:0.8rem;}
+
+  .container{max-width:1200px;margin:0 auto;padding:20px;}
+
+  .page-head{background:var(--card);padding:22px 26px;border-radius:14px;box-shadow:var(--shadow);margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+  .page-head h1{font-size:1.4rem;display:flex;align-items:center;gap:8px;}
+  .page-head .count{color:var(--soft);font-size:0.9rem;margin-top:3px;}
+
+  .shortlist-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px;}
+  .student-card{background:var(--card);border-radius:12px;padding:16px;box-shadow:var(--shadow);border:1px solid var(--border);}
+  .student-head{display:flex;gap:10px;align-items:center;margin-bottom:10px;}
+  .student-avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#764ba2,#a855f7);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;flex-shrink:0;}
+  .student-card h3{font-size:0.98rem;margin-bottom:1px;}
+  .student-card .email{color:var(--soft);font-size:0.76rem;word-break:break-all;}
+  .badge-saved{background:rgba(245,158,11,0.18);color:#f59e0b;padding:3px 9px;border-radius:999px;font-size:0.72rem;font-weight:700;}
+
+  .meta{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin:10px 0;font-size:0.82rem;}
+  .meta div{display:flex;justify-content:space-between;}
+  .meta div span:first-child{color:var(--soft);}
+
+  .note-box{background:var(--bg);border:1px dashed var(--border);padding:8px 11px;border-radius:8px;font-size:0.8rem;color:var(--soft);margin-bottom:10px;font-style:italic;min-height:32px;cursor:pointer;transition:border-color 0.2s;}
+  .note-box:hover{border-color:var(--primary);border-style:solid;}
+  .note-box.empty{font-style:normal;}
+  .note-edit{display:none;margin-bottom:10px;}
+  .note-edit textarea{width:100%;padding:8px 11px;border:1px solid var(--primary);border-radius:8px;background:var(--input);color:var(--text);font-size:0.82rem;resize:vertical;min-height:60px;font-family:inherit;}
+  .note-edit-actions{display:flex;gap:6px;margin-top:6px;}
+
+  .status-bar{display:flex;justify-content:space-between;align-items:center;background:var(--bg);padding:7px 11px;border-radius:8px;border:1px solid var(--border);margin-bottom:10px;}
+  .status-bar label{font-size:0.72rem;color:var(--soft);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin:0;}
+  .status-select{padding:4px 8px;border-radius:999px;font-size:0.78rem;font-weight:700;border:none;cursor:pointer;outline:none;}
+  .st-Pending{background:rgba(107,114,128,0.18);color:#6b7280;}
+  .st-Contacted{background:rgba(102,126,234,0.18);color:#667eea;}
+  .st-Interviewed{background:rgba(245,158,11,0.18);color:#f59e0b;}
+  .st-Hired{background:rgba(16,185,129,0.18);color:#10b981;}
+  .st-Rejected{background:rgba(239,68,68,0.18);color:#ef4444;}
+
+  .date{font-size:0.75rem;color:var(--soft);margin-bottom:10px;}
+
+  .actions{display:flex;gap:8px;border-top:1px solid var(--border);padding-top:10px;}
+  .actions form,.actions a{flex:1;}
+  .actions .btn-sm{width:100%;text-align:center;}
+
+  .alert{padding:11px 14px;border-radius:9px;margin-bottom:12px;font-size:0.88rem;}
+  .alert-success{background:rgba(16,185,129,0.12);color:#10b981;border:1px solid rgba(16,185,129,0.25);}
+  .alert-error{background:rgba(239,68,68,0.12);color:#ef4444;border:1px solid rgba(239,68,68,0.25);}
+  .alert-info{background:rgba(102,126,234,0.12);color:#667eea;border:1px solid rgba(102,126,234,0.25);}
+
+  .empty{background:var(--card);border-radius:14px;text-align:center;padding:50px 16px;color:var(--soft);box-shadow:var(--shadow);}
+  .empty .icon{font-size:3.2rem;margin-bottom:10px;}
+  .empty h3{color:var(--text);margin-bottom:5px;}
+  .empty p{margin-bottom:16px;}
+
+  .hint-bar{position:fixed;bottom:14px;right:14px;background:var(--card);border:1px solid var(--border);padding:7px 12px;border-radius:8px;font-size:0.75rem;color:var(--soft);box-shadow:var(--shadow);}
+  .hint-bar kbd{background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:1px 5px;font-family:monospace;font-size:0.72rem;}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="logo">💼 Recruiter Portal</div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="themeToggle" title="Toggle theme">🌙</button>
+    <a class="btn btn-light" href="{{ url_for('recruiter_dashboard') }}">🔍 Browse Students</a>
+    <a class="btn btn-light" href="{{ url_for('home') }}">Home</a>
+    <a class="btn btn-danger" href="{{ url_for('logout') }}">Logout</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }}">{{ message }}</div>
+    {% endfor %}
+  {% endwith %}
+
+  <div class="page-head">
+    <div>
+      <h1>⭐ My Shortlisted Students</h1>
+      <div class="count">{{ recruiter.company_name }} · {{ shortlists|length }} student{{ 's' if shortlists|length != 1 else '' }} saved</div>
+    </div>
+    <a href="{{ url_for('recruiter_dashboard') }}" class="btn btn-primary">+ Add More Students</a>
+  </div>
+
+  {% if shortlists %}
+  <div class="shortlist-grid">
+    {% for sl in shortlists %}
+    {% set stu = sl.student %}
+    {% set latest = stu.predictions|sort(attribute='created_at',reverse=True)|first %}
+    {% set cur_status = sl.status or 'Pending' %}
+    <div class="student-card" data-sid="{{ stu.id }}">
+      <div class="student-head">
+        <div class="student-avatar">{{ stu.name[0]|upper }}</div>
+        <div style="flex:1;min-width:0;">
+          <h3>{{ stu.name }}</h3>
+          <div class="email">{{ stu.email }}</div>
+        </div>
+        <span class="badge-saved">★ Saved</span>
+      </div>
+
+      <div class="meta">
+        <div><span>Degree</span><strong>{{ stu.degree }}</strong></div>
+        {% if latest %}
+        <div><span>Chance</span><strong>{{ latest.placement_chance }}%</strong></div>
+        <div><span>CGPA</span><strong>{{ latest.cgpa }}</strong></div>
+        <div><span>Role</span><strong>{{ latest.desired_role }}</strong></div>
+        {% else %}
+        <div><span>Chance</span><strong>—</strong></div>
+        <div><span>CGPA</span><strong>—</strong></div>
+        <div><span>Role</span><strong>—</strong></div>
+        {% endif %}
+      </div>
+
+      <div class="status-bar">
+        <label>Status</label>
+        <select class="status-select st-{{ cur_status }}" onchange="updateStatus({{ stu.id }}, this)">
+          {% for opt in ['Pending','Contacted','Interviewed','Hired','Rejected'] %}
+            <option value="{{ opt }}" {% if cur_status == opt %}selected{% endif %}>{{ opt }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="joining-row" style="display:{% if cur_status == 'Hired' %}flex{% else %}none{% endif %};justify-content:space-between;align-items:center;background:rgba(16,185,129,0.1);padding:8px 11px;border-radius:8px;border:1px solid rgba(16,185,129,0.3);margin-bottom:10px;gap:8px;flex-wrap:wrap;">
+        <label style="font-size:0.72rem;color:#10b981;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin:0;">🎉 Joining Date</label>
+        <input type="date" class="joining-date-input" value="{{ sl.joining_date.strftime('%Y-%m-%d') if sl.joining_date else '' }}"
+               onchange="updateJoiningDate({{ stu.id }}, this)"
+               style="padding:4px 8px;border-radius:6px;border:1px solid var(--border);background:var(--input);color:var(--text);font-size:0.8rem;font-family:inherit;">
+      </div>
+
+      <div class="note-box {% if not sl.note %}empty{% endif %}" onclick="openNoteEdit(this)" data-note="{{ sl.note or '' }}">
+        {% if sl.note %}📝 {{ sl.note }}{% else %}＋ Add a private note...{% endif %}
+      </div>
+      <div class="note-edit">
+        <textarea maxlength="300" placeholder="e.g. Strong in Python, available July, interview on Friday...">{{ sl.note or '' }}</textarea>
+        <div class="note-edit-actions">
+          <button type="button" class="btn btn-primary btn-sm" onclick="saveNote({{ stu.id }}, this)">💾 Save</button>
+          <button type="button" class="btn btn-outline btn-sm" onclick="cancelNoteEdit(this)">Cancel</button>
+        </div>
+      </div>
+
+      <div class="date">Saved on {{ sl.created_at.strftime('%d %b %Y, %I:%M %p') }}</div>
+
+      <div class="actions">
+        <a href="{{ url_for('recruiter_view_student', sid=stu.id) }}" class="btn btn-outline btn-sm">👁 View Profile</a>
+        <form onsubmit="return removeShortlist(event,{{ stu.id }}, this);">
+          <button type="submit" class="btn btn-danger btn-sm">★ Remove</button>
+        </form>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty">
+    <div class="icon">⭐</div>
+    <h3>No students shortlisted yet</h3>
+    <p>Browse students and click the "Shortlist" button to save them here.</p>
+    <a href="{{ url_for('recruiter_dashboard') }}" class="btn btn-primary">Browse Students</a>
+  </div>
+  {% endif %}
+
+</div>
+
+<div class="hint-bar">
+  <kbd>Ctrl</kbd>+<kbd>B</kbd> Browse · <kbd>Ctrl</kbd>+<kbd>D</kbd> Theme
+</div>
+
+<script>
+  const themeBtn=document.getElementById('themeToggle');
+  function applyTheme(t){document.documentElement.setAttribute('data-theme',t);themeBtn.textContent=t==='dark'?'☀️':'🌙';}
+  const saved=localStorage.getItem('theme');
+  if(saved){applyTheme(saved);}
+  else{applyTheme(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');}
+  themeBtn.addEventListener('click',()=>{
+    const cur=document.documentElement.getAttribute('data-theme')||'light';
+    const nxt=cur==='dark'?'light':'dark';
+    applyTheme(nxt);localStorage.setItem('theme',nxt);
+  });
+
+  document.addEventListener('keydown',(e)=>{
+    if(e.ctrlKey&&(e.key==='d'||e.key==='D')){e.preventDefault();themeBtn.click();}
+    if(e.ctrlKey&&(e.key==='b'||e.key==='B')){e.preventDefault();window.location.href="{{ url_for('recruiter_dashboard') }}";}
+  });
+
+  async function removeShortlist(e, sid, formEl){
+    e.preventDefault();
+    if(!confirm('Remove this student from your shortlist?')) return false;
+    try{
+      const resp = await fetch(`/recruiter/shortlist/${sid}`, {method:'POST'});
+      await resp.json();
+      const card = formEl.closest('.student-card');
+      card.style.transition='opacity 0.3s, transform 0.3s';
+      card.style.opacity='0';
+      card.style.transform='scale(0.95)';
+      setTimeout(()=>card.remove(),300);
+    } catch(err){
+      alert('Could not remove. Please try again.');
+    }
+    return false;
+  }
+
+  // ── Status dropdown ───────────────────────────────────────
+  async function updateStatus(sid, selectEl){
+    const newStatus = selectEl.value;
+    const card = selectEl.closest('.student-card');
+    // Reset all status classes
+    ['Pending','Contacted','Interviewed','Hired','Rejected'].forEach(s=>{
+      selectEl.classList.remove('st-'+s);
+    });
+    selectEl.classList.add('st-'+newStatus);
+
+    // Show/hide joining date row
+    const joiningRow = card.querySelector('.joining-row');
+    if(joiningRow){
+      joiningRow.style.display = (newStatus === 'Hired') ? 'flex' : 'none';
+    }
+
+    try{
+      const fd = new FormData();
+      fd.append('status', newStatus);
+      const resp = await fetch(`/recruiter/shortlist/${sid}/update`, {method:'POST', body:fd});
+      const data = await resp.json();
+      if(!data.ok) throw new Error('Update failed');
+      // If status became Hired and date is empty, server set today — show it
+      if(newStatus === 'Hired' && data.joining_date){
+        const dateInput = card.querySelector('.joining-date-input');
+        if(dateInput && !dateInput.value) dateInput.value = data.joining_date;
+      }
+      // Quick visual feedback
+      selectEl.style.transition='transform 0.2s';
+      selectEl.style.transform='scale(1.1)';
+      setTimeout(()=>selectEl.style.transform='scale(1)',200);
+    } catch(err){
+      alert('Could not update status. Please try again.');
+    }
+  }
+
+  // ── Joining date ──────────────────────────────────────────
+  async function updateJoiningDate(sid, inputEl){
+    try{
+      const fd = new FormData();
+      fd.append('joining_date', inputEl.value);
+      const resp = await fetch(`/recruiter/shortlist/${sid}/update`, {method:'POST', body:fd});
+      const data = await resp.json();
+      if(!data.ok) throw new Error('Update failed');
+      inputEl.style.transition='background 0.3s';
+      inputEl.style.background='rgba(16,185,129,0.25)';
+      setTimeout(()=>inputEl.style.background='var(--input)',600);
+    } catch(err){
+      alert('Could not save joining date. Please try again.');
+    }
+  }
+
+  // ── Note editing ──────────────────────────────────────────
+  function openNoteEdit(noteBoxEl){
+    const card = noteBoxEl.closest('.student-card');
+    const editBox = card.querySelector('.note-edit');
+    noteBoxEl.style.display='none';
+    editBox.style.display='block';
+    editBox.querySelector('textarea').focus();
+  }
+
+  function cancelNoteEdit(btn){
+    const card = btn.closest('.student-card');
+    card.querySelector('.note-edit').style.display='none';
+    card.querySelector('.note-box').style.display='block';
+    // Revert textarea to original value
+    const noteBox = card.querySelector('.note-box');
+    card.querySelector('.note-edit textarea').value = noteBox.dataset.note || '';
+  }
+
+  async function saveNote(sid, btn){
+    const card = btn.closest('.student-card');
+    const textarea = card.querySelector('.note-edit textarea');
+    const newNote = textarea.value.trim();
+    btn.textContent='Saving...';
+    btn.disabled=true;
+    try{
+      const fd = new FormData();
+      fd.append('note', newNote);
+      const resp = await fetch(`/recruiter/shortlist/${sid}/update`, {method:'POST', body:fd});
+      const data = await resp.json();
+      if(!data.ok) throw new Error('Update failed');
+
+      const noteBox = card.querySelector('.note-box');
+      noteBox.dataset.note = newNote;
+      if(newNote){
+        noteBox.textContent = '📝 ' + newNote;
+        noteBox.classList.remove('empty');
+      } else {
+        noteBox.textContent = '＋ Add a private note...';
+        noteBox.classList.add('empty');
+      }
+      card.querySelector('.note-edit').style.display='none';
+      noteBox.style.display='block';
+    } catch(err){
+      alert('Could not save note. Please try again.');
+    } finally {
+      btn.textContent='💾 Save';
+      btn.disabled=false;
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>{{ student.name }} — Profile</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  :root{
+    --bg:#f5f7fb; --card:#ffffff; --text:#1f2937; --soft:#6b7280;
+    --border:#e5e7eb; --input:#ffffff; --hover:#f9fafb;
+    --primary:#764ba2; --primary-dark:#a855f7;
+    --success:#10b981; --warning:#f59e0b; --danger:#ef4444;
+    --shadow:0 4px 6px rgba(0,0,0,0.05);
+    --shadow-lg:0 12px 30px rgba(0,0,0,0.08);
+  }
+  [data-theme="dark"],html[data-theme="dark"]{
+    --bg:#0f1020; --card:#1e1e30; --text:#e8e8f0; --soft:#9090a8;
+    --border:#3a3a50; --input:#2a2a40; --hover:#2a2a40;
+    --primary:#c084fc;
+    --shadow:0 4px 6px rgba(0,0,0,0.3);
+    --shadow-lg:0 12px 30px rgba(0,0,0,0.4);
+  }
+  @media (prefers-color-scheme:dark){
+    html:not([data-theme]){
+      --bg:#0f1020; --card:#1e1e30; --text:#e8e8f0; --soft:#9090a8;
+      --border:#3a3a50; --input:#2a2a40; --hover:#2a2a40;
+      --primary:#c084fc;
+    }
+  }
+
+  body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:background 0.3s,color 0.3s;}
+
+  .navbar{background:linear-gradient(135deg,#764ba2,#a855f7);color:#fff;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;box-shadow:var(--shadow);}
+  .logo{font-size:1.2rem;font-weight:700;}
+  .nav-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .theme-btn{background:rgba(255,255,255,0.2);border:none;border-radius:8px;padding:6px 11px;font-size:1rem;cursor:pointer;color:#fff;}
+  .theme-btn:hover{background:rgba(255,255,255,0.35);}
+  .btn{padding:8px 16px;border-radius:8px;border:none;cursor:pointer;font-size:0.85rem;font-weight:600;text-decoration:none;display:inline-block;transition:all 0.2s;}
+  .btn-light{background:rgba(255,255,255,0.2);color:#fff;}
+  .btn-light:hover{background:rgba(255,255,255,0.3);}
+  .btn-danger{background:#ef4444;color:#fff;}
+  .btn-primary{background:linear-gradient(135deg,#764ba2,#a855f7);color:#fff;}
+  .btn-success{background:#10b981;color:#fff;}
+  .btn-outline{background:transparent;color:var(--text);border:1px solid var(--border);}
+  .btn-outline:hover{background:var(--hover);}
+
+  .container{max-width:1200px;margin:0 auto;padding:20px;}
+
+  .back-link{color:var(--soft);text-decoration:none;font-size:0.88rem;display:inline-flex;align-items:center;gap:5px;margin-bottom:14px;}
+  .back-link:hover{color:var(--primary);}
+
+  .profile-header{background:linear-gradient(135deg,#764ba2,#a855f7);color:#fff;padding:28px;border-radius:14px;display:flex;align-items:center;gap:20px;margin-bottom:20px;box-shadow:var(--shadow-lg);flex-wrap:wrap;}
+  .profile-avatar{width:88px;height:88px;border-radius:50%;background:rgba(255,255,255,0.25);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:2.3rem;flex-shrink:0;}
+  .profile-info{flex:1;min-width:200px;}
+  .profile-info h1{font-size:1.5rem;margin-bottom:3px;}
+  .profile-info .email{opacity:0.9;font-size:0.9rem;margin-bottom:6px;word-break:break-all;}
+  .profile-info .badges{display:flex;gap:8px;flex-wrap:wrap;}
+  .profile-badge{background:rgba(255,255,255,0.2);padding:4px 12px;border-radius:999px;font-size:0.8rem;font-weight:600;}
+  .profile-actions{display:flex;gap:8px;flex-wrap:wrap;}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;}
+  @media (max-width:800px){.grid{grid-template-columns:1fr;}}
+
+  .card{background:var(--card);border-radius:14px;padding:22px;box-shadow:var(--shadow);}
+  .card h2{font-size:1.1rem;margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+
+  .info-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border);font-size:0.88rem;}
+  .info-row:last-child{border-bottom:none;}
+  .info-row span:first-child{color:var(--soft);}
+
+  .pill{display:inline-block;padding:4px 10px;border-radius:999px;background:var(--bg);font-size:0.78rem;margin:2px;border:1px solid var(--border);}
+
+  .pred-card{padding:14px;border:1px solid var(--border);border-radius:11px;margin-bottom:10px;}
+  .pred-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;flex-wrap:wrap;gap:8px;}
+  .pred-head .role{font-weight:700;}
+  .pred-head .date{color:var(--soft);font-size:0.78rem;}
+  .pct-tag{padding:4px 11px;border-radius:999px;font-weight:700;font-size:0.82rem;}
+  .pct-high{background:rgba(16,185,129,0.18);color:#10b981;}
+  .pct-mid{background:rgba(245,158,11,0.18);color:#f59e0b;}
+  .pct-low{background:rgba(239,68,68,0.18);color:#ef4444;}
+  .pred-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;font-size:0.82rem;margin-top:8px;}
+  .pred-stats div{background:var(--bg);padding:7px 10px;border-radius:8px;}
+  .pred-stats div span{color:var(--soft);display:block;font-size:0.72rem;}
+  .pred-stats div strong{font-size:0.9rem;}
+
+  .alert{padding:11px 14px;border-radius:9px;margin-bottom:12px;font-size:0.88rem;}
+  .alert-success{background:rgba(16,185,129,0.12);color:#10b981;border:1px solid rgba(16,185,129,0.25);}
+  .alert-error{background:rgba(239,68,68,0.12);color:#ef4444;border:1px solid rgba(239,68,68,0.25);}
+  .alert-info{background:rgba(102,126,234,0.12);color:#667eea;border:1px solid rgba(102,126,234,0.25);}
+
+  .empty{text-align:center;padding:30px 16px;color:var(--soft);}
+  .empty .icon{font-size:2.5rem;margin-bottom:6px;}
+
+  .hint-bar{position:fixed;bottom:14px;right:14px;background:var(--card);border:1px solid var(--border);padding:7px 12px;border-radius:8px;font-size:0.75rem;color:var(--soft);box-shadow:var(--shadow);}
+  .hint-bar kbd{background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:1px 5px;font-family:monospace;font-size:0.72rem;}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="logo">💼 Recruiter Portal</div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="themeToggle" title="Toggle theme">🌙</button>
+    <a class="btn btn-light" href="{{ url_for('recruiter_dashboard') }}">🔍 Browse</a>
+    <a class="btn btn-light" href="{{ url_for('recruiter_shortlists') }}">⭐ Shortlist</a>
+    <a class="btn btn-danger" href="{{ url_for('logout') }}">Logout</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }}">{{ message }}</div>
+    {% endfor %}
+  {% endwith %}
+
+  <a href="{{ url_for('recruiter_dashboard') }}" class="back-link">← Back to Student List</a>
+
+  <!-- Profile Header -->
+  <div class="profile-header">
+    <div class="profile-avatar">{{ student.name[0]|upper }}</div>
+    <div class="profile-info">
+      <h1>{{ student.name }}</h1>
+      <div class="email">📧 {{ student.email }}</div>
+      <div class="badges">
+        <span class="profile-badge">🎓 {{ student.degree }}</span>
+        {% if student.stream %}<span class="profile-badge">📚 {{ student.stream }}</span>{% endif %}
+        <span class="profile-badge">📊 {{ predictions|length }} Prediction{{ 's' if predictions|length != 1 else '' }}</span>
+      </div>
+    </div>
+    <div class="profile-actions">
+      {% if is_shortlisted %}
+        <form onsubmit="return toggleShortlist(event, {{ student.id }}, this);">
+          <button type="submit" class="btn btn-danger" id="slBtn">★ Remove from Shortlist</button>
+        </form>
+      {% else %}
+        <form onsubmit="return toggleShortlist(event, {{ student.id }}, this);">
+          <button type="submit" class="btn btn-success" id="slBtn">☆ Add to Shortlist</button>
+        </form>
+      {% endif %}
+      <a href="mailto:{{ student.email }}" class="btn btn-light">✉ Send Email</a>
+    </div>
+  </div>
+
+  <!-- Info grid -->
+  <div class="grid">
+    <div class="card">
+      <h2>👤 Personal Info</h2>
+      <div class="info-row"><span>Full Name</span><strong>{{ student.name }}</strong></div>
+      <div class="info-row"><span>Email</span><span style="word-break:break-all;">{{ student.email }}</span></div>
+      <div class="info-row"><span>Degree</span><strong>{{ student.degree }}</strong></div>
+      {% if student.stream %}
+      <div class="info-row"><span>Specialisation</span><span>{{ student.stream }}</span></div>
+      {% endif %}
+      <div class="info-row"><span>Joined</span><span>{{ student.created_at.strftime('%d %b %Y') }}</span></div>
+      <div class="info-row"><span>Total Predictions</span><strong>{{ predictions|length }}</strong></div>
+    </div>
+
+    <div class="card">
+      <h2>🎓 About the {{ student.degree }}</h2>
+      {% set deg = degree_data.get(student.degree, {}) %}
+      {% if deg %}
+        <div class="info-row"><span>Full Name</span><strong style="font-size:0.85rem;text-align:right;">{{ deg.full_name }}</strong></div>
+        <div class="info-row"><span>Level</span><span>{{ deg.level }}</span></div>
+        <div style="margin-top:12px;">
+          <strong style="font-size:0.9rem;">Recommended Skills:</strong>
+          <div style="margin-top:6px;">
+            {% for s in deg.recommended_skills[:12] %}<span class="pill">{{ s }}</span>{% endfor %}
+            {% if deg.recommended_skills|length > 12 %}<span class="pill">+{{ deg.recommended_skills|length - 12 }} more</span>{% endif %}
+          </div>
+        </div>
+      {% else %}
+        <p style="color:var(--soft);font-size:0.88rem;">No degree details available.</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Latest Skills -->
+  {% if predictions %}
+  {% set latest = predictions[0] %}
+  <div class="card" style="margin-bottom:18px;">
+    <h2>💪 Current Skills</h2>
+    <p style="color:var(--soft);font-size:0.83rem;margin-bottom:10px;">From latest prediction on {{ latest.created_at.strftime('%d %b %Y') }}</p>
+    <div>
+      {% for sk in latest.skills.split(';') %}
+        {% if sk.strip() %}<span class="pill">{{ sk.strip() }}</span>{% endif %}
+      {% endfor %}
+    </div>
+
+    {% if latest.missing_skills %}
+    <h2 style="margin-top:18px;">⚠ Skills Still Needed for {{ latest.desired_role }}</h2>
+    <div>
+      {% for sk in latest.missing_skills.split(',') %}
+        {% if sk.strip() %}<span class="pill" style="background:rgba(239,68,68,0.12);color:#ef4444;border-color:rgba(239,68,68,0.3);">{{ sk.strip() }}</span>{% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  <!-- Prediction History -->
+  <div class="card">
+    <h2>📜 Prediction History</h2>
+    {% if predictions %}
+      {% for p in predictions %}
+      <div class="pred-card">
+        <div class="pred-head">
+          <div>
+            <div class="role">{{ p.desired_role }}</div>
+            <div class="date">{{ p.created_at.strftime('%d %b %Y, %I:%M %p') }}</div>
+          </div>
+          {% if p.placement_chance >= 70 %}
+            <span class="pct-tag pct-high">{{ p.placement_chance }}% Chance</span>
+          {% elif p.placement_chance >= 40 %}
+            <span class="pct-tag pct-mid">{{ p.placement_chance }}% Chance</span>
+          {% else %}
+            <span class="pct-tag pct-low">{{ p.placement_chance }}% Chance</span>
+          {% endif %}
+        </div>
+        <div class="pred-stats">
+          <div><span>CGPA</span><strong>{{ p.cgpa }}</strong></div>
+          <div><span>Internships</span><strong>{{ p.internships }}</strong></div>
+          <div><span>Projects</span><strong>{{ p.projects }}</strong></div>
+          <div><span>Backlogs</span><strong>{{ p.backlogs }}</strong></div>
+          <div><span>Communication</span><strong>{{ p.communication_score }}/10</strong></div>
+          <div><span>Skill Match</span><strong>{{ p.skill_match }}%</strong></div>
+        </div>
+      </div>
+      {% endfor %}
+    {% else %}
+      <div class="empty">
+        <div class="icon">📊</div>
+        <p>This student has not made any predictions yet.</p>
+      </div>
+    {% endif %}
+  </div>
+
+</div>
+
+<div class="hint-bar">
+  <kbd>Ctrl</kbd>+<kbd>B</kbd> Back · <kbd>Ctrl</kbd>+<kbd>D</kbd> Theme · <kbd>Ctrl</kbd>+<kbd>S</kbd> Toggle Shortlist
+</div>
+
+<script>
+  const themeBtn=document.getElementById('themeToggle');
+  function applyTheme(t){document.documentElement.setAttribute('data-theme',t);themeBtn.textContent=t==='dark'?'☀️':'🌙';}
+  const saved=localStorage.getItem('theme');
+  if(saved){applyTheme(saved);}
+  else{applyTheme(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');}
+  themeBtn.addEventListener('click',()=>{
+    const cur=document.documentElement.getAttribute('data-theme')||'light';
+    const nxt=cur==='dark'?'light':'dark';
+    applyTheme(nxt);localStorage.setItem('theme',nxt);
+  });
+
+  document.addEventListener('keydown',(e)=>{
+    if(e.ctrlKey&&(e.key==='d'||e.key==='D')){e.preventDefault();themeBtn.click();}
+    if(e.ctrlKey&&(e.key==='b'||e.key==='B')){e.preventDefault();window.location.href="{{ url_for('recruiter_dashboard') }}";}
+    if(e.ctrlKey&&(e.key==='s'||e.key==='S')){e.preventDefault();document.getElementById('slBtn').click();}
+  });
+
+  async function toggleShortlist(e, sid, formEl){
+    e.preventDefault();
+    try{
+      const resp = await fetch(`/recruiter/shortlist/${sid}`, {method:'POST'});
+      const data = await resp.json();
+      const btn = formEl.querySelector('button');
+      if(data.status==='added'){
+        btn.textContent='★ Remove from Shortlist';
+        btn.classList.remove('btn-success');
+        btn.classList.add('btn-danger');
+      } else {
+        btn.textContent='☆ Add to Shortlist';
+        btn.classList.remove('btn-danger');
+        btn.classList.add('btn-success');
+      }
+    } catch(err){
+      alert('Could not update shortlist. Please try again.');
+    }
+    return false;
+  }
+</script>
+
+</body>
+</html>

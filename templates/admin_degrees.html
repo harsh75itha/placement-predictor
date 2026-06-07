@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Manage Degrees — Admin Panel</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  :root{
+    --bg:#f5f7fb; --card:#ffffff; --text:#1f2937; --soft:#6b7280;
+    --border:#e5e7eb; --input:#ffffff; --hover:#f9fafb;
+    --primary:#f59e0b; --primary-dark:#ef4444;
+    --shadow:0 4px 6px rgba(0,0,0,0.05);
+    --shadow-lg:0 12px 30px rgba(0,0,0,0.08);
+  }
+  [data-theme="dark"],html[data-theme="dark"]{
+    --bg:#0f1020; --card:#1e1e30; --text:#e8e8f0; --soft:#9090a8;
+    --border:#3a3a50; --input:#2a2a40; --hover:#2a2a40;
+    --primary:#fb923c;
+    --shadow:0 4px 6px rgba(0,0,0,0.3);
+    --shadow-lg:0 12px 30px rgba(0,0,0,0.4);
+  }
+  @media (prefers-color-scheme:dark){
+    html:not([data-theme]){
+      --bg:#0f1020; --card:#1e1e30; --text:#e8e8f0; --soft:#9090a8;
+      --border:#3a3a50; --input:#2a2a40; --hover:#2a2a40;
+      --primary:#fb923c;
+    }
+  }
+
+  body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:background 0.3s,color 0.3s;}
+
+  .navbar{background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;box-shadow:var(--shadow);}
+  .logo{font-size:1.2rem;font-weight:700;display:flex;align-items:center;gap:8px;}
+  .nav-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .theme-btn{background:rgba(255,255,255,0.2);border:none;border-radius:8px;padding:6px 11px;font-size:1rem;cursor:pointer;color:#fff;}
+  .theme-btn:hover{background:rgba(255,255,255,0.35);}
+  .btn{padding:8px 16px;border-radius:8px;border:none;cursor:pointer;font-size:0.85rem;font-weight:600;text-decoration:none;display:inline-block;transition:all 0.2s;}
+  .btn-light{background:rgba(255,255,255,0.2);color:#fff;}
+  .btn-light:hover{background:rgba(255,255,255,0.3);}
+  .btn-danger{background:#ef4444;color:#fff;}
+  .btn-danger:hover{background:#dc2626;}
+  .btn-primary{background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 5px 16px rgba(0,0,0,0.18);}
+  .btn-outline{background:transparent;color:var(--text);border:1px solid var(--border);}
+  .btn-outline:hover{background:var(--hover);}
+  .btn-sm{padding:5px 11px;font-size:0.75rem;}
+
+  .container{max-width:1300px;margin:0 auto;padding:20px;}
+
+  .back-link{color:var(--soft);text-decoration:none;font-size:0.88rem;display:inline-flex;align-items:center;gap:5px;margin-bottom:14px;}
+  .back-link:hover{color:var(--primary);}
+
+  .page-head{background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;padding:22px 26px;border-radius:14px;margin-bottom:20px;box-shadow:var(--shadow-lg);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+  .page-head h1{font-size:1.4rem;display:flex;align-items:center;gap:8px;}
+  .page-head p{opacity:0.9;font-size:0.88rem;margin-top:3px;}
+
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:20px;}
+  .stat-card{background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow);text-align:center;border-top:4px solid var(--primary);}
+  .stat-card .num{font-size:1.8rem;font-weight:800;color:var(--primary);}
+  .stat-card .lbl{color:var(--soft);font-size:0.8rem;margin-top:3px;}
+
+  .table-card{background:var(--card);border-radius:12px;box-shadow:var(--shadow);padding:18px;}
+  .table-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:10px;}
+  .search-bar input{width:280px;max-width:100%;padding:8px 12px;border:1.5px solid var(--border);border-radius:8px;background:var(--input);color:var(--text);font-size:0.88rem;outline:none;}
+  .search-bar input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(245,158,11,0.15);}
+
+  table{width:100%;border-collapse:collapse;font-size:0.86rem;}
+  thead{background:var(--bg);}
+  th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--border);}
+  th{font-weight:700;color:var(--soft);font-size:0.76rem;text-transform:uppercase;letter-spacing:0.5px;}
+  tbody tr:hover{background:var(--hover);}
+  tbody tr:last-child td{border-bottom:none;}
+
+  .badge{display:inline-block;padding:3px 9px;border-radius:999px;font-size:0.72rem;font-weight:700;}
+  .b-UG{background:rgba(102,126,234,0.18);color:#667eea;}
+  .b-PG{background:rgba(118,75,162,0.18);color:#764ba2;}
+  .b-Engineering{background:rgba(245,158,11,0.18);color:#f59e0b;}
+  .b-Exam{background:rgba(16,185,129,0.18);color:#10b981;}
+
+  .count-chip{display:inline-block;padding:2px 9px;border-radius:999px;background:var(--bg);font-size:0.78rem;font-weight:700;border:1px solid var(--border);}
+  .student-chip{background:rgba(102,126,234,0.18);color:#667eea;border:none;}
+
+  .row-actions{display:flex;gap:6px;}
+
+  .alert{padding:11px 14px;border-radius:9px;margin-bottom:12px;font-size:0.88rem;}
+  .alert-success{background:rgba(16,185,129,0.12);color:#10b981;border:1px solid rgba(16,185,129,0.25);}
+  .alert-error{background:rgba(239,68,68,0.12);color:#ef4444;border:1px solid rgba(239,68,68,0.25);}
+  .alert-info{background:rgba(102,126,234,0.12);color:#667eea;border:1px solid rgba(102,126,234,0.25);}
+
+  .empty{text-align:center;padding:40px 16px;color:var(--soft);}
+
+  .table-wrap{overflow-x:auto;}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="logo">🛡 Admin Panel</div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="themeToggle" title="Toggle theme">🌙</button>
+    <a class="btn btn-light" href="{{ url_for('admin_dashboard') }}">📊 Dashboard</a>
+    <a class="btn btn-danger" href="{{ url_for('logout') }}">Logout</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }}">{{ message }}</div>
+    {% endfor %}
+  {% endwith %}
+
+  <a href="{{ url_for('admin_dashboard') }}" class="back-link">← Back to Admin Dashboard</a>
+
+  <div class="page-head">
+    <div>
+      <h1>🎓 Manage Degrees</h1>
+      <p>Add, edit, or remove degree programs, job roles, and recommended skills</p>
+    </div>
+    <a href="{{ url_for('admin_degree_new') }}" class="btn btn-light" style="background:rgba(255,255,255,0.95);color:#ef4444;font-weight:700;">+ Add New Degree</a>
+  </div>
+
+  {% set ns = namespace(roles=0, skills=0) %}
+  {% for d in degrees %}
+    {% set ns.roles = ns.roles + d.job_roles|length %}
+    {% set ns.skills = ns.skills + d.skills|length %}
+  {% endfor %}
+
+  <div class="stats">
+    <div class="stat-card">
+      <div class="num">{{ degrees|length }}</div>
+      <div class="lbl">Total Degrees</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">{{ ns.roles }}</div>
+      <div class="lbl">Total Job Roles</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">{{ ns.skills }}</div>
+      <div class="lbl">Total Skills</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">{{ student_counts.values()|sum }}</div>
+      <div class="lbl">Students Registered</div>
+    </div>
+  </div>
+
+  <div class="table-card">
+    <div class="table-head">
+      <h3 style="font-size:1rem;">📚 All Degrees</h3>
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="🔍 Search degrees...">
+      </div>
+    </div>
+
+    {% if degrees %}
+    <div class="table-wrap">
+      <table id="degreesTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Full Name</th>
+            <th>Level</th>
+            <th>Roles</th>
+            <th>Skills</th>
+            <th>Students</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for d in degrees %}
+          <tr>
+            <td>{{ loop.index }}</td>
+            <td><strong>{{ d.name }}</strong></td>
+            <td style="color:var(--soft);">{{ d.full_name }}</td>
+            <td>
+              {% if 'Engineering' in d.level %}
+                <span class="badge b-Engineering">{{ d.level }}</span>
+              {% elif 'Exam' in d.level %}
+                <span class="badge b-Exam">{{ d.level }}</span>
+              {% elif d.level == 'PG' %}
+                <span class="badge b-PG">{{ d.level }}</span>
+              {% else %}
+                <span class="badge b-UG">{{ d.level }}</span>
+              {% endif %}
+            </td>
+            <td><span class="count-chip">{{ d.job_roles|length }}</span></td>
+            <td><span class="count-chip">{{ d.skills|length }}</span></td>
+            <td><span class="count-chip student-chip">{{ student_counts[d.id] }}</span></td>
+            <td>
+              <div class="row-actions">
+                <a href="{{ url_for('admin_degree_edit', did=d.id) }}" class="btn btn-primary btn-sm">✏ Edit</a>
+                {% if student_counts[d.id] == 0 %}
+                <form method="POST" action="{{ url_for('admin_degree_delete', did=d.id) }}" onsubmit="return confirm('Delete the {{ d.name }} degree? This removes all its job roles and skills. This cannot be undone.');" style="display:inline;">
+                  <button type="submit" class="btn btn-danger btn-sm">🗑 Delete</button>
+                </form>
+                {% else %}
+                <button type="button" class="btn btn-outline btn-sm" disabled style="opacity:0.5;cursor:not-allowed;" title="Cannot delete — {{ student_counts[d.id] }} student(s) registered">🔒 Locked</button>
+                {% endif %}
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <div class="empty">
+      <div style="font-size:3rem;margin-bottom:10px;">🎓</div>
+      <p>No degrees yet. Click "Add New Degree" to create one.</p>
+    </div>
+    {% endif %}
+  </div>
+
+</div>
+
+<script>
+  const themeBtn=document.getElementById('themeToggle');
+  function applyTheme(t){document.documentElement.setAttribute('data-theme',t);themeBtn.textContent=t==='dark'?'☀️':'🌙';}
+  const saved=localStorage.getItem('theme');
+  if(saved){applyTheme(saved);}
+  else{applyTheme(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');}
+  themeBtn.addEventListener('click',()=>{
+    const cur=document.documentElement.getAttribute('data-theme')||'light';
+    const nxt=cur==='dark'?'light':'dark';
+    applyTheme(nxt);localStorage.setItem('theme',nxt);
+  });
+
+  // Search
+  const searchInp=document.getElementById('searchInput');
+  const tableBody=document.querySelector('#degreesTable tbody');
+  if(searchInp && tableBody){
+    searchInp.addEventListener('input',()=>{
+      const q=searchInp.value.toLowerCase();
+      tableBody.querySelectorAll('tr').forEach(row=>{
+        row.style.display=row.textContent.toLowerCase().includes(q)?'':'none';
+      });
+    });
+  }
+</script>
+
+</body>
+</html>

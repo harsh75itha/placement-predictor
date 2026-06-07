@@ -1,0 +1,501 @@
+student_id,name,cgpa,stream,skills,internships,projects,backlogs,communication_score,desired_job_role,placed,salary
+STU001,Rajesh,5.12,CSE,User Research;CSS,2,1,1,5,UI/UX Designer,No,0
+STU002,Ananya,7.03,Civil,Material Testing;AutoCAD,0,0,0,5,Site Engineer,No,0
+STU003,Sandeep,8.37,IT,MySQL;Database Design,3,1,0,7,Database Administrator,Yes,435513
+STU004,Sara,5.49,EEE,PLC Programming;Ladder Logic;HMI;Industrial Automation,3,0,2,10,PLC SCADA Engineer,Yes,558193
+STU005,Pradeep,8.98,EEE,Circuit Design;Power Systems,2,4,0,5,Electrical Design Engineer,Yes,820424
+STU006,Tejas,6.82,CSE,Docker;Kubernetes;Linux;Python,3,5,2,5,DevOps Engineer,Yes,643776
+STU007,Ganesh,7.22,ECE,Raspberry Pi;Python;C,2,5,0,9,IoT Engineer,Yes,367655
+STU008,Jaya,6.29,Mechanical,MATLAB;AutoCAD;CFD;Heat Transfer;ANSYS,1,4,2,5,Thermal Engineer,No,0
+STU009,Arjun,8.58,ECE,Digital Electronics;Signal Processing;MATLAB;Python;DSP,2,5,0,8,Signal Processing Engineer,Yes,823606
+STU010,Aryan,5.77,IT,Docker;Kubernetes;Python;Networking;AWS;Linux,3,4,0,7,Cloud Engineer,Yes,645333
+STU011,Harsha,8.08,MBA,Financial Modeling;Accounting;Excel;Valuation;SQL,0,2,0,7,Financial Analyst,Yes,514144
+STU012,Rajesh,7.92,Civil,Material Testing;Engineering Drawing,1,2,0,10,Site Engineer,Yes,411527
+STU013,Kishore,8.87,MBA,Supply Chain Management;Inventory Management,1,0,0,5,Supply Chain Manager,Yes,887891
+STU014,Pooja,5.6,MBA,Logistics;Procurement;Excel;Inventory Management;Supply Chain Management,3,4,1,6,Supply Chain Manager,Yes,707432
+STU015,Mohan,7.17,Civil,GIS;AutoCAD,1,1,0,4,Transportation Engineer,Yes,353954
+STU016,Sandeep,5.28,IT,Routing;Firewalls;TCP/IP;Linux,0,0,2,4,Network Engineer,No,0
+STU017,Arjun,9.49,IT,Adobe XD;Figma;CSS;Wireframing;User Research,3,1,0,10,UI/UX Designer,Yes,576106
+STU018,Tejas,5.26,IT,Docker;Jenkins,0,0,3,9,DevOps Engineer,No,0
+STU019,Deepak,7.15,Civil,Soil Mechanics;Site Investigation;AutoCAD,3,1,0,6,Geotechnical Engineer,No,0
+STU020,Ramya,9.01,Civil,Site Investigation;Foundation Design;Laboratory Testing;Soil Mechanics;AutoCAD,0,1,0,5,Geotechnical Engineer,Yes,891919
+STU021,Harish,8.77,MBA,Excel;Agile;Communication;Product Strategy;Roadmapping;Market Research,2,3,0,9,Product Manager,Yes,668549
+STU022,Pooja,8.59,CSE,Cryptography;Linux;Networking;Python;Ethical Hacking;Firewalls,0,0,0,8,Cybersecurity Analyst,No,0
+STU023,Akshay,9.14,IT,VPN;Networking;Routing;TCP/IP;Linux;Firewalls,3,0,0,8,Network Engineer,Yes,743905
+STU024,Ganesh,6.9,EEE,MATLAB;AutoCAD Electrical,2,3,2,10,Electrical Design Engineer,No,0
+STU025,Deepika,6.27,Civil,Surveying;Traffic Engineering;GIS,2,0,1,6,Transportation Engineer,No,0
+STU026,Sneha,7.54,IT,SQL;Python;Pandas;Power BI,2,5,0,4,Data Analyst,No,0
+STU027,Harshitha,6.01,Civil,Soil Mechanics;Laboratory Testing;AutoCAD;Foundation Design,2,1,2,8,Geotechnical Engineer,Yes,374247
+STU028,Karan,5.63,MBA,Roadmapping;Product Strategy;Excel;Agile;Market Research,2,1,3,8,Product Manager,Yes,809027
+STU029,Priya,5.71,Civil,AutoCAD;Steel Design;Structural Analysis;Concrete Design,1,0,2,6,Structural Engineer,No,0
+STU030,Shruti,9.24,Civil,AutoCAD;Material Testing;Surveying,3,4,0,9,Site Engineer,No,0
+STU031,Sanjana,8.76,EEE,Load Flow Analysis;Power Systems;Transformers;Electrical Machines,3,5,0,10,Power Systems Engineer,Yes,472338
+STU032,Suresh,6.68,Mechanical,Quality Control;CNC;Manufacturing Processes;AutoCAD;Lean Manufacturing,1,1,0,9,Manufacturing Engineer,Yes,569823
+STU033,Swathi,6.59,Civil,Environmental Science;GIS;Waste Management;Water Treatment,0,0,2,5,Environmental Engineer,No,0
+STU034,Kavya,8.77,IT,Node.js;CSS;JavaScript;HTML;SQL,3,4,0,8,Web Developer,Yes,635956
+STU035,Sneha,8.3,Civil,Concrete Design;STAAD Pro;Structural Analysis;Steel Design,1,2,0,7,Structural Engineer,Yes,628917
+STU036,Ravi,6.57,Mechanical,AutoCAD;Thermodynamics;Fluid Mechanics;HVAC Systems;Heat Transfer,2,4,1,5,HVAC Engineer,Yes,586438
+STU037,Priya,8.14,Civil,GIS;Water Treatment;Hydrology,3,3,0,7,Water Resources Engineer,Yes,506082
+STU038,Ravi,7.97,IT,MySQL;Performance Tuning;SQL,0,1,0,9,Database Administrator,No,0
+STU039,Naveen,9.08,Civil,Hydrology;Water Treatment;GIS;Fluid Mechanics;Hydraulics;AutoCAD,0,3,0,7,Water Resources Engineer,Yes,353049
+STU040,Sara,8.7,MBA,Financial Statements;Financial Modeling;Excel;Valuation;SQL;Accounting,0,3,0,5,Financial Analyst,Yes,717167
+STU041,Pradeep,6.52,Civil,Water Treatment;AutoCAD;GIS;Waste Management;Environmental Science,3,4,3,10,Environmental Engineer,Yes,502521
+STU042,Shruti,7.33,Civil,AutoCAD;STAAD Pro;Concrete Design;Steel Design,1,2,0,7,Structural Engineer,Yes,394317
+STU043,Aryan,6.84,ECE,Digital Electronics;Python;Signal Processing;MATLAB;DSP,1,5,1,4,Signal Processing Engineer,No,0
+STU044,Swathi,6.87,Mechanical,CATIA;Engineering Drawing;Thermodynamics;GD&T,0,4,3,7,Mechanical Design Engineer,No,0
+STU045,Sanjana,7.62,IT,Database Design;SQL;MySQL;PostgreSQL;Performance Tuning,1,3,0,5,Database Administrator,Yes,812278
+STU046,Vijay,9.71,ECE,C;Networking;Microcontrollers;C++;Arduino;Raspberry Pi;Python,0,3,0,8,IoT Engineer,Yes,530043
+STU047,Nandini,6.62,EEE,AutoCAD Electrical;Transformers;Circuit Design;MATLAB;Power Systems,3,2,3,6,Electrical Design Engineer,Yes,708465
+STU048,Sara,9.56,CSE,Machine Learning;SQL;Python,1,0,0,8,Data Scientist,Yes,469880
+STU049,Sachin,8.68,EEE,Power Systems;AutoCAD Electrical;Transformers,1,4,0,8,Electrical Design Engineer,No,0
+STU050,Ishaan,8.25,Civil,Material Testing;AutoCAD,3,3,0,9,Site Engineer,No,0
+STU051,Shruti,9.08,EEE,Transformers;MATLAB;Power Systems;Circuit Design,0,4,0,10,Electrical Design Engineer,No,0
+STU052,Ramya,5.06,EEE,SCADA;Ladder Logic;PLC Programming;Industrial Automation;HMI,3,3,0,7,PLC SCADA Engineer,Yes,804154
+STU053,Priya,6.55,EEE,Transformers;Electrical Machines;Load Flow Analysis;Power Systems;MATLAB,1,0,2,7,Power Systems Engineer,No,0
+STU054,Tanvi,5.87,EEE,Industrial Automation;PLC Programming;HMI;Ladder Logic,1,2,2,6,PLC SCADA Engineer,No,0
+STU055,Ananya,8.46,ECE,MATLAB;Wireless Communication;RF Circuit Design;Signal Processing;Antenna Design,3,4,0,10,RF Engineer,Yes,730482
+STU056,Ishaan,7.79,IT,Jenkins;Python;Kubernetes;Docker;Git,3,4,0,8,DevOps Engineer,Yes,488272
+STU057,Anjali,5.92,IT,Linux;VPN;Routing;Networking;Firewalls,0,5,1,5,Network Engineer,No,0
+STU058,Harshitha,6.73,ECE,Circuit Design;VHDL,2,0,1,6,VLSI Design Engineer,No,0
+STU059,Sachin,8.06,ECE,VHDL;Digital Electronics;Circuit Design;Verilog;Cadence Tools;VLSI,3,0,0,10,VLSI Design Engineer,Yes,488863
+STU060,Tejas,5.55,Mechanical,Statistical Process Control;GD&T,0,3,3,4,Quality Control Engineer,No,0
+STU061,Sneha,9.56,Civil,GIS;Water Treatment;Waste Management;AutoCAD;Environmental Science,0,1,0,4,Environmental Engineer,Yes,513544
+STU062,Priya,6.47,Mechanical,Quality Control;Manufacturing Processes;Lean Manufacturing,0,4,0,10,Manufacturing Engineer,Yes,653595
+STU063,Ashwin,6.96,CSE,Statistics;TensorFlow;Python;Deep Learning,3,2,0,5,Machine Learning Engineer,Yes,495505
+STU064,Siddharth,7.83,IT,Linux;TCP/IP;Networking,1,3,0,4,Network Engineer,No,0
+STU065,Siddharth,7.86,EEE,Power Electronics;AutoCAD;Circuit Design;Electrical Design,2,3,0,4,Solar Energy Engineer,Yes,678920
+STU066,Uday,8.53,Mechanical,Quality Control;Manufacturing Processes,2,0,0,4,Manufacturing Engineer,Yes,446354
+STU067,Nisha,7.12,IT,AWS;Docker;Python;Linux;Kubernetes,2,1,0,8,Cloud Engineer,Yes,407529
+STU068,Ashwin,6.98,EEE,SCADA;Instrumentation,3,2,3,10,Instrumentation Engineer,Yes,527800
+STU069,Shruti,9.15,Mechanical,ISO Standards;Quality Management;GD&T;Statistical Process Control;AutoCAD,0,5,0,10,Quality Control Engineer,Yes,767994
+STU070,Deepika,7.64,EEE,Solar PV Systems;Electrical Design,2,3,0,9,Solar Energy Engineer,Yes,520912
+STU071,Aarav,6.96,Civil,Water Treatment;AutoCAD;GIS,1,0,3,4,Water Resources Engineer,No,0
+STU072,Manish,7.32,MBA,Inventory Management;Logistics;Excel,3,1,0,7,Supply Chain Manager,Yes,833629
+STU073,Tejas,6.33,CSE,Algorithms;Git;DBMS;OOP,3,2,2,10,Software Developer,Yes,619302
+STU074,Aryan,7.59,Mechanical,ISO Standards;AutoCAD;Quality Management;GD&T;Statistical Process Control,2,2,0,8,Quality Control Engineer,Yes,776549
+STU075,Aisha,8.57,EEE,Power Systems;Load Flow Analysis;MATLAB;Electrical Machines;Transformers,3,3,0,9,Power Systems Engineer,Yes,592168
+STU076,Nisha,5.07,Mechanical,Thermodynamics;Heat Transfer;Fluid Mechanics;HVAC Systems,1,3,1,4,HVAC Engineer,No,0
+STU077,Tanvi,9.09,EEE,Circuit Design;Solar PV Systems,3,2,0,9,Solar Energy Engineer,Yes,726419
+STU078,Harshitha,8.58,ECE,RTOS;C++,3,0,0,10,Embedded Systems Engineer,Yes,846883
+STU079,Aisha,8.82,EEE,Electrical Design;Power Electronics;AutoCAD,2,2,0,6,Solar Energy Engineer,Yes,449031
+STU080,Bhavya,7.93,CSE,Node.js;CSS;Git;React;JavaScript,3,4,0,9,Web Developer,Yes,490429
+STU081,Aarav,7.23,MBA,Financial Statements;Accounting,2,5,0,8,Financial Analyst,Yes,514534
+STU082,Meera,6.2,IT,Adobe XD;HTML,2,1,3,10,UI/UX Designer,Yes,666146
+STU083,Sachin,5.11,EEE,Power Systems;Circuit Design;Transformers;MATLAB;AutoCAD Electrical,3,2,0,8,Electrical Design Engineer,Yes,691490
+STU084,Rohit,8.46,MBA,Market Research;Agile,1,5,0,4,Product Manager,No,0
+STU085,Kishore,5.63,IT,VPN;Linux;Routing,2,2,3,5,Network Engineer,No,0
+STU086,Swathi,6.23,ECE,VLSI;Verilog;Circuit Design;VHDL;Digital Electronics,3,2,2,10,VLSI Design Engineer,Yes,792523
+STU087,Kishore,8.8,CSE,Pandas;Data Visualization;NumPy;Excel;Statistics,0,2,0,8,Data Analyst,Yes,867160
+STU088,Anil,6.12,IT,Routing;Firewalls,0,4,2,8,Network Engineer,No,0
+STU089,Vijay,6.45,IT,DBMS;Python;Git;Java,3,0,1,4,Software Developer,Yes,424615
+STU090,Nandini,8.22,EEE,Power Systems;Electrical Machines;MATLAB;Load Flow Analysis;Transformers,3,4,0,9,Power Systems Engineer,No,0
+STU091,Kishore,7.13,ECE,Circuit Design;Microcontrollers;C;C++,1,2,0,4,Embedded Systems Engineer,Yes,882513
+STU092,Tanvi,7.18,MBA,Supply Chain Management;Excel,1,5,0,9,Supply Chain Manager,Yes,419258
+STU093,Pranav,5.33,ECE,Linux;TCP/IP;Networking,1,4,1,10,Network Engineer,No,0
+STU094,Harsha,9.72,MBA,Excel;Power BI;SQL,1,4,0,6,Business Analyst,No,0
+STU095,Siddharth,6.14,MBA,Market Research;Excel;Marketing Strategy,2,0,1,6,Marketing Manager,No,0
+STU096,Sanjana,7.29,CSE,Statistics;Power BI;Python;NumPy;Excel,2,4,0,8,Data Analyst,Yes,880214
+STU097,Akash,9.07,Mechanical,HVAC Systems;Fluid Mechanics;AutoCAD;Heat Transfer;Thermodynamics,3,5,0,4,HVAC Engineer,No,0
+STU098,Rajan,7.81,IT,Performance Tuning;Database Design;SQL;PostgreSQL;MySQL,2,3,0,8,Database Administrator,Yes,838450
+STU099,Manish,8.97,EEE,MATLAB;Power Systems;Transformers;Circuit Design,3,3,0,9,Electrical Design Engineer,Yes,433951
+STU100,Vishal,5.32,Mechanical,Fluid Mechanics;Heat Transfer;ANSYS;Thermodynamics;CFD;AutoCAD;MATLAB,0,0,3,4,Thermal Engineer,No,0
+STU101,Manish,9.19,EEE,HMI;PLC Programming;Industrial Automation;Ladder Logic,3,5,0,4,PLC SCADA Engineer,No,0
+STU102,Naveen,9.07,ECE,Circuit Design;Verilog;Digital Electronics;VHDL,2,4,0,6,VLSI Design Engineer,Yes,800134
+STU103,Rajan,8.08,IT,MySQL;PostgreSQL,0,4,0,9,Database Administrator,Yes,519941
+STU104,Karan,5.03,EEE,Power Systems;Load Flow Analysis,1,4,3,4,Power Systems Engineer,No,0
+STU105,Lakshmi,7.18,Mechanical,CFD;ANSYS;AutoCAD;Thermodynamics,1,2,0,6,Thermal Engineer,Yes,435568
+STU106,Sara,5.24,Civil,Laboratory Testing;Site Investigation;Foundation Design;AutoCAD;Soil Mechanics,0,2,3,9,Geotechnical Engineer,No,0
+STU107,Sara,5.55,Civil,Water Treatment;GIS;AutoCAD;Hydraulics;Fluid Mechanics;Hydrology,3,0,2,9,Water Resources Engineer,Yes,380130
+STU108,Deepika,9.54,EEE,PLC Programming;Ladder Logic,1,2,0,6,PLC SCADA Engineer,Yes,446632
+STU109,Lakshmi,8.38,Civil,Water Treatment;Hydraulics,2,0,0,7,Water Resources Engineer,Yes,392824
+STU110,Jaya,7.06,Civil,Soil Mechanics;Site Investigation;Laboratory Testing;Foundation Design,3,5,0,9,Geotechnical Engineer,No,0
+STU111,Rajan,8.99,Mechanical,Engineering Drawing;Thermodynamics;GD&T,2,0,0,7,Mechanical Design Engineer,Yes,567671
+STU112,Ishaan,6.63,IT,Node.js;CSS;JavaScript;SQL;React;HTML,2,1,0,8,Web Developer,Yes,430544
+STU113,Deepak,7.89,ECE,RTOS;Circuit Design;IoT;Microcontrollers;C++,0,1,0,10,Embedded Systems Engineer,Yes,694969
+STU114,Aryan,5.33,Mechanical,SolidWorks;Vehicle Dynamics,3,5,2,10,Automobile Engineer,Yes,598552
+STU115,Akash,8.99,EEE,MATLAB;AutoCAD Electrical;Circuit Design;Transformers;Power Systems,0,5,0,10,Electrical Design Engineer,Yes,625752
+STU116,Akash,5.5,Mechanical,Thermodynamics;Heat Transfer;MATLAB,2,5,0,8,Thermal Engineer,Yes,638237
+STU117,Rajan,6.75,ECE,Networking;Signal Processing;TCP/IP;Wireless Communication;LTE;5G,2,3,3,10,Telecom Engineer,Yes,748053
+STU118,Ravi,9.19,Civil,AutoCAD;Fluid Mechanics;Water Treatment,2,0,0,8,Water Resources Engineer,No,0
+STU119,Sandeep,6.49,CSE,NumPy;Scikit-learn;Pandas;Python;Statistics;Machine Learning;SQL,3,5,2,10,Data Scientist,No,0
+STU120,Ishaan,9.57,ECE,Antenna Design;RF Circuit Design;Wireless Communication,2,3,0,5,RF Engineer,Yes,405627
+STU121,Shruti,9.01,Civil,GIS;AutoCAD;Environmental Science,0,5,0,6,Environmental Engineer,No,0
+STU122,Swathi,8.7,IT,OOP;DBMS;Git;Java;Data Structures,1,5,0,7,Software Developer,Yes,763815
+STU123,Siddharth,6.12,Mechanical,CNC;Lean Manufacturing;AutoCAD;Quality Control,1,2,3,10,Manufacturing Engineer,No,0
+STU124,Shruti,7.41,Mechanical,Quality Control;Manufacturing Processes;CNC,3,1,0,10,Manufacturing Engineer,Yes,554166
+STU125,Vishal,8.41,CSE,SQL;Pandas;Machine Learning;Scikit-learn,0,2,0,4,Data Scientist,No,0
+STU126,Vijay,8.92,ECE,Circuit Design;VHDL;Verilog;Digital Electronics;VLSI,2,0,0,7,VLSI Design Engineer,Yes,365503
+STU127,Vishal,9.03,CSE,DBMS;OOP;Java;Data Structures,2,1,0,5,Software Developer,Yes,352888
+STU128,Ananya,6.23,CSE,Deep Learning;Python;SQL,1,4,3,4,Machine Learning Engineer,No,0
+STU129,Ganesh,8.07,Mechanical,Fluid Mechanics;AutoCAD,3,0,0,4,HVAC Engineer,Yes,510199
+STU130,Aarav,6.69,Civil,GIS;Highway Design,3,1,0,8,Transportation Engineer,Yes,608574
+STU131,Rajesh,9.71,Mechanical,SolidWorks;AutoCAD,2,5,0,4,Automobile Engineer,Yes,695541
+STU132,Shruti,8.53,Civil,AutoCAD;Surveying;Traffic Engineering;GIS,2,1,0,4,Transportation Engineer,Yes,796323
+STU133,Akshay,8.73,IT,TCP/IP;Networking,3,0,0,6,Network Engineer,Yes,520541
+STU134,Mahesh,7.61,MBA,Market Research;Excel;Product Strategy,2,0,0,10,Product Manager,Yes,532558
+STU135,Anjali,6.77,MBA,Excel;Labor Laws;Communication,3,5,3,7,Human Resources Manager,Yes,635601
+STU136,Sneha,8.49,CSE,Statistics;Scikit-learn;Python;Pandas;Machine Learning;NumPy,0,3,0,8,Data Scientist,Yes,681441
+STU137,Meera,8.31,ECE,Circuit Design;RTOS;Microcontrollers;IoT,2,3,0,4,Embedded Systems Engineer,Yes,871347
+STU138,Akshay,8.06,IT,Excel;NumPy,2,4,0,10,Data Analyst,Yes,779721
+STU139,Aisha,5.32,ECE,Verilog;Digital Electronics;VHDL;Cadence Tools;Circuit Design;VLSI,2,2,3,8,VLSI Design Engineer,Yes,641202
+STU140,Mahesh,8.12,EEE,Transformers;Electrical Machines;MATLAB;Power Systems;Load Flow Analysis,1,0,0,4,Power Systems Engineer,Yes,737220
+STU141,Deepika,6.37,Civil,AutoCAD;ETABS;Structural Analysis;STAAD Pro;Steel Design,3,1,0,5,Structural Engineer,Yes,740247
+STU142,Pradeep,6.39,Civil,Highway Design;AutoCAD;GIS,2,1,1,10,Transportation Engineer,Yes,621712
+STU143,Kishore,7.75,Civil,Environmental Science;Waste Management,3,4,0,5,Environmental Engineer,Yes,744313
+STU144,Naveen,6.97,Civil,Surveying;GIS,3,4,0,5,Transportation Engineer,Yes,539483
+STU145,Uday,8.75,MBA,Supply Chain Management;Logistics,1,1,0,7,Supply Chain Manager,Yes,439081
+STU146,Vishal,6.08,IT,PostgreSQL;SQL;Performance Tuning,2,0,2,5,Database Administrator,No,0
+STU147,Ramya,7.84,ECE,Arduino;Python;Networking;C;Microcontrollers;Raspberry Pi;C++,1,1,0,9,IoT Engineer,Yes,774062
+STU148,Harish,6.01,IT,Database Design;MySQL;PostgreSQL;Performance Tuning,3,4,0,7,Database Administrator,Yes,390135
+STU149,Akash,7.11,ECE,Wireless Communication;Signal Processing;5G;LTE;TCP/IP;Networking,3,3,0,5,Telecom Engineer,No,0
+STU150,Kishore,7.7,Civil,ETABS;AutoCAD;Concrete Design;Structural Analysis,2,1,0,7,Structural Engineer,No,0
+STU151,Lakshmi,7.95,MBA,Labor Laws;Communication;HR Policies;Recruitment;Excel;Payroll Management,1,1,0,10,Human Resources Manager,Yes,519697
+STU152,Aditi,9.54,CSE,Python;PyTorch;Deep Learning;Machine Learning,3,1,0,5,AI Engineer,Yes,813567
+STU153,Rohit,6.37,Mechanical,Internal Combustion Engines;SolidWorks;Vehicle Dynamics;AutoCAD,0,0,3,5,Automobile Engineer,No,0
+STU154,Akash,7.7,Civil,Concrete Design;ETABS;STAAD Pro;Steel Design;Structural Analysis,2,4,0,6,Structural Engineer,No,0
+STU155,Anil,6.79,Mechanical,CNC;Lean Manufacturing;Quality Control,2,4,2,10,Manufacturing Engineer,No,0
+STU156,Aisha,8.43,ECE,Signal Processing;Wireless Communication;RF Circuit Design,3,4,0,7,RF Engineer,Yes,689075
+STU157,Swathi,7.85,EEE,PLC Programming;HMI;SCADA;Industrial Automation;Ladder Logic,3,5,0,8,PLC SCADA Engineer,Yes,788215
+STU158,Sanjay,8.3,MBA,Payroll Management;HR Policies;Recruitment;Communication;Labor Laws;Excel,0,4,0,7,Human Resources Manager,Yes,746650
+STU159,Shruti,6.82,MBA,Communication;Excel;Digital Marketing;PowerPoint;Marketing Strategy,1,0,0,5,Marketing Manager,Yes,776234
+STU160,Vijay,9.19,Mechanical,GD&T;AutoCAD;ISO Standards,0,5,0,5,Quality Control Engineer,Yes,557253
+STU161,Bhavya,9.38,Mechanical,AutoCAD;CFD;Fluid Mechanics;MATLAB;Thermodynamics;ANSYS;Heat Transfer,2,4,0,6,Thermal Engineer,Yes,473676
+STU162,Ishaan,6.39,MBA,Lean;Excel;Communication;Operations Management,1,5,3,6,Operations Manager,No,0
+STU163,Pranav,7.61,IT,Python;Excel;Pandas;Data Visualization,3,2,0,10,Data Analyst,Yes,593306
+STU164,Harish,7.3,IT,SQL;MySQL;Performance Tuning,1,4,0,6,Database Administrator,No,0
+STU165,Varun,6.08,Civil,Highway Design;AutoCAD;GIS;Traffic Engineering;Surveying,1,0,0,7,Transportation Engineer,Yes,834356
+STU166,Naveen,8.12,Mechanical,CFD;Thermodynamics,2,2,0,6,Thermal Engineer,Yes,477721
+STU167,Sanjana,9.08,IT,NumPy;Data Visualization,0,1,0,7,Data Analyst,Yes,865134
+STU168,Tejas,9.21,EEE,PLC;Calibration,0,2,0,8,Instrumentation Engineer,Yes,702721
+STU169,Nisha,9.27,Mechanical,Vehicle Dynamics;SolidWorks;Thermodynamics,1,4,0,7,Automobile Engineer,Yes,706556
+STU170,Sandeep,5.07,ECE,Microcontrollers;Networking;Arduino;Python;C;C++;Raspberry Pi,2,2,1,5,IoT Engineer,No,0
+STU171,Bhavya,7.29,ECE,Python;Digital Electronics;Signal Processing,1,0,0,6,Signal Processing Engineer,Yes,747585
+STU172,Aarav,8.14,EEE,Power Systems;Circuit Design;MATLAB;Transformers;AutoCAD Electrical,1,0,0,9,Electrical Design Engineer,Yes,867349
+STU173,Kishore,6.06,Civil,AutoCAD;Water Treatment;GIS;Fluid Mechanics;Hydraulics;Hydrology,1,3,1,7,Water Resources Engineer,No,0
+STU174,Rohit,7.86,MBA,Supply Chain Management;Procurement;Inventory Management;Excel,0,4,0,7,Supply Chain Manager,Yes,432418
+STU175,Jaya,7.5,MBA,Agile;Product Strategy;Excel;Roadmapping;Communication;Market Research,0,5,0,5,Product Manager,Yes,601239
+STU176,Akash,7.22,Civil,Soil Mechanics;Foundation Design;AutoCAD;Laboratory Testing,2,5,0,4,Geotechnical Engineer,No,0
+STU177,Kavya,5.31,IT,MySQL;Performance Tuning;PostgreSQL;Database Design;SQL,0,0,3,4,Database Administrator,No,0
+STU178,Varun,7.15,Mechanical,CFD;ANSYS;Heat Transfer;Fluid Mechanics;Thermodynamics;MATLAB;AutoCAD,3,3,0,4,Thermal Engineer,Yes,750321
+STU179,Divya,5.02,MBA,Agile;Roadmapping;Excel;Product Strategy;Market Research;Communication,0,2,3,9,Product Manager,No,0
+STU180,Kavya,6.32,ECE,TCP/IP;Routing,0,0,3,8,Network Engineer,No,0
+STU181,Akshay,7.85,CSE,Adobe XD;Figma,3,4,0,9,UI/UX Designer,Yes,478886
+STU182,Deepika,9.15,MBA,Labor Laws;Payroll Management;Communication,0,1,0,8,Human Resources Manager,Yes,774896
+STU183,Suresh,6.14,EEE,PLC Programming;SCADA;HMI;Ladder Logic,1,5,1,7,PLC SCADA Engineer,No,0
+STU184,Pradeep,5.23,Mechanical,ISO Standards;GD&T;Quality Management;Statistical Process Control,2,5,3,10,Quality Control Engineer,Yes,764928
+STU185,Naveen,9.08,ECE,Networking;VPN;Firewalls;TCP/IP;Routing,2,5,0,5,Network Engineer,Yes,490247
+STU186,Karan,5.38,IT,Linux;Firewalls,3,2,0,8,Network Engineer,Yes,681607
+STU187,Tejas,5.9,CSE,Linux;Docker;Python;Kubernetes,1,3,1,10,DevOps Engineer,No,0
+STU188,Anjali,9.8,IT,TCP/IP;VPN;Linux;Routing;Firewalls,3,1,0,9,Network Engineer,Yes,706796
+STU189,Ishaan,6.73,EEE,Electrical Design;AutoCAD;Circuit Design;Power Electronics,3,3,0,10,Solar Energy Engineer,No,0
+STU190,Tejas,8.56,ECE,Raspberry Pi;Microcontrollers;Python;C++;C;Networking,0,2,0,8,IoT Engineer,Yes,663384
+STU191,Ganesh,7.64,Mechanical,Heat Transfer;AutoCAD;Thermodynamics;Fluid Mechanics;HVAC Systems,2,2,0,10,HVAC Engineer,No,0
+STU192,Pooja,5.88,Mechanical,AutoCAD;Engineering Drawing,0,4,0,10,Mechanical Design Engineer,No,0
+STU193,Rajesh,5.33,ECE,MATLAB;Python;Digital Electronics;Signal Processing,1,0,1,8,Signal Processing Engineer,No,0
+STU194,Aditi,7.55,CSE,Kubernetes;Python;AWS;Networking,3,0,0,4,Cloud Engineer,Yes,720718
+STU195,Sneha,5.51,ECE,Signal Processing;Wireless Communication;Antenna Design;RF Circuit Design,0,4,1,5,RF Engineer,No,0
+STU196,Kishore,7.2,Mechanical,Vehicle Dynamics;Thermodynamics,1,5,0,5,Automobile Engineer,Yes,557443
+STU197,Naveen,8.06,CSE,SQL;Java;REST APIs;Git,1,0,0,7,Android Developer,Yes,827464
+STU198,Uday,7.28,Civil,AutoCAD;Traffic Engineering,0,0,0,9,Transportation Engineer,No,0
+STU199,Deepika,5.69,Civil,GIS;AutoCAD;Waste Management,3,0,2,5,Environmental Engineer,Yes,532451
+STU200,Sara,5.67,IT,CSS;HTML;JavaScript;React;SQL,0,4,2,4,Web Developer,No,0
+STU201,Aditi,6.31,IT,Linux;Kubernetes;Docker;AWS;Networking,3,3,1,6,Cloud Engineer,Yes,742209
+STU202,Ananya,5.74,EEE,PLC Programming;Industrial Automation,1,5,3,6,PLC SCADA Engineer,No,0
+STU203,Ishaan,6.73,Mechanical,Lean Manufacturing;CNC;Manufacturing Processes;Quality Control;AutoCAD,2,0,1,4,Manufacturing Engineer,No,0
+STU204,Kavya,5.45,Civil,Soil Mechanics;Foundation Design;AutoCAD;Laboratory Testing;Site Investigation,2,3,0,6,Geotechnical Engineer,No,0
+STU205,Harsha,6.29,EEE,HMI;Ladder Logic;PLC Programming;SCADA;Industrial Automation,1,0,1,7,PLC SCADA Engineer,No,0
+STU206,Ganesh,8.0,IT,Python;Statistics;Excel;Power BI,1,3,0,4,Data Analyst,Yes,824209
+STU207,Mohan,7.07,EEE,SCADA;PLC;Control Systems,1,2,0,6,Instrumentation Engineer,Yes,882798
+STU208,Harshitha,8.34,IT,Firewalls;Linux;Routing;TCP/IP,3,4,0,10,Network Engineer,No,0
+STU209,Pranav,7.84,ECE,Raspberry Pi;Microcontrollers,1,5,0,10,IoT Engineer,Yes,465306
+STU210,Sneha,8.99,EEE,AutoCAD;Electrical Design;Power Electronics,0,3,0,9,Solar Energy Engineer,Yes,743380
+STU211,Siddharth,5.36,Mechanical,GD&T;Quality Management;Statistical Process Control;ISO Standards;AutoCAD,3,4,3,8,Quality Control Engineer,Yes,711680
+STU212,Kavya,8.11,ECE,Microcontrollers;RTOS;C;Circuit Design;IoT,0,4,0,9,Embedded Systems Engineer,Yes,630871
+STU213,Nisha,7.79,Civil,Laboratory Testing;Foundation Design;Site Investigation;Soil Mechanics;AutoCAD,1,3,0,6,Geotechnical Engineer,No,0
+STU214,Manish,5.56,CSE,Cryptography;Ethical Hacking;Python,1,2,2,6,Cybersecurity Analyst,No,0
+STU215,Naveen,7.1,CSE,Statistics;Python,3,2,0,4,Machine Learning Engineer,No,0
+STU216,Karan,5.52,IT,Excel;Data Visualization;Power BI;Statistics;Pandas;Python,1,5,1,8,Data Analyst,No,0
+STU217,Sneha,8.02,Mechanical,HVAC Systems;AutoCAD;Heat Transfer;Thermodynamics;Fluid Mechanics,1,5,0,9,HVAC Engineer,No,0
+STU218,Deepika,6.34,ECE,TCP/IP;Linux;VPN;Networking;Routing;Firewalls,0,4,0,10,Network Engineer,Yes,824450
+STU219,Nisha,6.5,IT,JavaScript;React;Node.js;CSS,3,4,3,8,Web Developer,Yes,738293
+STU220,Ishaan,7.83,Civil,Construction Management;AutoCAD;Surveying;Material Testing,1,2,0,4,Site Engineer,Yes,580031
+STU221,Arjun,6.84,Civil,Engineering Drawing;AutoCAD;Construction Management;Surveying;Material Testing,1,3,1,8,Site Engineer,No,0
+STU222,Rajan,9.15,CSE,Node.js;SQL;React;Git;JavaScript,0,3,0,5,Web Developer,Yes,740578
+STU223,Mohan,5.8,Mechanical,Thermodynamics;SolidWorks;Vehicle Dynamics,0,1,2,4,Automobile Engineer,No,0
+STU224,Shruti,7.72,Mechanical,AutoCAD;CATIA;Thermodynamics;Engineering Drawing;GD&T;SolidWorks,3,4,0,8,Mechanical Design Engineer,Yes,894376
+STU225,Anil,8.98,IT,Algorithms;C++;Python;Data Structures;OOP,1,2,0,10,Software Developer,Yes,480320
+STU226,Sneha,7.82,IT,Kubernetes;Linux;Networking,2,5,0,8,Cloud Engineer,Yes,792992
+STU227,Pranav,7.55,EEE,Industrial Automation;HMI;Ladder Logic;PLC Programming,1,2,0,9,PLC SCADA Engineer,No,0
+STU228,Sara,6.98,MBA,SQL;Power BI;PowerPoint,0,2,1,9,Business Analyst,No,0
+STU229,Swathi,8.66,ECE,Python;Raspberry Pi;Microcontrollers;Arduino;C++;C;Networking,3,3,0,5,IoT Engineer,Yes,762391
+STU230,Sachin,7.18,EEE,MATLAB;Power Systems,3,2,0,8,Electrical Design Engineer,Yes,787622
+STU231,Mahesh,9.65,ECE,Signal Processing;5G;Wireless Communication;TCP/IP,1,3,0,6,Telecom Engineer,Yes,783567
+STU232,Varun,8.66,IT,Figma;Adobe XD,0,0,0,9,UI/UX Designer,Yes,350371
+STU233,Meera,9.78,ECE,RF Circuit Design;Signal Processing;Antenna Design;Wireless Communication,1,5,0,6,RF Engineer,Yes,847090
+STU234,Ashwin,6.9,CSE,SQL;Performance Tuning,2,5,1,7,Database Administrator,Yes,392866
+STU235,Priya,7.49,ECE,C;RTOS;C++;Circuit Design,3,0,0,4,Embedded Systems Engineer,No,0
+STU236,Lakshmi,8.51,CSE,Docker;Git;Jenkins;Kubernetes,0,0,0,6,DevOps Engineer,Yes,428569
+STU237,Nisha,5.04,Civil,Surveying;Material Testing;Construction Management,1,3,2,9,Site Engineer,No,0
+STU238,Ananya,5.67,CSE,Kotlin;REST APIs;Android SDK;Git,0,4,3,6,Android Developer,No,0
+STU239,Ananya,7.66,ECE,TCP/IP;VPN;Routing;Linux,2,5,0,4,Network Engineer,Yes,705393
+STU240,Siddharth,9.58,MBA,SQL;Valuation;Financial Modeling;Accounting;Financial Statements,3,3,0,4,Financial Analyst,Yes,863658
+STU241,Arjun,9.13,Mechanical,CFD;MATLAB;Thermodynamics,3,2,0,8,Thermal Engineer,No,0
+STU242,Akshay,6.26,CSE,TensorFlow;Statistics;SQL;Python;Deep Learning;Machine Learning,0,0,3,8,Machine Learning Engineer,No,0
+STU243,Ananya,5.38,EEE,PLC;SCADA,1,1,2,7,Instrumentation Engineer,No,0
+STU244,Sanjay,6.15,MBA,Lean;Operations Management;Excel;Project Management;Communication;Supply Chain,1,0,3,4,Operations Manager,No,0
+STU245,Aarav,5.66,IT,PostgreSQL;MySQL;Performance Tuning,0,1,3,6,Database Administrator,No,0
+STU246,Shruti,6.29,MBA,Lean;Operations Management;Excel;Project Management,0,0,2,10,Operations Manager,No,0
+STU247,Pranav,5.37,IT,Adobe XD;Wireframing;User Research;HTML;Figma;CSS,3,4,2,4,UI/UX Designer,Yes,629853
+STU248,Aisha,9.14,MBA,HR Policies;Labor Laws;Recruitment;Communication;Payroll Management,1,0,0,7,Human Resources Manager,Yes,486544
+STU249,Vijay,6.54,IT,Data Structures;Git;Algorithms,0,4,2,4,Software Developer,No,0
+STU250,Aisha,5.33,Mechanical,Engineering Drawing;AutoCAD;CATIA;Thermodynamics;SolidWorks;GD&T,3,2,2,6,Mechanical Design Engineer,Yes,483421
+STU251,Kishore,9.66,Civil,Construction Management;Surveying;Material Testing,1,5,0,8,Site Engineer,Yes,540533
+STU252,Swathi,9.21,IT,AWS;Linux;Kubernetes;Docker,2,0,0,10,Cloud Engineer,Yes,382942
+STU253,Aryan,6.34,IT,Jenkins;Linux;Python;Kubernetes;Git,0,1,3,9,DevOps Engineer,No,0
+STU254,Rajesh,6.89,MBA,Communication;Excel;Labor Laws;HR Policies,0,3,1,5,Human Resources Manager,No,0
+STU255,Mohan,6.12,EEE,MATLAB;Transformers;Circuit Design,1,1,0,5,Electrical Design Engineer,Yes,644758
+STU256,Shruti,7.17,ECE,Verilog;VHDL,3,2,0,10,VLSI Design Engineer,Yes,733282
+STU257,Aisha,9.01,ECE,Microcontrollers;RTOS;C,2,1,0,4,Embedded Systems Engineer,Yes,493091
+STU258,Bhavya,9.57,CSE,AWS;Docker;Networking,3,4,0,9,Cloud Engineer,Yes,426886
+STU259,Aarav,8.99,CSE,REST APIs;Java;Android SDK;SQL,1,1,0,5,Android Developer,No,0
+STU260,Akshay,9.33,ECE,Networking;Routing;Firewalls;VPN,3,1,0,4,Network Engineer,No,0
+STU261,Pranav,8.94,Mechanical,AutoCAD;Thermodynamics;HVAC Systems;Heat Transfer;Fluid Mechanics,3,3,0,4,HVAC Engineer,Yes,835883
+STU262,Aisha,7.97,Civil,Laboratory Testing;Site Investigation;Soil Mechanics;AutoCAD;Foundation Design,1,5,0,6,Geotechnical Engineer,Yes,580579
+STU263,Ramya,7.52,MBA,Agile;Roadmapping;Excel;Communication,0,3,0,10,Product Manager,Yes,626316
+STU264,Lakshmi,5.86,EEE,Ladder Logic;HMI,2,4,1,4,PLC SCADA Engineer,No,0
+STU265,Shruti,9.8,Civil,AutoCAD;GIS;Hydraulics,1,0,0,5,Water Resources Engineer,Yes,871291
+STU266,Pranav,9.72,MBA,SQL;Power BI;PowerPoint,3,2,0,10,Business Analyst,Yes,733694
+STU267,Vijay,5.14,Civil,Material Testing;Engineering Drawing;Construction Management;AutoCAD;Surveying,2,4,1,8,Site Engineer,No,0
+STU268,Divya,6.05,Civil,Engineering Drawing;AutoCAD;Surveying,3,0,2,8,Site Engineer,No,0
+STU269,Aryan,8.38,Civil,Environmental Science;Waste Management;AutoCAD;Water Treatment,1,0,0,10,Environmental Engineer,Yes,535108
+STU270,Jaya,9.68,ECE,C++;Circuit Design;Microcontrollers;C,3,5,0,7,Embedded Systems Engineer,Yes,797949
+STU271,Lakshmi,8.52,EEE,Transformers;AutoCAD Electrical;MATLAB;Circuit Design;Power Systems,2,1,0,5,Electrical Design Engineer,Yes,407260
+STU272,Neha,6.59,ECE,Signal Processing;MATLAB,0,1,2,6,RF Engineer,No,0
+STU273,Aarav,6.01,EEE,AutoCAD Electrical;MATLAB,0,2,2,10,Electrical Design Engineer,No,0
+STU274,Mohan,7.01,IT,Kubernetes;Docker;AWS;Linux,1,3,0,7,Cloud Engineer,Yes,667930
+STU275,Sara,6.08,IT,Algorithms;Python;Git;C++,3,0,0,6,Software Developer,No,0
+STU276,Lakshmi,8.51,ECE,Raspberry Pi;C;Microcontrollers;C++;Python,0,2,0,8,IoT Engineer,Yes,436407
+STU277,Anil,5.99,EEE,SCADA;PLC Programming;Ladder Logic;Industrial Automation,1,3,2,9,PLC SCADA Engineer,No,0
+STU278,Pranav,9.03,Civil,Structural Analysis;STAAD Pro;ETABS;Steel Design;Concrete Design,1,0,0,6,Structural Engineer,No,0
+STU279,Ashwin,6.4,IT,Docker;Python;AWS;Kubernetes;Linux,0,3,0,6,Cloud Engineer,No,0
+STU280,Bhavya,9.25,EEE,MATLAB;Transformers;Circuit Design;AutoCAD Electrical,2,1,0,7,Electrical Design Engineer,Yes,660335
+STU281,Aryan,8.34,MBA,Excel;Payroll Management;HR Policies;Communication;Recruitment;Labor Laws,0,0,0,9,Human Resources Manager,Yes,580247
+STU282,Pooja,9.16,IT,Figma;HTML;User Research;Wireframing,3,4,0,5,UI/UX Designer,Yes,634249
+STU283,Pranav,9.72,IT,Adobe XD;User Research;CSS,1,0,0,10,UI/UX Designer,No,0
+STU284,Meera,9.74,CSE,Performance Tuning;PostgreSQL;MySQL,3,1,0,10,Database Administrator,Yes,852795
+STU285,Akshay,6.86,CSE,TensorFlow;Python;Statistics;SQL;Machine Learning;Deep Learning,3,4,2,10,Machine Learning Engineer,No,0
+STU286,Priya,8.64,Civil,Concrete Design;STAAD Pro;ETABS;AutoCAD,0,0,0,8,Structural Engineer,Yes,617071
+STU287,Rahul,5.18,Mechanical,Quality Management;ISO Standards;Statistical Process Control;GD&T;AutoCAD,2,3,1,8,Quality Control Engineer,Yes,856459
+STU288,Varun,5.1,EEE,Electrical Design;Circuit Design,2,2,2,10,Solar Energy Engineer,Yes,759048
+STU289,Shruti,6.54,MBA,Project Management;Communication;Excel,3,4,0,5,Operations Manager,Yes,633398
+STU290,Ashwin,6.49,CSE,SQL;HTML;CSS,3,1,0,5,Web Developer,No,0
+STU291,Akash,8.38,EEE,Solar PV Systems;Circuit Design;Power Electronics;Electrical Design;AutoCAD,2,2,0,10,Solar Energy Engineer,Yes,447671
+STU292,Tejas,7.82,Mechanical,SolidWorks;Vehicle Dynamics,2,2,0,5,Automobile Engineer,Yes,439599
+STU293,Pranav,9.63,MBA,Market Research;Agile;Product Strategy,1,5,0,5,Product Manager,Yes,881926
+STU294,Rohit,7.28,CSE,Machine Learning;Deep Learning,1,5,0,5,AI Engineer,Yes,868652
+STU295,Sandeep,8.09,IT,Kubernetes;Docker;Git;Python;Jenkins,3,3,0,10,DevOps Engineer,Yes,354041
+STU296,Ravi,9.03,MBA,Marketing Strategy;Communication;PowerPoint;Excel;Digital Marketing,2,2,0,9,Marketing Manager,Yes,493630
+STU297,Sandeep,6.43,IT,Networking;Linux;AWS;Python,1,4,1,4,Cloud Engineer,No,0
+STU298,Neha,6.25,EEE,Power Systems;Circuit Design;Transformers,3,3,3,9,Electrical Design Engineer,Yes,781693
+STU299,Vijay,6.72,IT,CSS;Git;JavaScript;SQL;Node.js,2,1,1,6,Web Developer,Yes,709939
+STU300,Divya,6.07,EEE,Ladder Logic;PLC Programming;SCADA;Industrial Automation,2,3,2,6,PLC SCADA Engineer,Yes,670966
+STU301,Rajan,7.27,CSE,Performance Tuning;PostgreSQL;MySQL;SQL;Database Design,1,4,0,4,Database Administrator,No,0
+STU302,Deepak,6.96,EEE,Electrical Machines;MATLAB,3,1,2,10,Power Systems Engineer,Yes,447253
+STU303,Rajesh,5.02,CSE,Scikit-learn;Python;Machine Learning;SQL;Statistics,2,1,1,8,Data Scientist,No,0
+STU304,Meera,7.06,Mechanical,SolidWorks;CATIA;AutoCAD;GD&T;Engineering Drawing;Thermodynamics,3,3,0,4,Mechanical Design Engineer,Yes,694677
+STU305,Ganesh,8.33,ECE,Circuit Design;Cadence Tools;VHDL;VLSI;Digital Electronics,2,2,0,5,VLSI Design Engineer,Yes,514011
+STU306,Harshitha,8.49,Mechanical,Lean Manufacturing;Quality Control;Manufacturing Processes;CNC,2,3,0,9,Manufacturing Engineer,Yes,855012
+STU307,Mahesh,6.1,CSE,AWS;Python;Networking,1,1,0,8,Cloud Engineer,Yes,702176
+STU308,Shruti,7.99,Civil,Hydraulics;Fluid Mechanics,0,5,0,4,Water Resources Engineer,Yes,559139
+STU309,Pradeep,7.28,EEE,MATLAB;AutoCAD Electrical;Power Systems;Circuit Design,1,1,0,9,Electrical Design Engineer,Yes,735399
+STU310,Manish,9.31,MBA,Communication;SQL,0,2,0,4,Business Analyst,Yes,777877
+STU311,Swathi,9.67,Civil,Highway Design;Surveying;GIS,2,5,0,7,Transportation Engineer,Yes,614365
+STU312,Ganesh,5.06,CSE,SQL;Pandas;NumPy;Python;Excel;Statistics;Power BI;Data Visualization,0,0,3,5,Data Analyst,No,0
+STU313,Harshitha,7.23,EEE,Power Systems;Transformers;Circuit Design;AutoCAD Electrical,0,1,0,10,Electrical Design Engineer,No,0
+STU314,Sara,5.05,CSE,Python;Kubernetes;Linux;Docker;Jenkins,1,5,1,6,DevOps Engineer,No,0
+STU315,Bhavya,6.92,CSE,Firewalls;Linux;Networking;Ethical Hacking;Python,3,2,3,9,Cybersecurity Analyst,Yes,814392
+STU316,Anil,9.37,Mechanical,Fluid Mechanics;Heat Transfer;AutoCAD,3,4,0,9,HVAC Engineer,Yes,824416
+STU317,Uday,8.49,MBA,Excel;Marketing Strategy;PowerPoint;Digital Marketing;Communication,1,3,0,7,Marketing Manager,No,0
+STU318,Tejas,7.52,IT,Python;Jenkins;Linux;Docker;Git;Kubernetes,1,5,0,10,DevOps Engineer,Yes,721962
+STU319,Lakshmi,9.03,ECE,MATLAB;Antenna Design;RF Circuit Design;Wireless Communication;Signal Processing,0,0,0,9,RF Engineer,Yes,883579
+STU320,Akash,6.07,Civil,Laboratory Testing;Site Investigation;Soil Mechanics;Foundation Design;AutoCAD,3,3,1,4,Geotechnical Engineer,Yes,889368
+STU321,Sanjana,5.09,IT,Java;Git;Algorithms;OOP;C++;Data Structures;Python;DBMS,3,3,0,8,Software Developer,Yes,549838
+STU322,Akash,6.07,MBA,Excel;Agile;Product Strategy;Roadmapping,3,2,3,9,Product Manager,Yes,471960
+STU323,Karan,8.98,EEE,PLC Programming;SCADA,2,4,0,8,PLC SCADA Engineer,Yes,802011
+STU324,Sanjana,6.96,IT,CSS;React;SQL;JavaScript;HTML,2,4,1,5,Web Developer,Yes,375575
+STU325,Rajesh,8.23,MBA,Roadmapping;Communication;Agile;Product Strategy;Market Research;Excel,0,3,0,7,Product Manager,Yes,615612
+STU326,Nikhil,9.42,MBA,Financial Modeling;Financial Statements;Accounting,1,5,0,8,Financial Analyst,Yes,561564
+STU327,Rahul,8.66,IT,MySQL;Performance Tuning;Database Design;PostgreSQL;SQL,2,3,0,6,Database Administrator,Yes,864531
+STU328,Rajesh,5.96,ECE,Wireless Communication;Signal Processing;MATLAB,2,5,2,9,RF Engineer,No,0
+STU329,Kavya,7.31,Civil,AutoCAD;Environmental Science;Waste Management;GIS,3,5,0,9,Environmental Engineer,No,0
+STU330,Aryan,8.22,CSE,NumPy;Statistics;Machine Learning;Python,1,2,0,10,Data Scientist,Yes,512327
+STU331,Sara,5.16,Civil,Water Treatment;Hydrology;AutoCAD;Fluid Mechanics;Hydraulics;GIS,3,0,1,9,Water Resources Engineer,Yes,876186
+STU332,Rohit,9.64,EEE,Industrial Automation;Ladder Logic;PLC Programming,0,0,0,9,PLC SCADA Engineer,Yes,737545
+STU333,Ramya,8.62,EEE,SCADA;PLC Programming;Ladder Logic;HMI;Industrial Automation,1,5,0,5,PLC SCADA Engineer,Yes,585679
+STU334,Pradeep,5.62,EEE,Load Flow Analysis;MATLAB,2,0,2,7,Power Systems Engineer,No,0
+STU335,Rahul,8.71,CSE,Deep Learning;Python;PyTorch;NLP;TensorFlow;Machine Learning,2,3,0,10,AI Engineer,Yes,782442
+STU336,Ashwin,7.61,Mechanical,Quality Control;CNC;AutoCAD,3,0,0,6,Manufacturing Engineer,Yes,872669
+STU337,Rajan,7.28,Civil,AutoCAD;GIS;Highway Design;Surveying;Traffic Engineering,0,0,0,9,Transportation Engineer,Yes,869743
+STU338,Lakshmi,7.59,EEE,Ladder Logic;PLC Programming;SCADA;Industrial Automation;HMI,2,0,0,8,PLC SCADA Engineer,Yes,871516
+STU339,Ashwin,7.58,MBA,SQL;Financial Statements;Financial Modeling,0,5,0,4,Financial Analyst,Yes,805811
+STU340,Uday,8.72,IT,Data Visualization;Pandas,0,5,0,9,Data Analyst,Yes,398136
+STU341,Akash,8.81,ECE,MATLAB;Wireless Communication;Antenna Design;Signal Processing,0,4,0,10,RF Engineer,Yes,359290
+STU342,Rohit,7.57,CSE,Java;C++;Algorithms;Python;Git;Data Structures;DBMS,0,5,0,8,Software Developer,Yes,504834
+STU343,Vishal,6.83,Mechanical,Lean Manufacturing;Quality Control;CNC,0,3,1,8,Manufacturing Engineer,No,0
+STU344,Aryan,8.25,EEE,Instrumentation;Calibration;Sensors,2,0,0,8,Instrumentation Engineer,Yes,566744
+STU345,Pradeep,6.46,CSE,Linux;Networking;Kubernetes,2,1,3,9,Cloud Engineer,Yes,489007
+STU346,Anjali,8.22,ECE,C;Microcontrollers;IoT;C++;RTOS;Circuit Design,0,4,0,7,Embedded Systems Engineer,Yes,617954
+STU347,Karan,5.62,EEE,Power Systems;MATLAB;Circuit Design,1,0,2,8,Electrical Design Engineer,No,0
+STU348,Karan,8.17,Civil,Surveying;AutoCAD;Highway Design;GIS,1,4,0,8,Transportation Engineer,Yes,471839
+STU349,Sanjana,7.09,IT,Git;Jenkins;Kubernetes;Docker;Python,2,1,0,9,DevOps Engineer,Yes,446673
+STU350,Rahul,9.04,CSE,Statistics;Python,1,4,0,5,Machine Learning Engineer,Yes,817273
+STU351,Rajesh,8.9,CSE,Algorithms;DBMS;Git;Data Structures;Java;OOP,3,4,0,5,Software Developer,Yes,840290
+STU352,Priya,9.11,IT,JavaScript;Node.js;HTML;CSS;SQL,1,3,0,8,Web Developer,Yes,766463
+STU353,Arjun,5.76,Mechanical,Engineering Drawing;SolidWorks;AutoCAD,1,5,3,6,Mechanical Design Engineer,No,0
+STU354,Harish,6.12,EEE,Solar PV Systems;Circuit Design;AutoCAD;Electrical Design;Power Electronics,1,4,2,7,Solar Energy Engineer,No,0
+STU355,Sandeep,8.04,Civil,AutoCAD;GIS;Water Treatment,2,5,0,6,Environmental Engineer,Yes,844024
+STU356,Akshay,6.21,Civil,Surveying;Highway Design;Traffic Engineering;GIS;AutoCAD,1,4,3,6,Transportation Engineer,No,0
+STU357,Ashwin,5.37,ECE,Wireless Communication;RF Circuit Design;Signal Processing;MATLAB,2,1,1,5,RF Engineer,No,0
+STU358,Manish,6.59,MBA,Excel;Financial Statements;Financial Modeling;Valuation;Accounting;SQL,0,3,3,7,Financial Analyst,No,0
+STU359,Pranav,5.77,Civil,AutoCAD;Surveying;Engineering Drawing;Construction Management,0,4,1,4,Site Engineer,No,0
+STU360,Uday,8.49,IT,HTML;User Research;Adobe XD;Figma;CSS;Wireframing,2,0,0,5,UI/UX Designer,Yes,801249
+STU361,Bhavya,8.17,Civil,Water Treatment;GIS;Hydraulics;Fluid Mechanics,2,1,0,9,Water Resources Engineer,Yes,422717
+STU362,Aditi,7.51,ECE,Digital Electronics;Circuit Design;VLSI,3,1,0,8,VLSI Design Engineer,Yes,642286
+STU363,Sara,5.45,CSE,Performance Tuning;Database Design;MySQL;SQL;PostgreSQL,1,4,0,10,Database Administrator,Yes,791265
+STU364,Siddharth,6.83,MBA,Operations Management;Excel;Project Management,0,3,1,6,Operations Manager,No,0
+STU365,Harish,5.03,ECE,Cadence Tools;Verilog;VHDL;Circuit Design;Digital Electronics,0,4,0,8,VLSI Design Engineer,No,0
+STU366,Anil,7.05,ECE,Arduino;Python;Networking;Raspberry Pi;Microcontrollers,2,2,0,10,IoT Engineer,Yes,462031
+STU367,Pradeep,7.68,MBA,Excel;Procurement;Inventory Management;Logistics;Supply Chain Management,1,2,0,8,Supply Chain Manager,Yes,820249
+STU368,Ravi,8.59,CSE,NumPy;Data Visualization;Excel,3,5,0,5,Data Analyst,Yes,687713
+STU369,Rohit,5.25,IT,React;Node.js;SQL,3,5,0,10,Web Developer,No,0
+STU370,Harish,6.78,ECE,Arduino;Python;Networking;C;Microcontrollers;C++;Raspberry Pi,0,5,3,7,IoT Engineer,No,0
+STU371,Aarav,9.08,ECE,VPN;Routing;TCP/IP;Linux;Networking;Firewalls,2,1,0,4,Network Engineer,Yes,710260
+STU372,Ashwin,9.78,CSE,SQL;Kotlin;Java;Android SDK;Git,3,2,0,9,Android Developer,Yes,652275
+STU373,Sanjay,7.68,MBA,Payroll Management;HR Policies;Excel,2,2,0,10,Human Resources Manager,Yes,666198
+STU374,Harish,6.95,ECE,Networking;5G;Signal Processing;LTE,0,4,0,8,Telecom Engineer,Yes,666191
+STU375,Sachin,9.64,Mechanical,Internal Combustion Engines;Vehicle Dynamics;AutoCAD;Thermodynamics;SolidWorks,3,1,0,10,Automobile Engineer,No,0
+STU376,Rajesh,9.77,MBA,Payroll Management;Recruitment;Communication;Labor Laws;HR Policies;Excel,1,2,0,7,Human Resources Manager,Yes,761833
+STU377,Karan,7.66,CSE,Python;Kubernetes;Docker,1,3,0,6,DevOps Engineer,Yes,725709
+STU378,Vijay,7.4,ECE,Antenna Design;Wireless Communication;RF Circuit Design;Signal Processing,1,1,0,9,RF Engineer,Yes,545815
+STU379,Shruti,5.58,CSE,Python;Git;Data Structures;C++;Algorithms;Java;OOP;DBMS,0,5,3,8,Software Developer,No,0
+STU380,Bhavya,9.4,MBA,SQL;Excel;Communication;Power BI;Data Visualization;PowerPoint,2,3,0,5,Business Analyst,Yes,727486
+STU381,Bhavya,9.69,Mechanical,GD&T;SolidWorks,3,2,0,9,Mechanical Design Engineer,Yes,405411
+STU382,Kishore,9.14,Civil,Surveying;Engineering Drawing;AutoCAD;Construction Management,1,4,0,6,Site Engineer,Yes,465792
+STU383,Sachin,6.79,MBA,Procurement;Logistics;Supply Chain Management,3,2,3,5,Supply Chain Manager,Yes,792248
+STU384,Pradeep,9.11,Mechanical,MATLAB;Thermodynamics;Heat Transfer,1,1,0,10,Thermal Engineer,Yes,423959
+STU385,Varun,8.03,MBA,Payroll Management;Recruitment;Excel;Labor Laws;Communication;HR Policies,2,3,0,6,Human Resources Manager,Yes,489859
+STU386,Swathi,5.46,IT,SQL;Database Design;Performance Tuning;MySQL,2,2,2,6,Database Administrator,No,0
+STU387,Tejas,9.62,IT,Power BI;Excel;NumPy;Data Visualization;Statistics;Pandas;SQL;Python,1,4,0,8,Data Analyst,Yes,507587
+STU388,Rajesh,9.17,ECE,Microcontrollers;C;Raspberry Pi;C++;Networking;Arduino,2,3,0,9,IoT Engineer,Yes,709157
+STU389,Sandeep,7.91,EEE,Ladder Logic;SCADA;PLC Programming;HMI;Industrial Automation,3,2,0,7,PLC SCADA Engineer,Yes,714112
+STU390,Sanjana,8.6,IT,HTML;React,1,1,0,7,Web Developer,Yes,364500
+STU391,Mahesh,8.67,Civil,Environmental Science;AutoCAD;Water Treatment,0,0,0,6,Environmental Engineer,Yes,755676
+STU392,Mohan,5.61,IT,Git;Jenkins;Kubernetes;Python,1,0,0,9,DevOps Engineer,Yes,883248
+STU393,Sachin,5.85,Civil,AutoCAD;Fluid Mechanics;Water Treatment;GIS;Hydraulics;Hydrology,3,5,3,8,Water Resources Engineer,Yes,551180
+STU394,Harish,6.46,ECE,5G;Networking;LTE;Wireless Communication;Signal Processing,0,4,1,6,Telecom Engineer,No,0
+STU395,Aarav,7.07,MBA,Data Visualization;PowerPoint,2,4,0,5,Business Analyst,No,0
+STU396,Uday,7.1,Civil,Water Treatment;Hydrology;AutoCAD;Hydraulics;GIS,1,1,0,9,Water Resources Engineer,Yes,634135
+STU397,Sneha,8.88,Civil,AutoCAD;Water Treatment;Hydrology;Hydraulics;Fluid Mechanics;GIS,2,2,0,9,Water Resources Engineer,Yes,700290
+STU398,Rajan,6.31,Mechanical,CNC;Manufacturing Processes,3,1,2,4,Manufacturing Engineer,No,0
+STU399,Anil,6.29,EEE,AutoCAD Electrical;MATLAB;Transformers,3,5,0,5,Electrical Design Engineer,Yes,521367
+STU400,Sneha,9.79,Mechanical,AutoCAD;SolidWorks;GD&T;Thermodynamics,3,5,0,10,Mechanical Design Engineer,Yes,389261
+STU401,Naveen,5.92,ECE,Firewalls;Routing;TCP/IP,2,3,0,4,Network Engineer,Yes,368430
+STU402,Nandini,8.7,IT,MySQL;SQL;PostgreSQL;Database Design,1,3,0,7,Database Administrator,Yes,701186
+STU403,Deepak,9.26,EEE,Solar PV Systems;Electrical Design;Power Electronics;Circuit Design,1,0,0,5,Solar Energy Engineer,Yes,483699
+STU404,Aisha,8.76,Civil,Construction Management;AutoCAD;Material Testing;Surveying,3,5,0,8,Site Engineer,No,0
+STU405,Rajan,9.47,EEE,Load Flow Analysis;Electrical Machines,0,0,0,6,Power Systems Engineer,Yes,889921
+STU406,Siddharth,8.63,IT,Git;C++;OOP;Java;DBMS;Python;Algorithms,3,5,0,5,Software Developer,Yes,657463
+STU407,Pooja,7.35,IT,Kubernetes;Python;Docker;Linux;Jenkins,1,4,0,6,DevOps Engineer,Yes,800680
+STU408,Pooja,7.18,EEE,Transformers;Circuit Design;MATLAB;AutoCAD Electrical,3,5,0,5,Electrical Design Engineer,Yes,646426
+STU409,Lakshmi,7.52,ECE,Python;Microcontrollers;Networking;C,3,4,0,5,IoT Engineer,No,0
+STU410,Ravi,5.21,CSE,Statistics;Python;NumPy;Power BI;Data Visualization,1,1,0,5,Data Analyst,No,0
+STU411,Ravi,7.52,Mechanical,Manufacturing Processes;AutoCAD,2,0,0,6,Manufacturing Engineer,Yes,860622
+STU412,Swathi,7.25,CSE,Wireframing;Figma;User Research;HTML;CSS,0,2,0,8,UI/UX Designer,Yes,808951
+STU413,Akshay,9.61,ECE,Antenna Design;Wireless Communication;Signal Processing;RF Circuit Design;MATLAB,0,0,0,9,RF Engineer,Yes,656977
+STU414,Sanjana,8.68,CSE,Figma;Adobe XD;CSS;Wireframing;HTML,2,5,0,7,UI/UX Designer,Yes,711642
+STU415,Pooja,7.13,Civil,Surveying;GIS;Traffic Engineering;AutoCAD,2,2,0,8,Transportation Engineer,Yes,659729
+STU416,Deepika,8.68,Mechanical,HVAC Systems;Fluid Mechanics;AutoCAD;Heat Transfer;Thermodynamics,2,2,0,7,HVAC Engineer,Yes,516012
+STU417,Ishaan,6.03,ECE,Arduino;Networking;C++;C;Microcontrollers;Raspberry Pi,2,0,2,8,IoT Engineer,Yes,426124
+STU418,Kishore,6.2,Civil,Soil Mechanics;AutoCAD;Foundation Design,2,2,0,8,Geotechnical Engineer,No,0
+STU419,Suresh,8.37,IT,Performance Tuning;Database Design,0,4,0,9,Database Administrator,No,0
+STU420,Akash,6.61,MBA,Power BI;Data Visualization;Excel,3,3,0,10,Business Analyst,Yes,697706
+STU421,Akash,7.52,EEE,Transformers;Load Flow Analysis;Power Systems;MATLAB,2,4,0,8,Power Systems Engineer,Yes,898552
+STU422,Mohan,7.86,MBA,HR Policies;Labor Laws;Communication;Recruitment;Payroll Management,0,1,0,7,Human Resources Manager,Yes,377121
+STU423,Mahesh,5.41,EEE,Transformers;Load Flow Analysis;Electrical Machines;MATLAB;Power Systems,3,5,1,10,Power Systems Engineer,Yes,898393
+STU424,Nisha,6.16,ECE,C;Raspberry Pi,2,3,2,9,IoT Engineer,Yes,550897
+STU425,Deepak,6.65,EEE,Sensors;Control Systems;SCADA;Instrumentation;PLC,0,2,1,6,Instrumentation Engineer,No,0
+STU426,Deepak,6.79,IT,Power BI;Python;Excel;NumPy;Pandas;SQL;Statistics;Data Visualization,0,0,0,5,Data Analyst,No,0
+STU427,Karan,8.55,ECE,Arduino;Microcontrollers;Networking;C++,1,1,0,8,IoT Engineer,Yes,717543
+STU428,Lakshmi,9.35,Civil,AutoCAD;Concrete Design;STAAD Pro;Structural Analysis,0,2,0,5,Structural Engineer,Yes,869847
+STU429,Akshay,8.17,Mechanical,AutoCAD;Internal Combustion Engines;SolidWorks;Vehicle Dynamics;Thermodynamics,2,0,0,4,Automobile Engineer,Yes,678408
+STU430,Ananya,5.95,ECE,Signal Processing;MATLAB;Antenna Design;RF Circuit Design,3,4,0,4,RF Engineer,No,0
+STU431,Rohit,6.71,EEE,MATLAB;AutoCAD Electrical;Power Systems;Circuit Design,2,1,2,10,Electrical Design Engineer,Yes,537982
+STU432,Mahesh,5.66,IT,TCP/IP;Firewalls;Linux;VPN;Routing;Networking,3,4,1,7,Network Engineer,Yes,463716
+STU433,Arjun,7.6,Civil,Hydrology;Water Treatment;Fluid Mechanics;AutoCAD;Hydraulics;GIS,1,1,0,6,Water Resources Engineer,No,0
+STU434,Pooja,5.57,IT,Git;Kubernetes;Jenkins;Python;Docker,2,1,0,10,DevOps Engineer,No,0
+STU435,Deepak,5.63,CSE,Machine Learning;TensorFlow;PyTorch;Python;Deep Learning;NLP,0,4,2,8,AI Engineer,No,0
+STU436,Ananya,8.74,IT,Adobe XD;HTML;CSS;User Research,1,4,0,10,UI/UX Designer,No,0
+STU437,Deepak,5.15,ECE,C++;C;IoT,0,2,3,5,Embedded Systems Engineer,No,0
+STU438,Vishal,9.16,Mechanical,Heat Transfer;Fluid Mechanics;HVAC Systems,3,5,0,6,HVAC Engineer,Yes,803380
+STU439,Sanjay,6.89,EEE,Electrical Design;Power Electronics,0,4,0,7,Solar Energy Engineer,Yes,371588
+STU440,Lakshmi,8.67,Civil,AutoCAD;Laboratory Testing;Foundation Design;Soil Mechanics;Site Investigation,0,1,0,6,Geotechnical Engineer,Yes,855468
+STU441,Sachin,9.34,Civil,Structural Analysis;AutoCAD;Concrete Design;ETABS;STAAD Pro;Steel Design,3,5,0,7,Structural Engineer,Yes,448383
+STU442,Priya,9.3,IT,Jenkins;Linux;Python,3,0,0,6,DevOps Engineer,No,0
+STU443,Mohan,6.74,IT,Linux;Python,3,5,1,7,Cloud Engineer,Yes,712741
+STU444,Aryan,9.17,ECE,Digital Electronics;Python;Signal Processing;MATLAB,1,5,0,4,Signal Processing Engineer,No,0
+STU445,Arjun,5.02,ECE,VPN;Networking;Firewalls;Routing;Linux,2,0,3,7,Network Engineer,No,0
+STU446,Priya,7.28,IT,Algorithms;DBMS;OOP,3,3,0,4,Software Developer,Yes,803888
+STU447,Akash,5.71,ECE,Circuit Design;VHDL;Cadence Tools;VLSI;Digital Electronics;Verilog,2,0,1,10,VLSI Design Engineer,Yes,448036
+STU448,Rohit,7.93,EEE,Instrumentation;Calibration;PLC;Control Systems,1,3,0,9,Instrumentation Engineer,Yes,558416
+STU449,Akshay,7.05,MBA,SQL;Accounting,0,2,0,7,Financial Analyst,Yes,577566
+STU450,Deepika,6.0,IT,Performance Tuning;PostgreSQL;MySQL;Database Design;SQL,0,0,0,7,Database Administrator,No,0
+STU451,Rajan,7.38,Civil,Engineering Drawing;AutoCAD;Construction Management,3,3,0,10,Site Engineer,No,0
+STU452,Nandini,8.82,IT,Python;Networking,1,4,0,7,Cloud Engineer,Yes,700626
+STU453,Aarav,5.97,IT,SQL;Performance Tuning;PostgreSQL;MySQL,2,2,0,6,Database Administrator,Yes,748418
+STU454,Rajan,8.99,CSE,Git;Linux;Docker;Jenkins;Python,1,2,0,10,DevOps Engineer,Yes,840632
+STU455,Pooja,7.22,EEE,Sensors;PLC;Instrumentation;SCADA,3,5,0,4,Instrumentation Engineer,Yes,532445
+STU456,Vijay,6.7,MBA,Supply Chain;Lean;Project Management;Operations Management;Excel;Communication,1,2,0,6,Operations Manager,Yes,522974
+STU457,Aisha,6.99,EEE,Industrial Automation;HMI;PLC Programming,3,1,2,7,PLC SCADA Engineer,No,0
+STU458,Siddharth,8.73,CSE,DBMS;Algorithms;Java;OOP;C++;Git;Data Structures;Python,0,3,0,8,Software Developer,No,0
+STU459,Tejas,8.95,CSE,Git;OOP;Algorithms;Python;DBMS,1,1,0,9,Software Developer,Yes,374216
+STU460,Tanvi,9.19,Civil,Steel Design;STAAD Pro;Structural Analysis;Concrete Design;AutoCAD;ETABS,2,3,0,4,Structural Engineer,Yes,455900
+STU461,Harsha,6.53,Civil,Engineering Drawing;Construction Management;Surveying,3,5,0,6,Site Engineer,Yes,657794
+STU462,Anil,7.6,ECE,Circuit Design;C++;IoT;C,2,2,0,5,Embedded Systems Engineer,Yes,840733
+STU463,Pooja,5.24,Mechanical,HVAC Systems;Heat Transfer,0,3,0,4,HVAC Engineer,No,0
+STU464,Mahesh,8.38,ECE,Wireless Communication;5G;Networking;TCP/IP,3,4,0,6,Telecom Engineer,Yes,401103
+STU465,Sneha,7.25,IT,Adobe XD;User Research;CSS;Wireframing;HTML,3,2,0,9,UI/UX Designer,Yes,565642
+STU466,Sachin,6.59,IT,HTML;JavaScript;React;Node.js;SQL,2,3,3,4,Web Developer,Yes,541738
+STU467,Pranav,7.44,ECE,Circuit Design;VLSI;VHDL;Digital Electronics,3,5,0,10,VLSI Design Engineer,Yes,674794
+STU468,Ganesh,6.17,Civil,GIS;Surveying;AutoCAD,1,3,3,4,Transportation Engineer,No,0
+STU469,Pranav,6.64,MBA,Agile;Product Strategy;Excel;Communication;Roadmapping;Market Research,1,1,0,9,Product Manager,No,0
+STU470,Mahesh,7.87,CSE,SQL;MySQL,3,2,0,7,Database Administrator,Yes,837993
+STU471,Varun,8.05,MBA,Valuation;Accounting;Financial Statements;SQL;Excel,0,1,0,9,Financial Analyst,No,0
+STU472,Rohit,6.44,EEE,Sensors;Calibration,2,3,2,4,Instrumentation Engineer,No,0
+STU473,Mahesh,5.61,MBA,Market Research;PowerPoint,2,0,2,8,Marketing Manager,No,0
+STU474,Suresh,5.53,EEE,Calibration;PLC;SCADA;Control Systems;Sensors,2,0,1,7,Instrumentation Engineer,No,0
+STU475,Meera,6.01,Civil,Waste Management;AutoCAD;Environmental Science;Water Treatment;GIS,1,3,1,5,Environmental Engineer,No,0
+STU476,Arjun,5.34,CSE,Java;Kotlin;Git,0,1,3,9,Android Developer,No,0
+STU477,Tejas,9.29,Mechanical,Fluid Mechanics;Heat Transfer;AutoCAD;Thermodynamics;HVAC Systems,3,4,0,5,HVAC Engineer,No,0
+STU478,Rahul,7.77,CSE,SQL;Statistics;Deep Learning;Python;TensorFlow,1,5,0,8,Machine Learning Engineer,Yes,737685
+STU479,Anjali,7.31,Civil,AutoCAD;Water Treatment;Hydraulics;Fluid Mechanics;GIS;Hydrology,0,1,0,9,Water Resources Engineer,Yes,757927
+STU480,Ravi,8.28,CSE,Linux;Git;Python;Kubernetes;Docker;Jenkins,2,4,0,4,DevOps Engineer,Yes,878319
+STU481,Sneha,6.39,EEE,Instrumentation;SCADA;Control Systems;PLC,0,5,2,9,Instrumentation Engineer,No,0
+STU482,Akash,9.75,IT,Node.js;HTML;JavaScript,0,2,0,7,Web Developer,Yes,688688
+STU483,Harsha,6.23,MBA,Excel;Agile;Market Research,0,4,1,8,Product Manager,No,0
+STU484,Sneha,6.25,ECE,Python;C,1,3,1,10,IoT Engineer,Yes,677549
+STU485,Suresh,9.02,ECE,IoT;C++;Circuit Design;Microcontrollers;RTOS,3,3,0,5,Embedded Systems Engineer,No,0
+STU486,Harish,8.93,MBA,Excel;Project Management;Supply Chain;Lean;Communication,0,1,0,7,Operations Manager,Yes,429832
+STU487,Tejas,5.06,Mechanical,Thermodynamics;ANSYS,3,3,2,8,Thermal Engineer,Yes,875901
+STU488,Meera,9.41,Civil,Traffic Engineering;Surveying,2,2,0,6,Transportation Engineer,Yes,721410
+STU489,Ganesh,8.23,IT,Python;Pandas;Data Visualization;NumPy,1,4,0,6,Data Analyst,No,0
+STU490,Anil,5.5,Civil,AutoCAD;Highway Design;Surveying;Traffic Engineering,3,2,1,9,Transportation Engineer,No,0
+STU491,Rahul,9.29,IT,HTML;SQL;Node.js;CSS;React;Git;JavaScript,1,4,0,9,Web Developer,Yes,489334
+STU492,Nandini,9.49,IT,Python;Linux;AWS;Kubernetes,3,2,0,10,Cloud Engineer,Yes,560539
+STU493,Karan,6.24,CSE,Cryptography;Ethical Hacking;Linux,2,1,3,4,Cybersecurity Analyst,No,0
+STU494,Ramya,5.52,Mechanical,Thermodynamics;CFD;AutoCAD;ANSYS,3,1,0,7,Thermal Engineer,Yes,487827
+STU495,Mohan,9.3,CSE,Git;C++,1,5,0,9,Software Developer,No,0
+STU496,Karan,7.76,Mechanical,Fluid Mechanics;AutoCAD,3,3,0,7,HVAC Engineer,No,0
+STU497,Sachin,8.74,MBA,Labor Laws;Communication;Excel;Recruitment,0,4,0,8,Human Resources Manager,Yes,877353
+STU498,Ananya,7.57,EEE,Electrical Design;Circuit Design;AutoCAD;Solar PV Systems,2,0,0,10,Solar Energy Engineer,Yes,713403
+STU499,Ishaan,6.87,IT,React;Git;CSS;Node.js;HTML;JavaScript;SQL,0,5,2,7,Web Developer,No,0
+STU500,Sanjay,6.14,Civil,Environmental Science;GIS;Water Treatment;AutoCAD;Waste Management,3,0,2,7,Environmental Engineer,Yes,373547

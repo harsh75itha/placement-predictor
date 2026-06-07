@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Admin Dashboard — Placement Predictor</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  :root{
+    --bg:#f5f7fb; --card:#ffffff; --text:#1f2937; --soft:#6b7280;
+    --border:#e5e7eb; --input:#ffffff; --hover:#f9fafb;
+    --primary:#f59e0b; --primary-dark:#ef4444;
+    --success:#10b981; --warning:#f59e0b; --danger:#ef4444;
+    --shadow:0 4px 6px rgba(0,0,0,0.05);
+    --shadow-lg:0 12px 30px rgba(0,0,0,0.08);
+  }
+  [data-theme="dark"],html[data-theme="dark"]{
+    --bg:#0f1020; --card:#1e1e30; --text:#e8e8f0; --soft:#9090a8;
+    --border:#3a3a50; --input:#2a2a40; --hover:#2a2a40;
+    --primary:#fb923c;
+    --shadow:0 4px 6px rgba(0,0,0,0.3);
+    --shadow-lg:0 12px 30px rgba(0,0,0,0.4);
+  }
+  @media (prefers-color-scheme:dark){
+    html:not([data-theme]){
+      --bg:#0f1020; --card:#1e1e30; --text:#e8e8f0; --soft:#9090a8;
+      --border:#3a3a50; --input:#2a2a40; --hover:#2a2a40;
+      --primary:#fb923c;
+    }
+  }
+
+  body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:background 0.3s,color 0.3s;}
+
+  .navbar{background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;box-shadow:var(--shadow);}
+  .logo{font-size:1.2rem;font-weight:700;display:flex;align-items:center;gap:8px;}
+  .nav-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .theme-btn{background:rgba(255,255,255,0.2);border:none;border-radius:8px;padding:6px 11px;font-size:1rem;cursor:pointer;color:#fff;}
+  .theme-btn:hover{background:rgba(255,255,255,0.35);}
+  .btn{padding:8px 16px;border-radius:8px;border:none;cursor:pointer;font-size:0.85rem;font-weight:600;text-decoration:none;display:inline-block;transition:all 0.2s;}
+  .btn-light{background:rgba(255,255,255,0.2);color:#fff;}
+  .btn-light:hover{background:rgba(255,255,255,0.3);}
+  .btn-danger{background:#ef4444;color:#fff;}
+  .btn-danger:hover{background:#dc2626;}
+  .btn-outline{background:transparent;color:var(--text);border:1px solid var(--border);}
+  .btn-sm{padding:5px 10px;font-size:0.75rem;}
+
+  .container{max-width:1400px;margin:0 auto;padding:20px;}
+
+  .welcome{background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;padding:22px 26px;border-radius:14px;margin-bottom:20px;box-shadow:var(--shadow-lg);}
+  .welcome h1{font-size:1.5rem;margin-bottom:5px;display:flex;align-items:center;gap:8px;}
+  .welcome p{opacity:0.9;font-size:0.92rem;}
+
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:20px;}
+  .stat-card{background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow);text-align:center;border-top:4px solid var(--primary);}
+  .stat-card .num{font-size:1.9rem;font-weight:800;color:var(--primary);}
+  .stat-card .lbl{color:var(--soft);font-size:0.82rem;margin-top:3px;}
+  .stat-card:nth-child(2){border-top-color:#764ba2;}
+  .stat-card:nth-child(2) .num{color:#764ba2;}
+  .stat-card:nth-child(3){border-top-color:#10b981;}
+  .stat-card:nth-child(3) .num{color:#10b981;}
+  .stat-card:nth-child(4){border-top-color:#f59e0b;}
+  .stat-card:nth-child(4) .num{color:#f59e0b;}
+  .stat-card:nth-child(5){border-top-color:#667eea;}
+  .stat-card:nth-child(5) .num{color:#667eea;}
+
+  .tabs{display:flex;background:var(--card);border-radius:12px 12px 0 0;border-bottom:1px solid var(--border);overflow:hidden;}
+  .tab{flex:1;padding:13px;background:transparent;border:none;cursor:pointer;color:var(--soft);font-weight:600;font-size:0.9rem;transition:all 0.2s;border-bottom:3px solid transparent;}
+  .tab:hover{color:var(--text);background:var(--hover);}
+  .tab.active{color:var(--primary);border-bottom-color:var(--primary);background:var(--card);}
+
+  .tab-content{background:var(--card);border-radius:0 0 12px 12px;padding:20px;box-shadow:var(--shadow);margin-bottom:18px;display:none;}
+  .tab-content.active{display:block;}
+
+  table{width:100%;border-collapse:collapse;font-size:0.85rem;}
+  thead{background:var(--bg);}
+  th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border);}
+  th{font-weight:700;color:var(--soft);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.5px;}
+  tbody tr:hover{background:var(--hover);}
+  tbody tr:last-child td{border-bottom:none;}
+
+  .badge{display:inline-block;padding:3px 9px;border-radius:999px;font-size:0.72rem;font-weight:700;}
+  .badge-ug{background:rgba(102,126,234,0.18);color:#667eea;}
+  .badge-pg{background:rgba(118,75,162,0.18);color:#764ba2;}
+  .badge-eng{background:rgba(245,158,11,0.18);color:#f59e0b;}
+  .badge-exam{background:rgba(16,185,129,0.18);color:#10b981;}
+
+  .pct-tag{padding:3px 9px;border-radius:999px;font-weight:700;font-size:0.75rem;}
+  .pct-high{background:rgba(16,185,129,0.18);color:#10b981;}
+  .pct-mid{background:rgba(245,158,11,0.18);color:#f59e0b;}
+  .pct-low{background:rgba(239,68,68,0.18);color:#ef4444;}
+
+  .table-wrap{overflow-x:auto;}
+
+  .alert{padding:11px 14px;border-radius:9px;margin-bottom:12px;font-size:0.88rem;}
+  .alert-success{background:rgba(16,185,129,0.12);color:#10b981;border:1px solid rgba(16,185,129,0.25);}
+  .alert-error{background:rgba(239,68,68,0.12);color:#ef4444;border:1px solid rgba(239,68,68,0.25);}
+  .alert-info{background:rgba(102,126,234,0.12);color:#667eea;border:1px solid rgba(102,126,234,0.25);}
+
+  .empty{text-align:center;padding:30px 16px;color:var(--soft);}
+  .empty .icon{font-size:2.5rem;margin-bottom:6px;}
+
+  .search-bar{margin-bottom:14px;}
+  .search-bar input{width:100%;padding:9px 13px;border:1.5px solid var(--border);border-radius:9px;background:var(--input);color:var(--text);font-size:0.88rem;outline:none;}
+  .search-bar input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(245,158,11,0.15);}
+
+  .hint-bar{position:fixed;bottom:14px;right:14px;background:var(--card);border:1px solid var(--border);padding:7px 12px;border-radius:8px;font-size:0.75rem;color:var(--soft);box-shadow:var(--shadow);}
+  .hint-bar kbd{background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:1px 5px;font-family:monospace;font-size:0.72rem;}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="logo">🛡 Admin Panel</div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="themeToggle" title="Toggle theme">🌙</button>
+    <a class="btn btn-light" href="{{ url_for('admin_degrees') }}">🎓 Manage Degrees</a>
+    <a class="btn btn-light" href="{{ url_for('home') }}">Home</a>
+    <a class="btn btn-danger" href="{{ url_for('logout') }}">Logout</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }}">{{ message }}</div>
+    {% endfor %}
+  {% endwith %}
+
+  <div class="welcome">
+    <h1>🛡 Welcome, {{ admin.name }}</h1>
+    <p>System overview · Manage students, recruiters and view all predictions</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat-card">
+      <div class="num" data-count="{{ stats.total_students }}">0</div>
+      <div class="lbl">Total Students</div>
+    </div>
+    <div class="stat-card">
+      <div class="num" data-count="{{ stats.total_recruiters }}">0</div>
+      <div class="lbl">Total Recruiters</div>
+    </div>
+    <div class="stat-card">
+      <div class="num" data-count="{{ stats.total_predictions }}">0</div>
+      <div class="lbl">Total Predictions</div>
+    </div>
+    <div class="stat-card">
+      <div class="num" data-count="{{ stats.total_shortlists }}">0</div>
+      <div class="lbl">Total Shortlists</div>
+    </div>
+    <div class="stat-card">
+      <div class="num" data-count="{{ stats.avg_placement }}" data-suffix="%">0%</div>
+      <div class="lbl">Avg Placement Chance</div>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  {% if chart_data and chart_data.degree_dist_labels %}
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+    <div style="background:var(--card);padding:20px;border-radius:12px;box-shadow:var(--shadow);">
+      <h3 style="margin-bottom:14px;font-size:1rem;display:flex;align-items:center;gap:6px;">🥧 Degree Distribution</h3>
+      <div style="position:relative;height:280px;">
+        <canvas id="degreeChart"></canvas>
+      </div>
+    </div>
+    <div style="background:var(--card);padding:20px;border-radius:12px;box-shadow:var(--shadow);">
+      <h3 style="margin-bottom:14px;font-size:1rem;display:flex;align-items:center;gap:6px;">📊 Avg Placement Chance by Degree</h3>
+      <div style="position:relative;height:280px;">
+        <canvas id="avgChart"></canvas>
+      </div>
+    </div>
+  </div>
+  <style>@media (max-width:800px){div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important;}}</style>
+  {% endif %}
+
+  <!-- Quick Actions Grid -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;">
+    <!-- Manage Degrees card -->
+    <div style="background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+      <div>
+        <h3 style="font-size:1rem;margin-bottom:3px;display:flex;align-items:center;gap:6px;">🎓 Manage Degrees</h3>
+        <div style="font-size:0.82rem;color:var(--soft);">Add or edit degrees, job roles, and skills</div>
+      </div>
+      <a href="{{ url_for('admin_degrees') }}" class="btn btn-light" style="background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;">Open Manager →</a>
+    </div>
+
+    <!-- Excel export card -->
+    <div style="background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+      <div>
+        <h3 style="font-size:1rem;margin-bottom:3px;display:flex;align-items:center;gap:6px;">📥 Export Data</h3>
+        <div style="font-size:0.82rem;color:var(--soft);">Download tables as Excel files</div>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;">
+        <a href="{{ url_for('admin_export', dtype='students') }}" class="btn btn-light btn-sm" style="background:#10b981;color:#fff;">👨‍🎓</a>
+        <a href="{{ url_for('admin_export', dtype='recruiters') }}" class="btn btn-light btn-sm" style="background:#764ba2;color:#fff;">💼</a>
+        <a href="{{ url_for('admin_export', dtype='predictions') }}" class="btn btn-light btn-sm" style="background:#667eea;color:#fff;">📊</a>
+      </div>
+    </div>
+  </div>
+  <style>@media (max-width:800px){div[style*="grid-template-columns:1fr 1fr;gap:14px"]{grid-template-columns:1fr !important;}}</style>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="students">👨‍🎓 Students ({{ students|length }})</button>
+    <button class="tab" data-tab="recruiters">💼 Recruiters ({{ recruiters|length }})</button>
+    <button class="tab" data-tab="predictions">📊 Recent Predictions ({{ predictions|length }})</button>
+  </div>
+
+  <!-- STUDENTS TAB -->
+  <div class="tab-content active" id="tab-students">
+    <div class="search-bar">
+      <input type="text" id="searchStudents" placeholder="🔍 Search students by name or email...">
+    </div>
+    {% if students %}
+    <div class="table-wrap">
+      <table id="studentsTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Degree</th>
+            <th>Specialisation</th>
+            <th>Joined</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for s in students %}
+          <tr>
+            <td>{{ loop.index }}</td>
+            <td><strong>{{ s.name }}</strong></td>
+            <td style="word-break:break-all;">{{ s.email }}</td>
+            <td>
+              {% set lvl = '' %}
+              {% if 'BE/BTech' in s.degree %}{% set lvl = 'eng' %}
+              {% elif s.degree.startswith('M') %}{% set lvl = 'pg' %}
+              {% elif 'UPSC' in s.degree or 'KPSC' in s.degree or 'Railway' in s.degree or 'Bank' in s.degree or 'SSC' in s.degree %}{% set lvl = 'exam' %}
+              {% else %}{% set lvl = 'ug' %}{% endif %}
+              <span class="badge badge-{{ lvl }}">{{ s.degree }}</span>
+            </td>
+            <td>{{ s.stream or '—' }}</td>
+            <td>{{ s.created_at.strftime('%d %b %Y') }}</td>
+            <td>
+              <form method="POST" action="{{ url_for('admin_delete_student', sid=s.id) }}" onsubmit="return confirm('Delete student {{ s.name }} and all their predictions? This cannot be undone.');" style="display:inline;">
+                <button type="submit" class="btn btn-danger btn-sm">🗑 Delete</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <div class="empty"><div class="icon">👨‍🎓</div><p>No students registered yet.</p></div>
+    {% endif %}
+  </div>
+
+  <!-- RECRUITERS TAB -->
+  <div class="tab-content" id="tab-recruiters">
+    <div class="search-bar">
+      <input type="text" id="searchRecruiters" placeholder="🔍 Search recruiters by name, company or email...">
+    </div>
+    {% if recruiters %}
+    <div class="table-wrap">
+      <table id="recruitersTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Company</th>
+            <th>Industry</th>
+            <th>Joined</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in recruiters %}
+          <tr>
+            <td>{{ loop.index }}</td>
+            <td><strong>{{ r.name }}</strong></td>
+            <td style="word-break:break-all;">{{ r.email }}</td>
+            <td>{{ r.company_name }}</td>
+            <td>{{ r.industry }}</td>
+            <td>{{ r.created_at.strftime('%d %b %Y') }}</td>
+            <td>
+              <form method="POST" action="{{ url_for('admin_delete_recruiter', rid=r.id) }}" onsubmit="return confirm('Delete recruiter {{ r.name }} from {{ r.company_name }}? This cannot be undone.');" style="display:inline;">
+                <button type="submit" class="btn btn-danger btn-sm">🗑 Delete</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <div class="empty"><div class="icon">💼</div><p>No recruiters registered yet.</p></div>
+    {% endif %}
+  </div>
+
+  <!-- PREDICTIONS TAB -->
+  <div class="tab-content" id="tab-predictions">
+    {% if predictions %}
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Student</th>
+            <th>Role</th>
+            <th>CGPA</th>
+            <th>Skill Match</th>
+            <th>Placement Chance</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for p in predictions %}
+          <tr>
+            <td>{{ loop.index }}</td>
+            <td><strong>{{ p.student.name }}</strong><br><span style="color:var(--soft);font-size:0.75rem;">{{ p.student.email }}</span></td>
+            <td>{{ p.desired_role }}</td>
+            <td>{{ p.cgpa }}</td>
+            <td>{{ p.skill_match }}%</td>
+            <td>
+              {% if p.placement_chance >= 70 %}
+                <span class="pct-tag pct-high">{{ p.placement_chance }}%</span>
+              {% elif p.placement_chance >= 40 %}
+                <span class="pct-tag pct-mid">{{ p.placement_chance }}%</span>
+              {% else %}
+                <span class="pct-tag pct-low">{{ p.placement_chance }}%</span>
+              {% endif %}
+            </td>
+            <td>{{ p.created_at.strftime('%d %b %Y, %I:%M %p') }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <div class="empty"><div class="icon">📊</div><p>No predictions made yet.</p></div>
+    {% endif %}
+  </div>
+
+</div>
+
+<div class="hint-bar">
+  <kbd>1</kbd>/<kbd>2</kbd>/<kbd>3</kbd> Switch tab · <kbd>Ctrl</kbd>+<kbd>D</kbd> Theme
+</div>
+
+<script>
+  // Animated counters + Charts
+  window.addEventListener('load',()=>{
+    document.querySelectorAll('.stat-card .num').forEach(el=>{
+      const target=parseFloat(el.dataset.count);
+      const suffix=el.dataset.suffix||'';
+      if(isNaN(target))return;
+      const start=performance.now(), duration=1300;
+      function step(now){
+        const t=Math.min((now-start)/duration,1);
+        const eased=1-Math.pow(1-t,3);
+        const val=(target*eased).toFixed(target%1?2:0);
+        el.textContent=val+suffix;
+        if(t<1)requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+
+    // Charts
+    {% if chart_data and chart_data.degree_dist_labels %}
+    if(typeof Chart!=='undefined'){
+      const isDark=document.documentElement.getAttribute('data-theme')==='dark';
+      const textColor=isDark?'#9090a8':'#6b7280';
+      const gridColor=isDark?'rgba(255,255,255,0.08)':'rgba(0,0,0,0.06)';
+      const palette=['#667eea','#764ba2','#a855f7','#f59e0b','#ef4444','#10b981','#3b82f6','#ec4899','#14b8a6','#f97316','#8b5cf6','#06b6d4','#84cc16','#eab308','#f43f5e'];
+
+      // Degree distribution pie
+      const degCtx=document.getElementById('degreeChart');
+      if(degCtx){
+        new Chart(degCtx,{
+          type:'doughnut',
+          data:{
+            labels:{{ chart_data.degree_dist_labels|tojson }},
+            datasets:[{
+              data:{{ chart_data.degree_dist_values|tojson }},
+              backgroundColor:palette,
+              borderColor:isDark?'#1e1e30':'#fff',
+              borderWidth:2
+            }]
+          },
+          options:{
+            responsive:true,
+            maintainAspectRatio:false,
+            plugins:{
+              legend:{
+                position:'right',
+                labels:{color:textColor,font:{size:11},padding:8,boxWidth:14}
+              },
+              tooltip:{
+                callbacks:{
+                  label:c=>c.label+': '+c.parsed+' student'+(c.parsed!==1?'s':'')
+                }
+              }
+            }
+          }
+        });
+      }
+
+      // Average placement bar
+      const avgCtx=document.getElementById('avgChart');
+      if(avgCtx){
+        new Chart(avgCtx,{
+          type:'bar',
+          data:{
+            labels:{{ chart_data.avg_placement_labels|tojson }},
+            datasets:[{
+              label:'Avg Placement Chance %',
+              data:{{ chart_data.avg_placement_values|tojson }},
+              backgroundColor:'rgba(102,126,234,0.7)',
+              borderColor:'#667eea',
+              borderWidth:2,
+              borderRadius:6
+            }]
+          },
+          options:{
+            responsive:true,
+            maintainAspectRatio:false,
+            indexAxis:'y',
+            scales:{
+              x:{
+                min:0,max:100,
+                ticks:{callback:v=>v+'%',color:textColor,font:{size:10}},
+                grid:{color:gridColor}
+              },
+              y:{
+                ticks:{color:textColor,font:{size:10}},
+                grid:{display:false}
+              }
+            },
+            plugins:{
+              legend:{display:false},
+              tooltip:{
+                callbacks:{label:c=>'Avg: '+c.parsed.x.toFixed(2)+'%'}
+              }
+            }
+          }
+        });
+      }
+    }
+    {% endif %}
+  });
+
+  const themeBtn=document.getElementById('themeToggle');
+  function applyTheme(t){document.documentElement.setAttribute('data-theme',t);themeBtn.textContent=t==='dark'?'☀️':'🌙';}
+  const saved=localStorage.getItem('theme');
+  if(saved){applyTheme(saved);}
+  else{applyTheme(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');}
+  themeBtn.addEventListener('click',()=>{
+    const cur=document.documentElement.getAttribute('data-theme')||'light';
+    const nxt=cur==='dark'?'light':'dark';
+    applyTheme(nxt);localStorage.setItem('theme',nxt);
+  });
+
+  // Tab switching
+  const tabs=document.querySelectorAll('.tab');
+  const contents=document.querySelectorAll('.tab-content');
+  tabs.forEach(t=>{
+    t.addEventListener('click',()=>{
+      const target=t.dataset.tab;
+      tabs.forEach(x=>x.classList.remove('active'));
+      contents.forEach(x=>x.classList.remove('active'));
+      t.classList.add('active');
+      document.getElementById('tab-'+target).classList.add('active');
+    });
+  });
+
+  // Table search
+  function setupSearch(inputId, tableId){
+    const inp=document.getElementById(inputId);
+    const tb=document.getElementById(tableId);
+    if(!inp||!tb)return;
+    inp.addEventListener('input',()=>{
+      const q=inp.value.toLowerCase();
+      tb.querySelectorAll('tbody tr').forEach(row=>{
+        row.style.display=row.textContent.toLowerCase().includes(q)?'':'none';
+      });
+    });
+  }
+  setupSearch('searchStudents','studentsTable');
+  setupSearch('searchRecruiters','recruitersTable');
+
+  // Keyboard shortcuts
+  document.addEventListener('keydown',(e)=>{
+    if(e.ctrlKey&&(e.key==='d'||e.key==='D')){e.preventDefault();themeBtn.click();return;}
+    if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
+    if(e.key==='1'){tabs[0].click();}
+    else if(e.key==='2'){tabs[1].click();}
+    else if(e.key==='3'){tabs[2].click();}
+  });
+</script>
+
+</body>
+</html>

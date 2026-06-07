@@ -1,0 +1,84 @@
+job_role,required_skills,good_to_have_skills,min_cgpa,certifications
+Software Developer,Python;Java;C++;Data Structures;Algorithms;OOP;Git;DBMS,System Design;Cloud Basics;Docker;Kubernetes;REST APIs,6.5,Oracle Java Certification;AWS Certified Developer
+Data Analyst,Python;SQL;Excel;Statistics;Data Visualization;Power BI;Pandas;NumPy,Tableau;Machine Learning;R;Google Analytics;ETL,6,Google Data Analytics Certificate;Microsoft Power BI Certification
+Data Scientist,Python;Machine Learning;Statistics;SQL;Pandas;NumPy;Scikit-learn;Data Visualization,Deep Learning;TensorFlow;PyTorch;Big Data;Spark;NLP,7,IBM Data Science Certificate;Coursera ML Specialization
+Web Developer,HTML;CSS;JavaScript;React;Node.js;Git;REST APIs;SQL,TypeScript;MongoDB;Docker;AWS;Next.js,6,Meta Front-End Developer Certificate;freeCodeCamp
+Machine Learning Engineer,Python;Machine Learning;Deep Learning;TensorFlow;PyTorch;SQL;Linear Algebra;Statistics,MLOps;Docker;Kubernetes;Spark;Scala,7.5,TensorFlow Developer Certificate;AWS ML Specialty
+Business Analyst,Excel;SQL;Data Visualization;Communication;PowerPoint;Business Intelligence;Requirement Gathering,Power BI;Tableau;Python;Agile;JIRA,6,CBAP Certification;Google Data Analytics
+Cloud Engineer,AWS;Linux;Networking;Python;Docker;Kubernetes;Security Basics,Terraform;CI/CD;Ansible;Bash Scripting,6.5,AWS Solutions Architect;Azure Administrator;Google Cloud Associate
+Cybersecurity Analyst,Networking;Linux;Python;Ethical Hacking;Cryptography;SIEM Tools;Firewalls,Penetration Testing;Malware Analysis;Incident Response;Cloud Security,6.5,CompTIA Security+;CEH;CISSP
+DevOps Engineer,Linux;Docker;Kubernetes;CI/CD;Git;Python;Jenkins;Networking,Terraform;Ansible;AWS;Monitoring Tools;Prometheus,6.5,Docker Certified Associate;AWS DevOps Engineer
+UI/UX Designer,Figma;Adobe XD;User Research;Wireframing;Prototyping;HTML;CSS,JavaScript;Usability Testing;Motion Design;Sketch,5.5,Google UX Design Certificate;Interaction Design Foundation
+Android Developer,Java;Kotlin;Android SDK;REST APIs;Git;SQLite;XML,Firebase;Jetpack Compose;Flutter;CI/CD for Mobile,6,Associate Android Developer by Google
+Network Engineer,Networking Fundamentals;TCP/IP;Routing and Switching;Linux;Firewalls;VPN;VLAN,Python;Network Automation;Cloud Networking;SDN,6,CCNA;CompTIA Network+
+Database Administrator,SQL;MySQL;PostgreSQL;Database Design;Backup and Recovery;Performance Tuning,MongoDB;Oracle DB;NoSQL;Cloud Databases;Python,6,Oracle DBA Certification;Microsoft SQL Server Certification
+AI Engineer,Python;Machine Learning;Deep Learning;NLP;Computer Vision;TensorFlow;PyTorch;Linear Algebra,Generative AI;LLMs;MLOps;Kubernetes;Spark,7.5,DeepLearning.AI Specializations;NVIDIA AI Certification
+Embedded Systems Engineer,C;C++;Microcontrollers;RTOS;Circuit Design;Assembly Language;IoT,PCB Design;FPGA;Linux Kernel;Python,6.5,ARM Certified Engineer
+VLSI Design Engineer,VLSI;Verilog;VHDL;Digital Electronics;Circuit Design;Semiconductor Physics;Cadence Tools,SPICE Simulation;FPGA;Signal Processing;PCB Design,6.5,Cadence Certification;Synopsys Training
+RF Engineer,RF Circuit Design;Antenna Design;Signal Processing;Microwave Engineering;MATLAB;Wireless Communication,5G Technology;Spectrum Analysis;Network Analyzer;HFSS,6.5,IEEE Certifications;Wireless Communication Certification
+Telecom Engineer,Networking;Wireless Communication;Signal Processing;LTE;5G;Fiber Optics;TCP/IP,Network Planning;VoIP;SDN;Cloud Networking,6,CCNA;Ericsson Certification;Nokia Certification
+Signal Processing Engineer,MATLAB;Signal Processing;Digital Electronics;Python;Fourier Analysis;Filter Design;DSP,Machine Learning;Image Processing;Audio Processing;FPGA,6.5,MATLAB Certification;DSP Certification
+IoT Engineer,C;C++;Python;Microcontrollers;Arduino;Raspberry Pi;Networking;Sensors,Cloud Platforms;MQTT;Edge Computing;Machine Learning,6,AWS IoT Certification;Cisco IoT Certification
+Electrical Design Engineer,AutoCAD Electrical;Circuit Design;Power Systems;MATLAB;Electrical Drawings;Transformers;Motors,PLC Programming;SCADA;Power Electronics;Simulation Tools,6,AutoCAD Certification;IEEE Membership
+Power Systems Engineer,Power Systems;Load Flow Analysis;MATLAB;Electrical Machines;Transformers;Protection Systems;Grid Analysis,ETAP;PSCAD;Renewable Energy;Smart Grid,6.5,ETAP Certification;Power Systems Certification
+PLC SCADA Engineer,PLC Programming;SCADA;HMI;Ladder Logic;Industrial Automation;Electrical Drawings;Control Systems,DCS;Python;IoT;Industrial Networking,6,Siemens PLC Certification;Rockwell Automation Certification
+Solar Energy Engineer,Solar PV Systems;Electrical Design;AutoCAD;Power Electronics;Energy Auditing;Circuit Design,MATLAB;Grid Integration;Battery Storage;Project Management,6,NABCEP Certification;Solar Energy Certification
+Instrumentation Engineer,Instrumentation;Control Systems;PLC;SCADA;Process Control;Sensors;Calibration;Electrical Drawings,DCS;Python;Industrial IoT;Data Acquisition,6,ISA Certification;Instrumentation Certification
+Mechanical Design Engineer,AutoCAD;SolidWorks;CATIA;Engineering Drawing;Thermodynamics;Material Science;GD&T,ANSYS;Finite Element Analysis;3D Printing;Manufacturing Processes,6,SolidWorks Certification;AutoCAD Certification
+Manufacturing Engineer,Manufacturing Processes;AutoCAD;Quality Control;Lean Manufacturing;CNC;Production Planning;GD&T,Six Sigma;ERP Systems;Automation;CAM Software,6,Six Sigma Green Belt;Lean Manufacturing Certification
+Automobile Engineer,Vehicle Dynamics;AutoCAD;SolidWorks;Internal Combustion Engines;Thermodynamics;Material Science,CATIA;MATLAB;Electric Vehicles;CAE Tools,6,SAE Certification;Automotive Engineering Certification
+HVAC Engineer,HVAC Systems;AutoCAD;Thermodynamics;Heat Transfer;Fluid Mechanics;Energy Auditing;Load Calculation,BIM;Revit MEP;Energy Simulation;Green Building,6,ASHRAE Certification;HVAC Certification
+Quality Control Engineer,Quality Management;Statistical Process Control;AutoCAD;Inspection Techniques;ISO Standards;GD&T;Metrology,Six Sigma;Lean Manufacturing;ERP;CMM Operation,6,Six Sigma Black Belt;ASQ Certification
+Thermal Engineer,Thermodynamics;Heat Transfer;Fluid Mechanics;MATLAB;ANSYS;AutoCAD;CFD,SolidWorks;HVAC;Energy Auditing;Renewable Energy,6.5,ASHRAE Certification;Thermal Engineering Certification
+Structural Engineer,Structural Analysis;AutoCAD;STAAD Pro;ETABS;Concrete Design;Steel Design;Engineering Drawing,REVIT;BIM;Project Management;Soil Mechanics,6,STAAD Pro Certification;PMP Certification
+Site Engineer,Construction Management;AutoCAD;Engineering Drawing;Surveying;Material Testing;Site Supervision;MS Project,BIM;REVIT;Quality Control;Safety Management,6,PMP Certification;Safety Certification
+Transportation Engineer,Highway Design;AutoCAD;Traffic Engineering;Surveying;Road Design;GIS;MS Project,VISSIM;Traffic Simulation;Urban Planning;BIM,6,GIS Certification;Transportation Engineering Certification
+Geotechnical Engineer,Soil Mechanics;Foundation Design;AutoCAD;Site Investigation;Laboratory Testing;Engineering Geology,PLAXIS;GeoStudio;Rock Mechanics;Ground Improvement,6.5,Geotechnical Engineering Certification
+Environmental Engineer,Environmental Science;Water Treatment;Waste Management;AutoCAD;Environmental Impact Assessment;GIS,Air Quality Modeling;Soil Remediation;Environmental Laws;GIS Advanced,6,Environmental Engineering Certification;GIS Certification
+Water Resources Engineer,Hydraulics;Hydrology;AutoCAD;Water Treatment;Irrigation Design;GIS;Fluid Mechanics,HEC-RAS;SWMM;Dam Design;Flood Management,6,Water Resources Certification;GIS Certification
+Marketing Manager,Marketing Strategy;Digital Marketing;Communication;Excel;PowerPoint;Brand Management;Market Research,SEO;Social Media Marketing;Google Analytics;CRM Tools,6,Google Digital Marketing;HubSpot Marketing Certification
+Financial Analyst,Financial Modeling;Excel;Accounting;Financial Statements;Valuation;PowerPoint;SQL,Power BI;Python;Bloomberg;Risk Management,6.5,CFA;Financial Modeling Certification
+Human Resources Manager,Recruitment;HR Policies;Communication;Excel;Payroll Management;Performance Management;Labor Laws,HRIS Systems;Training and Development;Compensation Management,6,SHRM Certification;HR Management Certification
+Operations Manager,Operations Management;Supply Chain;Excel;Project Management;Process Improvement;Lean;Communication,ERP Systems;Six Sigma;Data Analysis;Logistics,6,PMP Certification;Six Sigma Green Belt
+Supply Chain Manager,Supply Chain Management;Logistics;Excel;Inventory Management;Procurement;ERP Systems;Communication,Python;Power BI;Six Sigma;SAP,6,APICS Certification;Supply Chain Certification
+Product Manager,Product Strategy;Communication;Market Research;Agile;Roadmapping;Excel;PowerPoint;User Research,SQL;Data Analysis;JIRA;Figma;A/B Testing,6.5,Product Management Certification;Agile Certification
+Junior Software Developer,Python;Java;C++;HTML;CSS;JavaScript;DBMS;Data Structures,React;Node.js;Git;MySQL,6,Oracle Java Certification;freeCodeCamp
+Web Designer,HTML;CSS;JavaScript;Figma;Adobe XD;Responsive Design;Bootstrap,React;WordPress;SEO;Photoshop,5.5,Google UX Design;Figma Certification
+IT Support Engineer,Networking;Windows OS;Linux;Hardware Troubleshooting;DBMS;Excel,Cloud Basics;Cybersecurity;ITIL,5.5,CompTIA A+;ITIL Foundation
+Database Developer,SQL;MySQL;PostgreSQL;Database Design;Stored Procedures;Excel,MongoDB;Python;Oracle DB;Performance Tuning,6,Oracle Database Certification;MySQL Certification
+System Analyst,System Analysis;UML;SQL;Communication;Requirement Gathering;Excel;PowerPoint,JIRA;Agile;Python;Business Analysis,6,CBAP;Business Analysis Certification
+Business Development Executive,Communication;Sales;Market Research;Excel;PowerPoint;CRM;Negotiation,Digital Marketing;SQL;Salesforce;Business Intelligence,6,HubSpot Sales Certification;Salesforce Certification
+HR Executive,Recruitment;HR Policies;Communication;Excel;Labor Laws;Payroll;Performance Management,HRIS;Training Development;Compensation Management,6,SHRM;HR Management Certification
+Marketing Executive,Marketing Strategy;Digital Marketing;Communication;Excel;Social Media;Content Writing;Market Research,SEO;Google Analytics;Canva;Email Marketing,6,Google Digital Marketing;HubSpot Marketing
+Sales Manager,Sales;Communication;Negotiation;CRM;Excel;Team Management;Market Research,Salesforce;Digital Marketing;SQL;Business Intelligence,6,Salesforce Certification;Sales Management Certification
+Entrepreneur,Business Planning;Communication;Market Research;Financial Management;Leadership;Excel;Networking,Digital Marketing;Product Management;Fundraising;Legal Basics,5.5,Entrepreneurship Certification;Business Planning Certification
+Content Writer,Content Writing;Research;Communication;SEO;MS Word;Social Media;Editing,WordPress;Canva;Email Marketing;Copywriting,5.5,HubSpot Content Marketing;Google Digital Marketing
+Journalist,Writing;Research;Communication;Editing;Interviewing;MS Word;Social Media,Photography;Video Editing;Data Journalism;WordPress,5.5,Journalism Certification;Media Studies
+Social Worker,Communication;Counseling;Community Development;Research;MS Word;Excel;Report Writing,Psychology;Project Management;NGO Management,5.5,Social Work Certification;Counseling Certification
+Public Relations Officer,Communication;Writing;Media Relations;Social Media;Event Management;MS Word;Networking,Digital Marketing;Photography;Video Editing;Crisis Management,6,PR Certification;Digital Marketing Certification
+Civil Services Officer,General Knowledge;Communication;Writing;Research;Current Affairs;MS Word;Leadership,Public Administration;Economics;Political Science;Law,6,UPSC Preparation;State PSC Certification
+Accountant,Accounting;Tally;Excel;GST;Financial Statements;Tax;Auditing,SAP;QuickBooks;Financial Modeling;Power BI,6,CA Foundation;CMA;Tally Certification
+Tax Consultant,Taxation;GST;Income Tax;Tally;Excel;Accounting;Financial Statements,SAP;Auditing;Financial Planning;Corporate Law,6,CA Certification;Tax Consultant Certification
+Banking Officer,Banking Operations;Accounting;Excel;Communication;Financial Products;Customer Service;KYC,Financial Analysis;Risk Management;Digital Banking,6,JAIIB;CAIIB;Banking Certification
+Finance Analyst,Financial Modeling;Excel;Accounting;Financial Statements;Valuation;SQL;PowerPoint,Power BI;Python;Bloomberg;Risk Management,6.5,CFA;Financial Modeling Certification
+E-Commerce Executive,E-Commerce;Digital Marketing;Excel;Product Listing;Customer Service;Inventory Management;Communication,SEO;Social Media Marketing;Data Analysis;Shopify,5.5,Google Digital Marketing;E-Commerce Certification
+School Teacher,Teaching;Lesson Planning;Communication;Subject Knowledge;Classroom Management;MS Word;Excel,E-Learning;Smart Board;Educational Technology;Counseling,5.5,CTET;TET;Teaching Certification
+Curriculum Developer,Curriculum Design;Teaching;Research;Content Writing;MS Word;Excel;Communication,E-Learning;Instructional Design;Educational Technology,6,Instructional Design Certification;Curriculum Development
+Educational Counselor,Counseling;Communication;Psychology Basics;Career Guidance;MS Word;Excel;Research,Career Assessment Tools;Student Development;Mental Health,6,Counseling Certification;Career Guidance Certification
+E-Learning Content Creator,Content Writing;Teaching;E-Learning Tools;MS Word;PowerPoint;Communication;Research,Video Editing;Articulate;Moodle;Instructional Design,5.5,E-Learning Certification;Instructional Design
+Software Engineer,Python;Java;C++;Data Structures;Algorithms;OOP;Git;DBMS;System Design,Cloud;Docker;Microservices;REST APIs;Kubernetes,6.5,Oracle Java;AWS Developer;Microsoft Azure
+Full Stack Developer,HTML;CSS;JavaScript;React;Node.js;SQL;Git;REST APIs;MongoDB,Docker;AWS;TypeScript;Next.js;Redis,6.5,Full Stack Web Developer Certification;AWS
+Mobile App Developer,Java;Kotlin;Android SDK;Swift;iOS;React Native;Git;REST APIs,Flutter;Firebase;App Store Optimization;CI/CD,6.5,Google Associate Android Developer;Apple Developer
+Data Engineer,Python;SQL;ETL;Data Warehousing;Spark;Hadoop;DBMS;Linux,Kafka;Airflow;Snowflake;dbt;Cloud Platforms,7,AWS Data Analytics;Google Cloud Data Engineer
+Blockchain Developer,Blockchain;Solidity;Python;JavaScript;Cryptography;Smart Contracts;Ethereum,Web3.js;Hyperledger;DeFi;NFT Development,7,Blockchain Developer Certification;Ethereum Developer
+Research Engineer,Research Methodology;MATLAB;Python;Technical Writing;Data Analysis;Statistics;Domain Knowledge,Machine Learning;Simulation Tools;LaTeX;Publication Writing,7.5,Research Certification;Domain Specific Certifications
+Senior Software Engineer,System Design;Python;Java;Algorithms;Cloud;Docker;Microservices;Leadership,Kubernetes;ML Integration;Performance Optimization;Team Management,7,AWS Solutions Architect;Google Cloud Professional
+AI Research Scientist,Machine Learning;Deep Learning;Python;Research Methodology;Statistics;TensorFlow;PyTorch;NLP,Reinforcement Learning;Computer Vision;Publication Writing;LaTeX,8,DeepLearning.AI;Google AI Certification;NVIDIA
+Robotics Engineer,Robotics;ROS;Python;C++;Control Systems;MATLAB;Sensors;Embedded Systems,Computer Vision;Machine Learning;SLAM;Simulation Tools,7.5,ROS Certification;Robotics Specialization Coursera
+Principal,Leadership;School Administration;Communication;Curriculum Design;Policy Implementation;MS Office;Research,Educational Technology;Counseling;Financial Management;Legal Basics,6.5,Educational Leadership Certification;School Management
+Education Policy Analyst,Research;Policy Analysis;Communication;Data Analysis;Excel;Technical Writing;Statistics,Statistical Tools;SPSS;Public Policy;Government Relations,7,Policy Analysis Certification;Research Methodology
+Special Education Teacher,Special Education;Counseling;Communication;Lesson Planning;Behavior Management;MS Office;Psychology,Speech Therapy Basics;Occupational Therapy;Assistive Technology,6,Special Education Certification;Disability Studies
+Chartered Accountant,Accounting;Auditing;Taxation;Financial Statements;Tally;Excel;Corporate Law;GST,SAP;Financial Modeling;Risk Management;IFRS,7,CA Final;CMA;CPA
+Investment Banker,Financial Modeling;Valuation;Excel;Communication;Mergers and Acquisitions;Capital Markets;PowerPoint,Bloomberg;Python;Risk Management;Equity Research,7.5,CFA;Investment Banking Certification;Bloomberg
+Commerce Lecturer,Teaching;Accounting;Economics;Communication;Research;MS Office;Curriculum Design,E-Learning;SPSS;Financial Analysis;Academic Writing,6.5,UGC NET;Teaching Certification;Research Methodology
+Risk Analyst,Risk Management;Financial Analysis;Excel;Statistics;Accounting;Communication;Regulatory Compliance,Python;Power BI;SAS;Financial Modeling;Bloomberg,6.5,FRM;Risk Management Certification;CFA

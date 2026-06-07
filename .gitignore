@@ -1,0 +1,31 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Logs
+*.log
+
+# Local secrets (we'll use environment variables in production)
+# .env
+
+# Local test files
+test_gemini.py
+
+# Backup files
+*.bak
+*~
+
+# Output / temp
+output/
+temp/

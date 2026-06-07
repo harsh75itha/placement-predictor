@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Placement Predictor</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* ── LIGHT MODE ── */
+        :root {
+            --bg:        #ffffff;
+            --bg2:       #f8f9ff;
+            --card:      #ffffff;
+            --text:      #333333;
+            --soft:      #888888;
+            --border:    #f0f0f0;
+            --shadow:    rgba(0,0,0,0.08);
+            --nav:       #ffffff;
+            --foot:      #1a1a2e;
+            --foot-text: #aaaaaa;
+        }
+        /* ── DARK MODE (follows system) ── */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg:        #0f0f1a;
+                --bg2:       #1a1a2e;
+                --card:      #1e1e30;
+                --text:      #e8e8f0;
+                --soft:      #9090a8;
+                --border:    #2a2a40;
+                --shadow:    rgba(0,0,0,0.35);
+                --nav:       #12121f;
+                --foot:      #0a0a14;
+                --foot-text: #55556e;
+            }
+        }
+        /* ── DARK MODE (manual toggle override) ── */
+        [data-theme="dark"],
+        html[data-theme="dark"],
+        body[data-theme="dark"] {
+            --bg:        #0f0f1a;
+            --bg2:       #1a1a2e;
+            --card:      #1e1e30;
+            --text:      #e8e8f0;
+            --soft:      #9090a8;
+            --border:    #2a2a40;
+            --shadow:    rgba(0,0,0,0.35);
+            --nav:       #12121f;
+            --foot:      #0a0a14;
+            --foot-text: #55556e;
+        }
+        /* ── LIGHT MODE (manual toggle override) ── */
+        [data-theme="light"],
+        html[data-theme="light"],
+        body[data-theme="light"] {
+            --bg:        #ffffff;
+            --bg2:       #f8f9ff;
+            --card:      #ffffff;
+            --text:      #333333;
+            --soft:      #888888;
+            --border:    #f0f0f0;
+            --shadow:    rgba(0,0,0,0.08);
+            --nav:       #ffffff;
+            --foot:      #1a1a2e;
+            --foot-text: #aaaaaa;
+        }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); transition: background 0.3s, color 0.3s; }
+
+        /* NAV */
+        nav {
+            background: var(--nav);
+            padding: 16px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 12px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-logo {
+            font-size: 1.3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-links { display: flex; gap: 12px; align-items: center; }
+        .nav-links a {
+            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .btn-outline { border: 2px solid #667eea; color: #667eea; }
+        .btn-outline:hover { background: #667eea; color: #fff; }
+        .btn-fill { background: linear-gradient(135deg, #667eea, #764ba2); color: #fff !important; }
+        .btn-fill:hover { opacity: 0.9; }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 100px 60px;
+            text-align: center;
+        }
+        .hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
+        .hero p { font-size: 1.15rem; opacity: 0.9; max-width: 600px; margin: 0 auto 36px; }
+        .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .hero-btn {
+            padding: 14px 36px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .hero-btn-white { background: #fff; color: #667eea; }
+        .hero-btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+        .hero-btn-outline { border: 2px solid #fff; color: #fff; }
+        .hero-btn-outline:hover { background: #fff; color: #667eea; }
+
+        /* STATS */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 50px 60px;
+            background: var(--bg2);
+            flex-wrap: wrap;
+        }
+        .stat-card {
+            text-align: center;
+            padding: 24px 40px;
+            background: var(--card);
+            border-radius: 16px;
+            box-shadow: 0 4px 16px var(--shadow);
+            min-width: 160px;
+        }
+        .stat-num {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .stat-label { color: var(--soft); font-size: 0.85rem; margin-top: 4px; }
+
+        /* FEATURES */
+        .features { padding: 80px 60px; text-align: center; background: var(--bg); }
+        .features h2 { font-size: 2rem; font-weight: 800; margin-bottom: 10px; }
+        .features .sub { color: var(--soft); font-size: 1rem; margin-bottom: 50px; }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .feature-card {
+            background: var(--card);
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 30px 24px;
+            text-align: left;
+            transition: all 0.3s;
+        }
+        .feature-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 8px 30px rgba(102,126,234,0.15);
+            transform: translateY(-3px);
+        }
+        .feature-icon { font-size: 2.2rem; margin-bottom: 14px; }
+        .feature-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+        .feature-card p { color: var(--soft); font-size: 0.87rem; line-height: 1.6; }
+
+        /* ROLES */
+        .roles { background: var(--bg2); padding: 80px 60px; text-align: center; }
+        .roles h2 { font-size: 2rem; font-weight: 800; margin-bottom: 10px; }
+        .roles .sub { color: var(--soft); margin-bottom: 50px; }
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            max-width: 920px;
+            margin: 0 auto;
+        }
+        .role-card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 36px 28px;
+            box-shadow: 0 4px 20px var(--shadow);
+        }
+        .role-card .icon { font-size: 2.8rem; margin-bottom: 14px; }
+        .role-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; color: var(--text); }
+        .role-card p { color: var(--soft); font-size: 0.87rem; line-height: 1.6; margin-bottom: 20px; }
+        .role-btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.88rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            color: #fff;
+        }
+        .role-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+        .btn-student   { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .btn-recruiter { background: linear-gradient(135deg, #764ba2, #a855f7); }
+        .btn-admin     { background: linear-gradient(135deg, #f59e0b, #ef4444); }
+
+        /* DEGREES */
+        .degrees { padding: 80px 60px; text-align: center; background: var(--bg); }
+        .degrees h2 { font-size: 2rem; font-weight: 800; margin-bottom: 10px; }
+        .degrees .sub { color: var(--soft); margin-bottom: 30px; }
+        .degree-group { margin-bottom: 24px; }
+        .degree-group-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--soft);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 12px;
+        }
+        .degree-tags { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .deg-tag {
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+        .ug   { background: #eef2ff; color: #667eea; border: 2px solid #c7d2fe; }
+        .eng  { background: #f0fdf4; color: #16a34a; border: 2px solid #bbf7d0; }
+        .pg   { background: #fdf4ff; color: #764ba2; border: 2px solid #e9d5ff; }
+        .exam { background: #fff7ed; color: #ea580c; border: 2px solid #fed7aa; }
+
+        @media (prefers-color-scheme: dark) {
+            .ug   { background: #1e2040; color: #a5b4fc; border-color: #3730a3; }
+            .eng  { background: #14261a; color: #4ade80; border-color: #166534; }
+            .pg   { background: #2a1a35; color: #c084fc; border-color: #6b21a8; }
+            .exam { background: #2a1a0a; color: #fb923c; border-color: #9a3412; }
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--foot);
+            color: var(--foot-text);
+            text-align: center;
+            padding: 28px;
+            font-size: 0.85rem;
+        }
+        .theme-toggle {
+            background: var(--bg2);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--text);
+        }
+        .theme-toggle:hover { border-color: #667eea; transform: scale(1.05); }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-logo">🎓 Placement Predictor</div>
+    <div class="nav-links">
+        <button class="theme-toggle" id="themeToggle" title="Toggle Light/Dark Mode">🌙</button>
+        <a href="{{ url_for('login') }}" class="btn-outline">Login</a>
+        <a href="{{ url_for('register') }}" class="btn-fill">Get Started →</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <h1>Your Dream Job Isn't Luck —<br>It's a Plan. 🚀💪</h1>
+    <p>Know Your Worth, Bridge the Gap, and Own Your Future. Get your placement prediction, skill gap analysis, personalized recommendations and an AI-powered career roadmap — all in one place.</p>
+    <div class="hero-btns">
+        <a href="{{ url_for('register') }}" class="hero-btn hero-btn-white">🎓 Student Sign Up</a>
+        <a href="{{ url_for('recruiter_register') }}" class="hero-btn hero-btn-outline">🏢 Recruiter Sign Up</a>
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+    <div class="stat-card">
+        <div class="stat-num">{{ total_students }}+</div>
+        <div class="stat-label">Students Registered</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-num">{{ total_predictions }}+</div>
+        <div class="stat-label">Predictions Made</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-num">{{ total_recruiters }}+</div>
+        <div class="stat-label">Companies Onboard</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">Courses & Exams</div>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+    <h2>Everything You Need to Get Placed 💼</h2>
+    <p class="sub">Three powerful prediction engines + AI roadmap working together</p>
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <h3>ML Placement Predictor</h3>
+            <p>Our Random Forest model analyzes your CGPA, skills, internships, projects, backlogs, and communication score to predict placement chances.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3>Skill Gap Analyzer</h3>
+            <p>Compare your current skills with what top companies require for your desired role. See exactly what's missing.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">💡</div>
+            <h3>Smart Recommendations</h3>
+            <p>Get personalized course recommendations, project ideas, platforms, and time estimates for every missing skill.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🧠</div>
+            <h3>AI Career Roadmap</h3>
+            <p>Gemini AI generates a personalized 3-month roadmap with monthly plans, target companies, and a motivational tip.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🏢</div>
+            <h3>Recruiter Portal</h3>
+            <p>IT companies can search, filter by skills/CGPA/degree, and shortlist top student candidates for their openings.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📄</div>
+            <h3>PDF Report</h3>
+            <p>Download a complete placement report with prediction, skill gap, recommendations, and AI roadmap in one PDF.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ROLES -->
+<section class="roles">
+    <h2>Who Is This For? 🎯</h2>
+    <p class="sub">Three separate portals — Students, Recruiters, and Admins</p>
+    <div class="roles-grid">
+        <div class="role-card">
+            <div class="icon">👨‍🎓</div>
+            <h3>Students</h3>
+            <p>Register with your degree, enter your details, and get your placement prediction, skill gap analysis, AI roadmap, and PDF report instantly.</p>
+            <a href="{{ url_for('register') }}" class="role-btn btn-student">Sign Up as Student</a>
+        </div>
+        <div class="role-card">
+            <div class="icon">🏢</div>
+            <h3>Recruiters</h3>
+            <p>Register your company, browse all students, filter by skill, CGPA, and degree, and shortlist top candidates for your company.</p>
+            <a href="{{ url_for('recruiter_register') }}" class="role-btn btn-recruiter">Sign Up as Recruiter</a>
+        </div>
+        <div class="role-card">
+            <div class="icon">🛡️</div>
+            <h3>Admins</h3>
+            <p>Manage all students, recruiters, and predictions. View platform statistics and keep the system running smoothly.</p>
+            <a href="{{ url_for('login') }}?tab=admin" class="role-btn btn-admin">Admin Login</a>
+        </div>
+    </div>
+</section>
+
+<!-- DEGREES -->
+<section class="degrees">
+    <h2>Supported Courses & Exams 🎓</h2>
+    <p class="sub">Tailored job roles and skill recommendations for every course</p>
+
+    <div class="degree-group">
+        <div class="degree-group-title">🔵 Undergraduate (UG)</div>
+        <div class="degree-tags">
+            <span class="deg-tag ug">BCA</span>
+            <span class="deg-tag ug">BBA</span>
+            <span class="deg-tag ug">BA</span>
+            <span class="deg-tag ug">BCom</span>
+            <span class="deg-tag ug">BEd</span>
+            <span class="deg-tag ug">BSc</span>
+        </div>
+    </div>
+
+    <div class="degree-group">
+        <div class="degree-group-title">🟢 Engineering (UG)</div>
+        <div class="degree-tags">
+            <span class="deg-tag eng">CSE</span>
+            <span class="deg-tag eng">ECE</span>
+            <span class="deg-tag eng">EEE</span>
+            <span class="deg-tag eng">Mechanical</span>
+            <span class="deg-tag eng">Civil</span>
+            <span class="deg-tag eng">IT</span>
+            <span class="deg-tag eng">Chemical</span>
+            <span class="deg-tag eng">Aerospace</span>
+        </div>
+    </div>
+
+    <div class="degree-group">
+        <div class="degree-group-title">🟣 Postgraduate (PG)</div>
+        <div class="degree-tags">
+            <span class="deg-tag pg">MCA</span>
+            <span class="deg-tag pg">MBA</span>
+            <span class="deg-tag pg">MTech</span>
+            <span class="deg-tag pg">MEd</span>
+            <span class="deg-tag pg">MA</span>
+            <span class="deg-tag pg">MCom</span>
+            <span class="deg-tag pg">MSc</span>
+        </div>
+    </div>
+
+    <div class="degree-group">
+        <div class="degree-group-title">🟠 Competitive Exams</div>
+        <div class="degree-tags">
+            <span class="deg-tag exam">UPSC</span>
+            <span class="deg-tag exam">KPSC</span>
+            <span class="deg-tag exam">Railways (RRB)</span>
+            <span class="deg-tag exam">Bank Exams (IBPS/SBI)</span>
+            <span class="deg-tag exam">SSC</span>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>Built with ❤️ as a BCA Project &nbsp;|&nbsp; <span>Student Career Placement Predictor</span></p>
+</footer>
+
+<script>
+    // ── THEME TOGGLE ─────────────────────────────────────────
+    const toggle = document.getElementById('themeToggle');
+
+    // Check saved preference, else use system preference
+    const saved   = localStorage.getItem('theme');
+    const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let isDark    = saved ? saved === 'dark' : sysDark;
+
+    function applyTheme(dark) {
+        if (dark) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.body.setAttribute('data-theme', 'dark');
+            toggle.textContent = '☀️';
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.body.setAttribute('data-theme', 'light');
+            toggle.textContent = '🌙';
+        }
+    }
+
+    // Apply on page load
+    applyTheme(isDark);
+
+    // Toggle on button click
+    toggle.addEventListener('click', () => {
+        isDark = !isDark;
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        applyTheme(isDark);
+    });
+
+    // Listen for system changes (only if user hasn't manually set it)
+    window.matchMedia('(prefers-color-scheme: dark)')
+          .addEventListener('change', e => {
+              if (!localStorage.getItem('theme')) {
+                  isDark = e.matches;
+                  applyTheme(isDark);
+              }
+          });
+
+    // ── KEYBOARD SHORTCUTS ────────────────────────────────────
+    // Enter = click focused button or first CTA
+    // Arrow Right = Go to Register
+    // Arrow Left  = Go to Login
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            const focused = document.activeElement;
+            if (focused && focused.tagName === 'A') {
+                focused.click();
+            } else {
+                // Default Enter = Get Started
+                window.location.href = "{{ url_for('register') }}";
+            }
+        }
+        if (e.key === 'ArrowRight') {
+            window.location.href = "{{ url_for('register') }}";
+        }
+        if (e.key === 'ArrowLeft') {
+            window.location.href = "{{ url_for('login') }}";
+        }
+    });
+</script>
+</body>
+</html>

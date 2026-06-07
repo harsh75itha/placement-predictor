@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Recruiter Dashboard — Placement Predictor</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  :root{
+    --bg:#f5f7fb; --card:#ffffff; --text:#1f2937; --soft:#6b7280;
+    --border:#e5e7eb; --input:#ffffff; --hover:#f9fafb;
+    --primary:#764ba2; --primary-dark:#a855f7;
+    --success:#10b981; --warning:#f59e0b; --danger:#ef4444;
+    --shadow:0 4px 6px rgba(0,0,0,0.05);
+    --shadow-lg:0 12px 30px rgba(0,0,0,0.08);
+  }
+  [data-theme="dark"],html[data-theme="dark"]{
+    --bg:#0f1020; --card:#1e1e30; --text:#e8e8f0; --soft:#9090a8;
+    --border:#3a3a50; --input:#2a2a40; --hover:#2a2a40;
+    --primary:#c084fc; --primary-dark:#a5b4fc;
+    --shadow:0 4px 6px rgba(0,0,0,0.3);
+    --shadow-lg:0 12px 30px rgba(0,0,0,0.4);
+  }
+  @media (prefers-color-scheme:dark){
+    html:not([data-theme]){
+      --bg:#0f1020; --card:#1e1e30; --text:#e8e8f0; --soft:#9090a8;
+      --border:#3a3a50; --input:#2a2a40; --hover:#2a2a40;
+      --primary:#c084fc;
+    }
+  }
+
+  body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:background 0.3s,color 0.3s;}
+
+  .navbar{background:linear-gradient(135deg,#764ba2,#a855f7);color:#fff;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;box-shadow:var(--shadow);}
+  .logo{font-size:1.2rem;font-weight:700;display:flex;align-items:center;gap:8px;}
+  .nav-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .theme-btn{background:rgba(255,255,255,0.2);border:none;border-radius:8px;padding:6px 11px;font-size:1rem;cursor:pointer;color:#fff;}
+  .theme-btn:hover{background:rgba(255,255,255,0.35);}
+  .btn{padding:8px 16px;border-radius:8px;border:none;cursor:pointer;font-size:0.85rem;font-weight:600;text-decoration:none;display:inline-block;transition:all 0.2s;}
+  .btn-light{background:rgba(255,255,255,0.2);color:#fff;}
+  .btn-light:hover{background:rgba(255,255,255,0.3);}
+  .btn-danger{background:#ef4444;color:#fff;}
+  .btn-primary{background:linear-gradient(135deg,#764ba2,#a855f7);color:#fff;}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 5px 16px rgba(0,0,0,0.18);}
+  .btn-outline{background:transparent;color:var(--text);border:1px solid var(--border);}
+  .btn-outline:hover{background:var(--hover);}
+  .btn-success{background:#10b981;color:#fff;}
+  .btn-sm{padding:6px 11px;font-size:0.8rem;}
+
+  .container{max-width:1400px;margin:0 auto;padding:20px;}
+
+  .welcome{background:linear-gradient(135deg,#764ba2,#a855f7);color:#fff;padding:24px 28px;border-radius:14px;margin-bottom:20px;box-shadow:var(--shadow-lg);}
+  .welcome h1{font-size:1.5rem;margin-bottom:5px;}
+  .welcome p{opacity:0.9;font-size:0.92rem;}
+
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:20px;}
+  .stat-card{background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow);text-align:center;}
+  .stat-card .num{font-size:1.9rem;font-weight:800;color:var(--primary);}
+  .stat-card .lbl{color:var(--soft);font-size:0.82rem;margin-top:3px;}
+
+  .filters{background:var(--card);padding:20px;border-radius:14px;box-shadow:var(--shadow);margin-bottom:20px;}
+  .filters h3{margin-bottom:12px;font-size:1rem;display:flex;align-items:center;gap:6px;}
+  .filter-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;}
+  label{display:block;font-size:0.78rem;font-weight:600;margin-bottom:4px;color:var(--soft);}
+  input,select{width:100%;padding:9px 11px;border:1.5px solid var(--border);border-radius:8px;background:var(--input);color:var(--text);font-size:0.88rem;font-family:inherit;outline:none;}
+  input:focus,select:focus{border-color:#764ba2;box-shadow:0 0 0 3px rgba(118,75,162,0.15);}
+  .filter-actions{display:flex;gap:8px;margin-top:14px;justify-content:flex-end;}
+
+  .students-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px;}
+  .student-card{background:var(--card);border-radius:12px;padding:16px;box-shadow:var(--shadow);border:1px solid var(--border);transition:transform 0.2s,box-shadow 0.2s;}
+  .student-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);}
+  .student-head{display:flex;gap:10px;align-items:center;margin-bottom:10px;}
+  .student-avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#764ba2,#a855f7);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;flex-shrink:0;}
+  .student-card h3{font-size:0.98rem;margin-bottom:1px;}
+  .student-card .email{color:var(--soft);font-size:0.76rem;word-break:break-all;}
+  .student-meta{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:10px;font-size:0.82rem;}
+  .student-meta div{display:flex;justify-content:space-between;}
+  .student-meta div span:first-child{color:var(--soft);}
+  .student-skills{margin-bottom:10px;}
+  .pill{display:inline-block;padding:3px 8px;border-radius:999px;background:var(--bg);font-size:0.72rem;margin:2px;border:1px solid var(--border);}
+  .chance-badge{display:inline-block;padding:4px 11px;border-radius:999px;font-size:0.78rem;font-weight:700;}
+  .chance-high{background:rgba(16,185,129,0.18);color:#10b981;}
+  .chance-mid{background:rgba(245,158,11,0.18);color:#f59e0b;}
+  .chance-low{background:rgba(239,68,68,0.18);color:#ef4444;}
+  .card-actions{display:flex;gap:8px;border-top:1px solid var(--border);padding-top:10px;margin-top:10px;}
+  .card-actions form{flex:1;}
+  .card-actions .btn-sm{width:100%;text-align:center;}
+
+  .alert{padding:11px 14px;border-radius:9px;margin-bottom:12px;font-size:0.88rem;display:flex;align-items:center;gap:8px;}
+  .alert-success{background:rgba(16,185,129,0.12);color:#10b981;border:1px solid rgba(16,185,129,0.25);}
+  .alert-error{background:rgba(239,68,68,0.12);color:#ef4444;border:1px solid rgba(239,68,68,0.25);}
+  .alert-info{background:rgba(102,126,234,0.12);color:#667eea;border:1px solid rgba(102,126,234,0.25);}
+
+  .empty{background:var(--card);border-radius:14px;text-align:center;padding:40px 16px;color:var(--soft);box-shadow:var(--shadow);}
+  .empty .icon{font-size:2.8rem;margin-bottom:8px;}
+
+  .hint-bar{position:fixed;bottom:14px;right:14px;background:var(--card);border:1px solid var(--border);padding:7px 12px;border-radius:8px;font-size:0.75rem;color:var(--soft);box-shadow:var(--shadow);}
+  .hint-bar kbd{background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:1px 5px;font-family:monospace;font-size:0.72rem;}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="logo">💼 Recruiter Portal</div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="themeToggle" title="Toggle theme">🌙</button>
+    <a class="btn btn-light" href="{{ url_for('recruiter_shortlists') }}">⭐ My Shortlist</a>
+    <a class="btn btn-light" href="{{ url_for('home') }}">Home</a>
+    <a class="btn btn-danger" href="{{ url_for('logout') }}">Logout</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }}">{{ message }}</div>
+    {% endfor %}
+  {% endwith %}
+
+  <div class="welcome">
+    <h1>Welcome, {{ recruiter.name }} 👋</h1>
+    <p>{{ recruiter.company_name }} · {{ recruiter.industry }}</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat-card">
+      <div class="num" data-count="{{ students|length }}">0</div>
+      <div class="lbl">Students Found</div>
+    </div>
+    <div class="stat-card">
+      <div class="num" data-count="{{ shortlisted_ids|length }}">0</div>
+      <div class="lbl">Shortlisted</div>
+    </div>
+    <div class="stat-card">
+      <div class="num" data-count="{{ all_roles|length }}">0</div>
+      <div class="lbl">Roles Available</div>
+    </div>
+    <div class="stat-card">
+      <div class="num" data-count="{{ all_degrees|length }}">0</div>
+      <div class="lbl">Degrees Available</div>
+    </div>
+  </div>
+
+  <form class="filters" method="GET" action="{{ url_for('recruiter_dashboard') }}" id="filterForm">
+    <h3>🔍 Filter Students</h3>
+    <div class="filter-grid">
+      <div>
+        <label>Search by Skill</label>
+        <input type="text" name="skill" value="{{ filters.skill or '' }}" placeholder="e.g. python, react">
+      </div>
+      <div>
+        <label>Degree</label>
+        <select name="degree">
+          <option value="">All Degrees</option>
+          {% for d in all_degrees %}
+            <option value="{{ d }}" {% if filters.degree == d %}selected{% endif %}>{{ d }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div>
+        <label>Desired Role</label>
+        <select name="role">
+          <option value="">All Roles</option>
+          {% for r in all_roles %}
+            <option value="{{ r }}" {% if filters.role == r %}selected{% endif %}>{{ r }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div>
+        <label>Min CGPA</label>
+        <input type="number" name="min_cgpa" step="0.1" min="0" max="10" value="{{ filters.min_cgpa if filters.min_cgpa else '' }}" placeholder="e.g. 7.5">
+      </div>
+      <div>
+        <label>Sort by</label>
+        <select name="sort">
+          <option value="placement_desc" {% if filters.sort == 'placement_desc' %}selected{% endif %}>Placement Chance (high → low)</option>
+          <option value="cgpa_desc" {% if filters.sort == 'cgpa_desc' %}selected{% endif %}>CGPA (high → low)</option>
+          <option value="name_asc" {% if filters.sort == 'name_asc' %}selected{% endif %}>Name (A → Z)</option>
+        </select>
+      </div>
+    </div>
+    <div class="filter-actions">
+      <a href="{{ url_for('recruiter_dashboard') }}" class="btn btn-outline">Clear</a>
+      <button type="submit" class="btn btn-primary">Apply Filters</button>
+    </div>
+  </form>
+
+  {% if students %}
+  <div class="students-grid">
+    {% for stu, pred in students %}
+    <div class="student-card">
+      <div class="student-head">
+        <div class="student-avatar">{{ stu.name[0]|upper }}</div>
+        <div style="flex:1;min-width:0;">
+          <h3>{{ stu.name }}</h3>
+          <div class="email">{{ stu.email }}</div>
+        </div>
+        {% if pred.placement_chance >= 70 %}
+          <span class="chance-badge chance-high">{{ pred.placement_chance }}%</span>
+        {% elif pred.placement_chance >= 40 %}
+          <span class="chance-badge chance-mid">{{ pred.placement_chance }}%</span>
+        {% else %}
+          <span class="chance-badge chance-low">{{ pred.placement_chance }}%</span>
+        {% endif %}
+      </div>
+
+      <div class="student-meta">
+        <div><span>Degree</span><strong>{{ stu.degree }}</strong></div>
+        <div><span>CGPA</span><strong>{{ pred.cgpa }}</strong></div>
+        <div><span>Role</span><strong>{{ pred.desired_role }}</strong></div>
+        <div><span>Projects</span><strong>{{ pred.projects }}</strong></div>
+        <div><span>Internships</span><strong>{{ pred.internships }}</strong></div>
+        <div><span>Match %</span><strong>{{ pred.skill_match }}%</strong></div>
+      </div>
+
+      {% set skill_list = pred.skills.split(';') %}
+      <div class="student-skills">
+        {% for sk in skill_list[:5] %}
+          {% if sk.strip() %}<span class="pill">{{ sk.strip() }}</span>{% endif %}
+        {% endfor %}
+        {% if skill_list|length > 5 %}<span class="pill">+{{ skill_list|length - 5 }} more</span>{% endif %}
+      </div>
+
+      <div class="card-actions">
+        <a href="{{ url_for('recruiter_view_student', sid=stu.id) }}" class="btn btn-outline btn-sm" style="flex:1;text-align:center;">👁 View</a>
+        {% if stu.id in shortlisted_ids %}
+          <form onsubmit="return toggleShortlist(event, {{ stu.id }}, this);">
+            <button type="submit" class="btn btn-danger btn-sm">★ Remove</button>
+          </form>
+        {% else %}
+          <form onsubmit="return toggleShortlist(event, {{ stu.id }}, this);">
+            <button type="submit" class="btn btn-success btn-sm">☆ Shortlist</button>
+          </form>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty">
+    <div class="icon">🔍</div>
+    <h3>No students match your filters</h3>
+    <p>Try clearing some filters or broadening your search criteria.</p>
+  </div>
+  {% endif %}
+
+</div>
+
+<div class="hint-bar">
+  <kbd>Ctrl</kbd>+<kbd>Enter</kbd> Apply · <kbd>Ctrl</kbd>+<kbd>D</kbd> Theme · <kbd>Ctrl</kbd>+<kbd>L</kbd> Shortlist
+</div>
+
+<script>
+  // Animated counters
+  window.addEventListener('load',()=>{
+    document.querySelectorAll('.stat-card .num').forEach(el=>{
+      const target=parseFloat(el.dataset.count||el.textContent);
+      if(isNaN(target))return;
+      const isPct=el.textContent.includes('%');
+      const start=performance.now(), duration=1200;
+      function step(now){
+        const t=Math.min((now-start)/duration,1);
+        const eased=1-Math.pow(1-t,3);
+        const val=(target*eased).toFixed(target%1?2:0);
+        el.textContent=isPct?val+'%':val;
+        if(t<1)requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  });
+
+  const themeBtn=document.getElementById('themeToggle');
+  function applyTheme(t){document.documentElement.setAttribute('data-theme',t);themeBtn.textContent=t==='dark'?'☀️':'🌙';}
+  const saved=localStorage.getItem('theme');
+  if(saved){applyTheme(saved);}
+  else{applyTheme(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');}
+  themeBtn.addEventListener('click',()=>{
+    const cur=document.documentElement.getAttribute('data-theme')||'light';
+    const nxt=cur==='dark'?'light':'dark';
+    applyTheme(nxt);localStorage.setItem('theme',nxt);
+  });
+
+  document.addEventListener('keydown',(e)=>{
+    if(e.ctrlKey&&e.key==='Enter'){e.preventDefault();document.getElementById('filterForm').submit();}
+    if(e.ctrlKey&&(e.key==='d'||e.key==='D')){e.preventDefault();themeBtn.click();}
+    if(e.ctrlKey&&(e.key==='l'||e.key==='L')){e.preventDefault();window.location.href="{{ url_for('recruiter_shortlists') }}";}
+  });
+
+  // AJAX shortlist toggle so the page doesn't lose the filters
+  async function toggleShortlist(e, sid, formEl){
+    e.preventDefault();
+    try{
+      const resp = await fetch(`/recruiter/shortlist/${sid}`, {method:'POST'});
+      const data = await resp.json();
+      const btn = formEl.querySelector('button');
+      if(data.status==='added'){
+        btn.textContent='★ Remove';
+        btn.classList.remove('btn-success');
+        btn.classList.add('btn-danger');
+      } else {
+        btn.textContent='☆ Shortlist';
+        btn.classList.remove('btn-danger');
+        btn.classList.add('btn-success');
+      }
+    } catch(err){
+      alert('Could not update shortlist. Please try again.');
+    }
+    return false;
+  }
+</script>
+
+</body>
+</html>
