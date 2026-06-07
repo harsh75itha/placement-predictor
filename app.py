@@ -27,7 +27,7 @@ from functools import wraps
 app = Flask(__name__)
 # 🔒 Admin secret key — only YOU should know this!
 # Change this to whatever secret phrase you want.
-ADMIN_SECRET_KEY =   os.environ.get('ADMIN_SECRET_KEY','Harshitha_is_the_admin_9900')
+ADMIN_SECRET_KEY = os.environ.get('ADMIN_SECRET_KEY','Harshitha_is_the_admin_9900')
 app.config['SECRET_KEY'] = os.environ.get('FLASK_SECRET', 'placement_predictor_secret_2024')
 # Use DATABASE_URL from environment (Render/cloud).
 # If not set, fall back to local MySQL.
@@ -39,7 +39,7 @@ if db_url:
     app.config['SQLALCHEMY_DATABASE_URI'] = db_url
 else:
     app.config['SQLALCHEMY_DATABASE_URI'] = (
-        'mysql+pymysql://root:HaRsH*2005*@localhost/placement_predictor'
+        'mysql+pymysql://root:' + os.environ.get('LOCAL_MYSQL_PASSWORD', 'HaRsH*2005*') + '@localhost/placement_predictor'
     )
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -50,7 +50,7 @@ login_manager.login_view = 'login'
 # ============================================================
 #  GEMINI AI
 # ============================================================
-GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY', 'AIzaSyAChHaBeCKYH0C8btcWoXCNmxZ8lElgq4s')
+GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY', 'AQ.Ab8RN6Lq_mLQQZYXBFJX9bf26E4UgWYbthmER1KLlR-1WuwXLw')
 GEMINI_MODEL_NAME = 'gemini-flash-latest'   # free, fast, current
 try:
     gemini_client = new_genai.Client(api_key=GEMINI_API_KEY)
