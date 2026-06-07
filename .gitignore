@@ -29,3 +29,24 @@ test_gemini.py
 # Output / temp
 output/
 temp/
+# Project documents (keep these local only)
+*.pptx
+*.docx
+*.pdf
+*.zip
+*.rar
+*.7z
+
+# Old / backup code files
+*-06e51574.py
+*_old.py
+*_backup.py
+*.bak
+
+# Generated files
+*_report.pdf
+*_export.xlsx
+*_export.csv
+
+# Test scripts
+test_*.py
