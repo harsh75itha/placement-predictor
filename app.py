@@ -2152,13 +2152,15 @@ def admin_skill_delete(did, sid):
 # ============================================================
 #  RUN
 # ============================================================
+# Initialize DB at module import so gunicorn also sets up tables
+with app.app_context():
+    db.create_all()
+    seed_degrees_if_empty()
+    reload_degree_data()
+    print('✅ All tables created!')
+    print('📌 students | recruiters | admins | predictions | shortlists | degrees')
+    print(f'📚 Loaded {len(ALL_DEGREES)} degrees from database')
+
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
-        seed_degrees_if_empty()
-        reload_degree_data()
-        print('✅ All tables created!')
-        print('📌 students | recruiters | admins | predictions | shortlists | degrees')
-        print(f'📚 Loaded {len(ALL_DEGREES)} degrees from database')
-        print('🌐 Open: http://127.0.0.1:5000')
+    print('🌐 Open: http://127.0.0.1:5000')
     app.run(debug=True)
