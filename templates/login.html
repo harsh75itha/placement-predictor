@@ -137,6 +137,12 @@
                 </div>
                 <button type="submit" class="btn-login btn-student">Sign In as Student →</button>
             </form>
+            <button type="submit" class="btn-login btn-student">Sign In as Student →</button>
+            </form>
+            <div style="text-align:center;margin-top:10px;">
+                <a href="{{ url_for('forgot_password') }}" style="color:var(--link);text-decoration:none;font-size:0.82rem;font-weight:600;">🔐 Forgot Password?</a>
+            </div>
+            <div class="divider">Don't have an account?</div>
             <div class="divider">Don't have an account?</div>
             <div class="register-link"><a href="{{ url_for('register') }}">Create a student account</a></div>
         </div>
@@ -157,6 +163,12 @@
                 </div>
                 <button type="submit" class="btn-login btn-recruiter">Sign In as Recruiter →</button>
             </form>
+            <button type="submit" class="btn-login btn-recruiter">Sign In as Recruiter →</button>
+            </form>
+            <div style="text-align:center;margin-top:10px;">
+                <a href="{{ url_for('forgot_password') }}" style="color:var(--link);text-decoration:none;font-size:0.82rem;font-weight:600;">🔐 Forgot Password?</a>
+            </div>
+            <div class="divider">New company?</div>
             <div class="divider">New company?</div>
             <div class="register-link"><a href="{{ url_for('recruiter_register') }}">Register your company</a></div>
         </div>

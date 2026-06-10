@@ -50,3 +50,6 @@ temp/
 
 # Test scripts
 test_*.py
+
+# One-time scripts containing secrets
+reset_admin.py
