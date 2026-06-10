@@ -48,10 +48,44 @@
   .btn-outline:hover{background:var(--hover);}
 
   .container{display:grid;grid-template-columns:280px 1fr;gap:20px;padding:20px;max-width:1400px;margin:0 auto;}
+
+  /* ── Hamburger dropdown menu setup ── */
+  .hamburger{display:none;background:rgba(255,255,255,0.2);border:none;color:#fff;font-size:1.4rem;padding:6px 12px;border-radius:8px;cursor:pointer;line-height:1;margin-right:10px;}
+  .hamburger:hover{background:rgba(255,255,255,0.35);}
+
+  .nav-dropdown{
+    display:none;
+    background:var(--card);
+    border-bottom:1px solid var(--border);
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    overflow:hidden;
+    max-height:0;
+    transition:max-height 0.3s ease;
+  }
+  .nav-dropdown.open{display:block;max-height:500px;}
+  .nav-dropdown a{
+    display:flex;align-items:center;gap:10px;
+    padding:14px 20px;
+    border-bottom:1px solid var(--border);
+    text-decoration:none;
+    color:var(--text);
+    font-weight:600;
+    font-size:0.95rem;
+    transition:background 0.2s;
+  }
+  .nav-dropdown a:last-child{border-bottom:none;}
+  .nav-dropdown a:hover{background:var(--bg);}
+  .nav-dropdown .nav-icon{font-size:1.2rem;width:24px;text-align:center;}
+  .nav-dropdown .nav-logout{color:#ef4444;}
+  .nav-dropdown .nav-logout:hover{background:rgba(239,68,68,0.08);}
+
   @media (max-width:900px){
     .container{grid-template-columns:1fr;padding:14px;gap:14px;}
-    .sidebar{position:static !important;top:auto !important;}
+    .hamburger{display:inline-flex;align-items:center;justify-content:center;}
+    .hide-mobile{display:none !important;}
     .hint-bar{display:none !important;}
+    /* Sidebar stacks naturally above main content — no more sticky overlap */
+    .sidebar{position:static !important;top:auto !important;}
   }
   @media (max-width:600px){
     .donut-wrap{width:150px;height:150px;}
@@ -140,18 +174,25 @@
 <body>
 
 <nav class="navbar">
-  <div class="logo">🎓 Placement Predictor</div>
+  <div style="display:flex;align-items:center;">
+    <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
+    <div class="logo">🎓 Placement Predictor</div>
+  </div>
   <div class="nav-actions">
     <button class="theme-btn" id="themeToggle" title="Toggle theme">🌙</button>
-    <a class="btn btn-light" href="{{ url_for('home') }}">Home</a>
-    <a class="btn btn-danger" href="{{ url_for('logout') }}">Logout</a>
+    <a class="btn btn-light hide-mobile" href="{{ url_for('home') }}">Home</a>
+    <a class="btn btn-danger hide-mobile" href="{{ url_for('logout') }}">Logout</a>
   </div>
 </nav>
+
+<!-- Sidebar backdrop (mobile only, click to close) -->
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
 <div class="container">
 
   <!-- Sidebar -->
-  <aside class="sidebar">
+  <aside class="sidebar" id="sidebar">
+    <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">×</button>
     <div class="avatar">{{ user.name[0]|upper }}</div>
     <h3>{{ user.name }}</h3>
     <div class="email">{{ user.email }}</div>
@@ -163,6 +204,12 @@
     {% if degree_info and degree_info.full_name %}
     <div class="info-row"><span>Level</span><span>{{ degree_info.level }}</span></div>
     {% endif %}
+
+    <!-- Mobile-only nav buttons (shown when sidebar slides in) -->
+    <div class="sidebar-mobile-nav">
+      <a href="{{ url_for('home') }}" class="nav-home">🏠 Home</a>
+      <a href="{{ url_for('logout') }}" class="nav-logout">🚪 Logout</a>
+    </div>
   </aside>
 
   <!-- Main -->
@@ -500,6 +547,23 @@
 </div>
 
 <script>
+  // ── Hamburger menu / sidebar toggle (mobile) ──
+  const hamburger = document.getElementById('hamburger');
+  const sidebar = document.getElementById('sidebar');
+  const sidebarClose = document.getElementById('sidebarClose');
+  const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+  function openSidebar(){
+    if(sidebar) sidebar.classList.add('open');
+    if(sidebarBackdrop) sidebarBackdrop.classList.add('open');
+  }
+  function closeSidebar(){
+    if(sidebar) sidebar.classList.remove('open');
+    if(sidebarBackdrop) sidebarBackdrop.classList.remove('open');
+  }
+  if(hamburger) hamburger.addEventListener('click', openSidebar);
+  if(sidebarClose) sidebarClose.addEventListener('click', closeSidebar);
+  if(sidebarBackdrop) sidebarBackdrop.addEventListener('click', closeSidebar);
+
   const themeBtn=document.getElementById('themeToggle');
   function applyTheme(t){document.documentElement.setAttribute('data-theme',t);themeBtn.textContent=t==='dark'?'☀️':'🌙';}
   const saved=localStorage.getItem('theme');
