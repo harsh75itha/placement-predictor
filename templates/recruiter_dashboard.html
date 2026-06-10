@@ -34,6 +34,23 @@
   .navbar{background:linear-gradient(135deg,#764ba2,#a855f7);color:#fff;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;box-shadow:var(--shadow);}
   .logo{font-size:1.2rem;font-weight:700;display:flex;align-items:center;gap:8px;}
   .nav-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+
+  /* ── Hamburger dropdown menu (mobile) ── */
+  .hamburger{display:none;background:rgba(255,255,255,0.2);border:none;color:#fff;font-size:1.4rem;padding:6px 12px;border-radius:8px;cursor:pointer;line-height:1;}
+  .hamburger:hover{background:rgba(255,255,255,0.35);}
+  .nav-dropdown{display:none;background:var(--card);border-bottom:1px solid var(--border);box-shadow:0 4px 12px rgba(0,0,0,0.08);overflow:hidden;max-height:0;transition:max-height 0.3s ease;}
+  .nav-dropdown.open{display:block;max-height:500px;}
+  .nav-dropdown a{display:flex;align-items:center;gap:10px;padding:14px 20px;border-bottom:1px solid var(--border);text-decoration:none;color:var(--text);font-weight:600;font-size:0.95rem;transition:background 0.2s;}
+  .nav-dropdown a:last-child{border-bottom:none;}
+  .nav-dropdown a:hover{background:var(--bg);}
+  .nav-dropdown .nav-icon{font-size:1.2rem;width:24px;text-align:center;}
+  .nav-dropdown .nav-logout{color:#ef4444;}
+  .nav-dropdown .nav-logout:hover{background:rgba(239,68,68,0.08);}
+  @media (max-width:900px){
+    .hamburger{display:inline-flex;align-items:center;justify-content:center;}
+    .hide-mobile{display:none !important;}
+    .hint-bar{display:none !important;}
+  }
   .theme-btn{background:rgba(255,255,255,0.2);border:none;border-radius:8px;padding:6px 11px;font-size:1rem;cursor:pointer;color:#fff;}
   .theme-btn:hover{background:rgba(255,255,255,0.35);}
   .btn{padding:8px 16px;border-radius:8px;border:none;cursor:pointer;font-size:0.85rem;font-weight:600;text-decoration:none;display:inline-block;transition:all 0.2s;}
@@ -101,14 +118,24 @@
 <body>
 
 <nav class="navbar">
-  <div class="logo">💼 Recruiter Portal</div>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
+    <div class="logo">💼 Recruiter Portal</div>
+  </div>
   <div class="nav-actions">
     <button class="theme-btn" id="themeToggle" title="Toggle theme">🌙</button>
-    <a class="btn btn-light" href="{{ url_for('recruiter_shortlists') }}">⭐ My Shortlist</a>
-    <a class="btn btn-light" href="{{ url_for('home') }}">Home</a>
-    <a class="btn btn-danger" href="{{ url_for('logout') }}">Logout</a>
+    <a class="btn btn-light hide-mobile" href="{{ url_for('recruiter_shortlists') }}">⭐ My Shortlist</a>
+    <a class="btn btn-light hide-mobile" href="{{ url_for('home') }}">Home</a>
+    <a class="btn btn-danger hide-mobile" href="{{ url_for('logout') }}">Logout</a>
   </div>
 </nav>
+
+<!-- Mobile dropdown menu -->
+<div class="nav-dropdown" id="navDropdown">
+  <a href="{{ url_for('recruiter_shortlists') }}"><span class="nav-icon">⭐</span> My Shortlist</a>
+  <a href="{{ url_for('home') }}"><span class="nav-icon">🏠</span> Home</a>
+  <a href="{{ url_for('logout') }}" class="nav-logout"><span class="nav-icon">🚪</span> Logout</a>
+</div>
 
 <div class="container">
 
@@ -252,6 +279,24 @@
 </div>
 
 <script>
+  // ── Hamburger dropdown menu (mobile) ──
+  const hamburger = document.getElementById('hamburger');
+  const navDropdown = document.getElementById('navDropdown');
+  if(hamburger && navDropdown){
+    hamburger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navDropdown.classList.toggle('open');
+    });
+    document.addEventListener('click', (e) => {
+      if(!navDropdown.contains(e.target) && e.target !== hamburger){
+        navDropdown.classList.remove('open');
+      }
+    });
+    navDropdown.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navDropdown.classList.remove('open'));
+    });
+  }
+
   // Animated counters
   window.addEventListener('load',()=>{
     document.querySelectorAll('.stat-card .num').forEach(el=>{
