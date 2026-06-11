@@ -10,8 +10,6 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from openpyxl import Workbook
 from openpyxl.styles import Font, PatternFill, Alignment
-from flask_mail import Mail, Message
-from itsdangerous import URLSafeTimedSerializer
 from google import genai as new_genai
 import pandas as pd
 import io
@@ -32,20 +30,7 @@ app = Flask(__name__)
 ADMIN_SECRET_KEY = os.environ.get('ADMIN_SECRET_KEY','Harshitha_is_the_admin_9900')
 app.config['SECRET_KEY'] = os.environ.get('FLASK_SECRET', 'placement_predictor_secret_2024')
 
-# ── Flask-Mail config (for Forgot Password emails) ──
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME', 'harshithatn75@gmail.com')
-app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD', '')
-app.config['MAIL_DEFAULT_SENDER'] = ('Placement Predictor',
-                                     os.environ.get('MAIL_USERNAME', 'harshithatn75@gmail.com'))
-mail = Mail(app)
 # ── PostgreSQL connection pool (auto-recover from SSL errors on Render) ──
-app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
-    'pool_pre_ping': True,   # Test connection before using
-    'pool_recycle': 280,     # Recycle every 280 seconds
-}
 # Use DATABASE_URL from environment (Render/cloud).
 # If not set, fall back to local MySQL.
 db_url = os.environ.get('DATABASE_URL', '').strip()
@@ -551,7 +536,7 @@ DEGREE_DATA_SEED = {
             'Hard Working Attitude'
         ]
     },
-    
+
     # ── UG ENGINEERING ────────────────────────────────────
     'BE/BTech - CSE': {
         'full_name': 'B.E / B.Tech - Computer Science Engineering',
@@ -1493,23 +1478,6 @@ def run_prediction(student, cgpa, skills, internships,
     else:                                                prob = round(raw, 2)
     return prob
 
-# ── Reset password token helpers ──
-def get_reset_serializer():
-    return URLSafeTimedSerializer(app.config['SECRET_KEY'])
-
-def generate_reset_token(email):
-    """Generate a time-limited token for password reset."""
-    return get_reset_serializer().dumps(email, salt='password-reset')
-
-def verify_reset_token(token, max_age_seconds=3600):
-    """Verify the token and return the email; None if invalid/expired."""
-    try:
-        return get_reset_serializer().loads(token, salt='password-reset',
-                                            max_age=max_age_seconds)
-    except Exception:
-        return None
-
-
 def gemini_roadmap(name, role, missing, chance):
     if not gemini_client:
         return '⚠ AI roadmap unavailable — Gemini client not initialized. Check your API key.'
@@ -1603,50 +1571,6 @@ def logout():
     logout_user()
     flash('Logged out successfully.', 'info')
     return redirect(url_for('home'))
-
-# ============================================================
-#  FORGOT PASSWORD ROUTES
-# ============================================================
-@app.route('/forgot-password', methods=['GET', 'POST'])
-def forgot_password():
-    if request.method == 'POST':
-        email = request.form.get('email', '').strip().lower()
-        # Look up the user in students or recruiters
-        student = Student.query.filter_by(email=email).first()
-        recruiter = Recruiter.query.filter_by(email=email).first()
-        user = student or recruiter
-
-        if user:
-            token = generate_reset_token(email)
-            reset_url = url_for('reset_password', token=token, _external=True)
-            body = (
-                f"Hi {user.name},\n\n"
-                f"You requested to reset your password for Placement Predictor.\n\n"
-                f"Click the link below to reset your password (valid for 1 hour):\n"
-                f"{reset_url}\n\n"
-                f"If you didn't request this, please ignore this email — your password will remain unchanged.\n\n"
-                f"Best wishes,\n"
-                f"Placement Predictor Team"
-            )
-            try:
-                msg = Message(
-                    subject='🔐 Reset your Placement Predictor password',
-                    recipients=[email],
-                    body=body
-                )
-                mail.send(msg)
-                flash(f'Password reset link sent to {email}! Please check your inbox (and spam folder).', 'success')
-            except Exception as e:
-                print(f'⚠ Email send failed: {e}')
-                flash('Could not send the reset email right now. Please try again later or contact the admin.', 'error')
-        else:
-            # Don't reveal whether the email exists — show same message either way
-            flash(f'If an account exists for {email}, a reset link has been sent. Please check your inbox.', 'info')
-
-        return redirect(url_for('login'))
-
-    return render_template('forgot_password.html')
-
 
 @app.route('/reset-password/<token>', methods=['GET', 'POST'])
 def reset_password(token):
