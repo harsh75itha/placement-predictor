@@ -456,7 +456,102 @@ DEGREE_DATA_SEED = {
         ]
     },
 
+# ── DIPLOMA ────────────────────────────────────
+    'Diploma - Engineering': {
+        'full_name': 'Diploma in Engineering (Polytechnic)',
+        'level': 'Diploma',
+        'job_roles': [
+            'Junior Engineer (Govt)', 'Technical Apprentice',
+            'CAD Operator', 'Maintenance Technician',
+            'Production Supervisor', 'Quality Inspector',
+            'Site Supervisor', 'Service Engineer',
+            'ITI Instructor', 'Lateral Entry to B.E/B.Tech'
+        ],
+        'recommended_skills': [
+            'AutoCAD', 'SolidWorks', 'Workshop Practice',
+            'Engineering Drawing', 'Manufacturing Processes',
+            'Quality Control', 'Communication', 'MS Office',
+            'Microcontrollers', 'PLC Programming',
+            'Electrical Machines', 'Maintenance Skills'
+        ]
+    },
 
+    'Diploma - Computer Science': {
+        'full_name': 'Diploma in Computer Science Engineering',
+        'level': 'Diploma',
+        'job_roles': [
+            'Junior Web Developer', 'IT Support Executive',
+            'Junior Software Tester', 'Hardware Technician',
+            'Network Technician', 'Data Entry Specialist',
+            'Junior System Administrator', 'Help Desk Engineer',
+            'Lateral Entry to B.E/BCA',
+            'Computer Operator'
+        ],
+        'recommended_skills': [
+            'HTML', 'CSS', 'JavaScript', 'Python', 'C', 'C++',
+            'DBMS', 'SQL', 'Computer Networks', 'Git',
+            'MS Office', 'Communication', 'Linux Basics',
+            'Hardware Troubleshooting'
+        ]
+    },
+
+    'Diploma - Other Streams': {
+        'full_name': 'Diploma in Pharmacy / Hotel Management / Other Fields',
+        'level': 'Diploma',
+        'job_roles': [
+            'Pharmacist Assistant', 'Hotel Trainee',
+            'Lab Assistant', 'Industrial Trainee',
+            'Junior Designer', 'Technician',
+            'Junior Sales Executive', 'Field Assistant',
+            'Apprenticeship', 'Lateral Entry to B.Sc/B.Voc'
+        ],
+        'recommended_skills': [
+            'Communication', 'MS Office', 'Customer Service',
+            'Teamwork', 'Time Management', 'Industry Basics',
+            'Computer Basics', 'English Communication',
+            'Practical Skills', 'Aptitude'
+        ]
+    },
+
+    # ── 12TH PASS (PUC) ────────────────────────────────
+    '12th Pass (PUC)': {
+        'full_name': '12th Standard / PUC (Pre-University Course)',
+        'level': 'School',
+        'job_roles': [
+            'Apprenticeship Trainee', 'Data Entry Operator',
+            'Junior Office Assistant', 'Sales Trainee',
+            'BPO Voice Process', 'Customer Care Executive',
+            'Call Center Executive', 'Retail Trainee',
+            'Lateral Entry to UG Degree', 'JEE/NEET Aspirant'
+        ],
+        'recommended_skills': [
+            'Communication', 'English Speaking', 'MS Office',
+            'Typing Skills', 'Customer Service', 'Mathematics',
+            'General Knowledge', 'Aptitude Reasoning',
+            'Internet Basics', 'Time Management'
+        ]
+    },
+
+    # ── 10TH PASS (SSLC) ───────────────────────────────
+    '10th Pass (SSLC)': {
+        'full_name': '10th Standard / SSLC (Secondary School Leaving Certificate)',
+        'level': 'School',
+        'job_roles': [
+            'Apprenticeship Trainee', 'ITI Course Aspirant',
+            'Polytechnic Aspirant', 'Junior Assistant',
+            'Shop Assistant', 'Delivery Executive',
+            'Field Helper', 'Trainee Mechanic',
+            'Junior Sales Boy/Girl', 'Helper / Office Boy'
+        ],
+        'recommended_skills': [
+            'Communication', 'Basic English', 'MS Office Basics',
+            'Mathematics', 'General Knowledge',
+            'Punctuality', 'Customer Behavior',
+            'Computer Basics', 'Local Language',
+            'Hard Working Attitude'
+        ]
+    },
+    
     # ── UG ENGINEERING ────────────────────────────────────
     'BE/BTech - CSE': {
         'full_name': 'B.E / B.Tech - Computer Science Engineering',
