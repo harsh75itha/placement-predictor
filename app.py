@@ -41,6 +41,11 @@ app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD', '')
 app.config['MAIL_DEFAULT_SENDER'] = ('Placement Predictor',
                                      os.environ.get('MAIL_USERNAME', 'harshithatn75@gmail.com'))
 mail = Mail(app)
+# ── PostgreSQL connection pool (auto-recover from SSL errors on Render) ──
+app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
+    'pool_pre_ping': True,   # Test connection before using
+    'pool_recycle': 280,     # Recycle every 280 seconds
+}
 # Use DATABASE_URL from environment (Render/cloud).
 # If not set, fall back to local MySQL.
 db_url = os.environ.get('DATABASE_URL', '').strip()
